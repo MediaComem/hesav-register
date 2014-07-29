@@ -1,0 +1,12 @@
+defaults: &defaults
+  sha_out: 'CkrJoYtQqKPE7hlA'
+  #sha_out: 'n3bdRnJKptigGZ8E'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

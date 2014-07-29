@@ -1,0 +1,4 @@
+- unless flash[:notice_error].blank?
+  .bs-callout-danger.bs-callout
+    h4 Erreur
+    = flash[:notice_error]
