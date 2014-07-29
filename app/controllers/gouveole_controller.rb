@@ -1,0 +1,2 @@
+class GouveoleController < ApplicationController
+end

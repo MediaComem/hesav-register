@@ -1,0 +1,2 @@
+module GouveoleHelper
+end
