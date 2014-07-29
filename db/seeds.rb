@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Event.create!(short_name:"gouveole", 
+    name:"Gouveole",
+    description:"Gouveole",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2014,10,01),
+    visible: true)

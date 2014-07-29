@@ -1,6 +1,6 @@
 class CreateFields < ActiveRecord::Migration
   def change
-    create_table :registrations do |t|
+    create_table :fields do |t|
       t.string :name
       t.string :value
 
