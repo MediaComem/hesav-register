@@ -2,14 +2,24 @@ class GouveoleRegistrationsController < ApplicationController
   
   before_filter :init_values
   def init_values
+
+    #constants
     @event_name = 'gouveole'
     @shop_id = 'test'
     @environment = 'test'
     @language = 'fr_FR'
     @price = '500.00'
+
+    # layout
+    self.class.layout('gouveole')
   end
 
   def new
+
+    logger.info "----------------"
+    logger.info "NEW"
+    logger.info "----------------"
+
     event = Event.find_by_short_name!(@event_name)
     now = DateTime.now
 
@@ -25,6 +35,12 @@ class GouveoleRegistrationsController < ApplicationController
   end
 
   def create
+
+    logger.info "----------------"
+    logger.info "CREATE"
+    logger.info params
+    logger.info "----------------"
+
     event = Event.find_by_short_name!(@event_name)
 
     @registration = GouveoleRegistration.new(post_params)
@@ -36,6 +52,8 @@ class GouveoleRegistrationsController < ApplicationController
       render 'hiddenform'
     else
       #flash.now[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
+      @gender = (params[:gouveole_registration][:male])
+      @affiliation = (params[:gouveole_registration][:affiliation])
       render 'new'
     end
   end
@@ -63,9 +81,9 @@ class GouveoleRegistrationsController < ApplicationController
         else
           registration.paid = true
           registration.save
-      #    msg = "PostFinance :: Accept Action :: The registration with the id #"+orderID_back+" has been payed"
-      #    registration_ok(msg,registration)
-      #    render File.join(params[:controller], keyName, params[:action])
+          msg = "PostFinance :: Accept Action :: The registration with the id #"+order_id+" has been payed"
+          registration_ok(msg, registration)
+          render "accepted"
         end
       else
         msg = "PostFinance :: Accept Action :: order_id is null"
@@ -147,6 +165,13 @@ private
     logger.error msg
     flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
     NotificationMailer.error_email(msg,params).deliver
+  end
+
+
+  def registration_ok(msg,registration)
+    flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
+    flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
+    NotificationMailer.success_email(registration).deliver
   end
 
 end

@@ -26,7 +26,7 @@
               .col-md-4
                 label Titre*
               .col-md-4
-                = f.select :male, options_for_select([["M.", "1"], ["Mme.", "0"]]), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :male, options_for_select([["M.", "1"], ["Mme.", "0"]], @gender), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
@@ -65,7 +65,7 @@
               .col-md-4
                 label Affiliation*
               .col-md-4
-                = f.select :affiliation, options_for_select([["Association", "association"], ["Entreprise", "entreprise"], ["Administration","administration"], ["Elus", "elus"]]), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :affiliation, options_for_select([["Association", "association"], ["Entreprise", "entreprise"], ["Administration","administration"], ["Elus", "elus"]], @affiliation), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
@@ -97,10 +97,22 @@
               .col-md-4
                 label Connaissances des démarches participatives*
               .col-md-4
-                  = f.check_box :theorical_knowledge, {:class => "form-control"}, "1", "0"
-                  = f.check_box :practical_p_knowledge, {:class => "form-control"}, "1", "0"
-                  = f.check_box :practical_o_knowledge, {:class => "form-control"}, "1", "0"
-                  = f.check_box :no_knowledge, {:class => "form-control"}, "1", "0"
+                .checkbox
+                  label 
+                    = f.check_box :theorical_knowledge, {}
+                    | Théorique
+                .checkbox
+                  label
+                    = f.check_box :practical_p_knowledge, {}
+                    | Pratique comme participant
+                .checkbox
+                  label
+                    = f.check_box :practical_o_knowledge, {}
+                    | Pratique comme organisateur
+                .checkbox
+                  label
+                    = f.check_box :no_knowledge, {}
+                    | Aucune connaissance
         .row
           .form-group.col-md-12
             .row

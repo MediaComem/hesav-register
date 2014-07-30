@@ -5,6 +5,7 @@ fr:
         male: "Titre"
         last_name: "Nom"
         first_name: "Prénom"
+        phone: "Téléphone"
         email: "Email"
         affiliation: "Affiliation"
         affiliation_address: "Adresse de l'organisation-institution d’affiliation"
@@ -21,6 +22,8 @@ fr:
             last_name:
               blank: "est requis"
             first_name:
+              blank: "est requis"
+            phone:
               blank: "est requis"
             email:
               invalid: "est invalide"

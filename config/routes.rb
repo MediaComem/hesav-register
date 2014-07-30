@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # GOUVEOLE
-  get '/gouveole' => 'gouveole_registrations#new'
+  get '/gouveole_registrations' => 'gouveole_registrations#new'
   resources :gouveole_registrations do
     collection do
+      get 'new'
       get 'accepted'
       get 'exception'
       get 'decline'
