@@ -1,0 +1,38 @@
+fr:
+  activerecord:
+    attributes:
+      gouveole_registration:
+        male: "Titre"
+        last_name: "Nom"
+        first_name: "Prénom"
+        email: "Email"
+        affiliation: "Affiliation"
+        affiliation_address: "Adresse de l'organisation-institution d’affiliation"
+        job: "Position / Poste / Responsabilité"
+        billing_address: "Adresse de facturation"
+        expectations: "Attentes de la formation"
+        activities: "Activités dans le domaine de l'éolien"
+    errors:
+      models:
+        gouveole_registration:
+          attributes:
+            male:
+              blank: "est requis"
+            last_name:
+              blank: "est requis"
+            first_name:
+              blank: "est requis"
+            email:
+              invalid: "est invalide"
+            affiliation:
+              blank: "est requis"
+            affiliation_address:
+              blank: "est requis"
+            job:
+              blank: "est requis"
+            billing_address:
+              blank: "est requis"
+            expectations:
+              blank: "est requis"
+            activities:
+              blank: "est requis"

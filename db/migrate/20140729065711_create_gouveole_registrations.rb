@@ -10,15 +10,16 @@ class CreateGouveoleRegistrations < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :billing_address
-      t.string :city
-      t.string :knowledge #choix : theorique, pratique comme participant, #pratique comme organisateur, aucune connaissance
+      
+      #choix : theorique, pratique comme participant, #pratique comme organisateur, aucune connaissance
+      t.boolean :theorical_knowledge 
+      t.boolean :practical_p_knowledge
+      t.boolean :practical_o_knowledge
+      t.boolean :no_knowledge
+
       t.string :expectations
       t.string :activities
       t.string :remarks
-      
-      t.string :shopID
-      t.string :environment
-      t.string :language
       t.integer :price
       t.boolean :paid
 
