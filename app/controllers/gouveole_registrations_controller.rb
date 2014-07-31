@@ -34,6 +34,10 @@ class GouveoleRegistrationsController < ApplicationController
     end
   end
 
+  def test
+    self.class.layout('test')
+  end
+
   def create
 
     logger.info "----------------"
