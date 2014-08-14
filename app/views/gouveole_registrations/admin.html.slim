@@ -1,0 +1,21 @@
+h1 Liste des inscriptions à Gouveole
+= link_to "Export CSV", admin_path(format: :csv)
+table.table
+  thead
+    tr
+      th Nom
+      th Prénom
+      th Email
+      th Affiliation
+      th Payé
+      th Date d'inscription
+  tbody
+  - @registrations.each do |registration|
+    tr
+      td =registration.last_name
+      td =registration.first_name
+      td =registration.email
+      td =registration.affiliation
+      td =registration.paid
+      td =I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
+      

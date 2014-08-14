@@ -2,7 +2,7 @@
   .blocktitle.col-md-12
     h1
       b Inscrivez-vous 
-      | à Gouveole
+      | à Gouveole (paiement online)
 .row
   .col-md-12
     = form_for @registration, html: {role:"form"} do |f|
@@ -23,7 +23,7 @@
               .col-md-4
                 label Titre*
               .col-md-4
-                = f.select :male, options_for_select([["M.", "1"], ["Mme.", "0"]], @gender), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :title, options_for_select([["M.", "m"], ["Mme.", "mme"]], @title), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
@@ -77,13 +77,6 @@
                 label Position / Poste / Responsabilité*
               .col-md-4
                 = f.text_area(:job, class: "form-control")
-        .row
-          .form-group.col-md-12
-            .row
-              .col-md-4
-                label Adresse de facturation*
-              .col-md-4
-                = f.text_area(:billing_address, class: "form-control")
         .row
           .col-md-12
             h3
@@ -203,7 +196,7 @@
           .col-md-12
             .checkbox
               label
-                = check_box_tag 'rock', 'rock music'
+                = f.check_box :rules_accepted, {}
                 | Je m'engage à respecter les précédentes dispositions
 
       #registration-info

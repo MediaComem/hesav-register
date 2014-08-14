@@ -1,8 +1,15 @@
 fr:
+  time:
+    am: 'am'
+    formats:
+      default: "%d %B %Y %H:%M:%S"
+      long: "%A %d %B %Y %H:%M"
+      short: "%d %b %H:%M"
+      custom: "%d %B %Y à %H:%M"
   activerecord:
     attributes:
       gouveole_registration:
-        male: "Titre"
+        title: "Titre"
         last_name: "Nom"
         first_name: "Prénom"
         phone: "Téléphone"
@@ -13,11 +20,12 @@ fr:
         billing_address: "Adresse de facturation"
         expectations: "Attentes de la formation"
         activities: "Activités dans le domaine de l'éolien"
+        rules_accepted: ""
     errors:
       models:
         gouveole_registration:
           attributes:
-            male:
+            title:
               blank: "est requis"
             last_name:
               blank: "est requis"
@@ -39,3 +47,5 @@ fr:
               blank: "est requis"
             activities:
               blank: "est requis"
+            rules_accepted:
+              blank: "Vous devez vous engager à respecter les dispositions"

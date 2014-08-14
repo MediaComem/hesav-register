@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140729065711) do
   end
 
   create_table "gouveole_registrations", force: true do |t|
-    t.boolean  "male"
+    t.string   "title"
     t.string   "last_name"
     t.string   "first_name"
     t.string   "affiliation"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20140729065711) do
     t.string   "job"
     t.string   "email"
     t.string   "phone"
-    t.string   "billing_address"
     t.boolean  "theorical_knowledge"
     t.boolean  "practical_p_knowledge"
     t.boolean  "practical_o_knowledge"
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140729065711) do
     t.string   "remarks"
     t.integer  "price"
     t.boolean  "paid"
+    t.boolean  "rules_accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"

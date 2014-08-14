@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # GOUVEOLE
   get '/gouveole_registrations' => 'gouveole_registrations#new'
+  get '/gouveole_registrations/admin(.:format)', to: 'gouveole_registrations#admin', as: 'admin'
+
   resources :gouveole_registrations do
     collection do
       get 'new'

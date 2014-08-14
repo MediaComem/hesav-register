@@ -1,7 +1,7 @@
 class CreateGouveoleRegistrations < ActiveRecord::Migration
   def change
     create_table :gouveole_registrations do |t|
-      t.boolean :male
+      t.string :title
       t.string :last_name
       t.string :first_name
       t.string :affiliation #choix : association, entreprise, administration, elus
@@ -9,7 +9,6 @@ class CreateGouveoleRegistrations < ActiveRecord::Migration
       t.string :job #position/poste/responsabilités
       t.string :email
       t.string :phone
-      t.string :billing_address
       
       #choix : theorique, pratique comme participant, #pratique comme organisateur, aucune connaissance
       t.boolean :theorical_knowledge 
@@ -22,6 +21,7 @@ class CreateGouveoleRegistrations < ActiveRecord::Migration
       t.string :remarks
       t.integer :price
       t.boolean :paid
+      t.boolean :rules_accepted
 
       t.timestamps
 

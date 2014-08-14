@@ -1,3 +1,6 @@
+require 'httparty'
+require 'csv_service'
+
 class GouveoleRegistrationsController < ApplicationController
   
   before_filter :init_values
@@ -14,11 +17,35 @@ class GouveoleRegistrationsController < ApplicationController
     self.class.layout('gouveole')
   end
 
-  def new
+  def admin
+    logger.info "------ ADMIN PAYMENT ------"
 
-    logger.info "----------------"
-    logger.info "NEW"
-    logger.info "----------------"
+    event = Event.find_by_short_name!(@event_name)
+
+    logger.info "///////////////"
+    logger.info event.id
+    logger.info "///////////////"
+
+    date_start = DateTime.new(2014,02,18,18,00)
+    registrations = GouveoleRegistration.where("created_at > :date_start and event_id = :event_id",{date_start: date_start, event_id: event.id}).order("created_at DESC").all
+    @registrations = registrations
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @registrations }
+      format.csv {
+
+        csv_string = CsvService.generate(registrations)
+
+        send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
+          :type => 'text/csv; charset=iso-8859-1; header=present',
+          :disposition => "attachment; filename=inscriptions.csv" 
+      }
+    end
+
+  end
+
+  def new
 
     event = Event.find_by_short_name!(@event_name)
     now = DateTime.now
@@ -32,10 +59,6 @@ class GouveoleRegistrationsController < ApplicationController
     else
       @registration = GouveoleRegistration.new
     end
-  end
-
-  def test
-    self.class.layout('test')
   end
 
   def create
@@ -56,7 +79,7 @@ class GouveoleRegistrationsController < ApplicationController
       render 'hiddenform'
     else
       #flash.now[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-      @gender = (params[:gouveole_registration][:male])
+      @title = (params[:gouveole_registration][:title])
       @affiliation = (params[:gouveole_registration][:affiliation])
       render 'new'
     end
@@ -125,7 +148,8 @@ class GouveoleRegistrationsController < ApplicationController
 
 private
   def post_params
-    params.require(:gouveole_registration).permit(:male,
+    params.require(:gouveole_registration).permit(
+     :title,
      :last_name,
      :first_name,
      :email,
@@ -133,14 +157,14 @@ private
      :affiliation, 
      :affiliation_address,
      :job,
-     :billing_address,
      :theorical_knowledge,
      :practical_p_knowledge,
      :practical_o_knowledge,
      :no_knowledge,
      :expectations,
      :activities,
-     :remarks)
+     :remarks,
+     :rules_accepted)
   end
 
   def sha_valid(params)
