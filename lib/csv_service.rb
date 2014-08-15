@@ -1,20 +1,25 @@
 class CsvService
   def self.generate(registrations)
     csv_string = CSV.generate(col_sep: ";") do |csv|
-      csv << ["Id",
-              "Prénom",
-              "Nom",
-              "Email",
-              "Rue",
-              "Npa",
-              "Localité",
-              "Employeur",
-              "Profession",
-              "Type d'inscription",
-              "Prix",
-              "Payé",
-              "Événement",
-              "Date d'inscription"
+      csv << ['Id',
+              'Titre',
+              'Nom',
+              'Prénom',
+              'Affiliation',
+              'Adresse d\'affiliation',
+              'Job',
+              'Email',
+              'Téléphone',
+              'Connaissances théoriques',
+              'Connaissances pratique comme participant',
+              'Connaissances pratique comme organisateur',
+              'Aucune connaissance',
+              'Attentes de la formation',
+              'Activités dans le domaine éolien',
+              'Remarques',
+              'Prix',
+              'Payé',
+              'Date d\'inscription'
             ]
       registrations.each do |registration|
 
@@ -25,18 +30,24 @@ class CsvService
         end
 
         csv << [registration.id,
+          registration.title,
           registration.last_name,
           registration.first_name,
-          registration.email,
-          registration.npa,
-          registration.city,
-          registration.employer,
+          registration.affiliation,
+          registration.affiliation_address,
           registration.job,
-          registration.type_name,
-          registration.type_price,
+          registration.email,
+          registration.phone,
+          registration.theorical_knowledge,
+          registration.practical_p_knowledge,
+          registration.practical_o_knowledge,
+          registration.no_knowledge,
+          registration.expectations,
+          registration.activities,
+          registration.remarks,
+          registration.price,
           payed,
-          registration.event.name,
-          I18n.l(registration.created_at, :format => (I18n.t 'date.formats.custom'))
+          I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
         ]
       end
     end

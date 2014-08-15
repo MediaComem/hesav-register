@@ -13,48 +13,47 @@ class GouveoleRegistrationsController < ApplicationController
     @language = 'fr_FR'
     @price = '500.00'
 
+    @number_limit = 1#17
+    @number_max = 4#25
+
     # layout
     self.class.layout('gouveole')
   end
 
   def admin
-    logger.info "------ ADMIN PAYMENT ------"
-
     event = Event.find_by_short_name!(@event_name)
 
-    logger.info "///////////////"
-    logger.info event.id
-    logger.info "///////////////"
+    @registrations = GouveoleRegistration.where("event_id = :event_id",{event_id: event.id}).order("created_at DESC").all
+    @paid_registrations = GouveoleRegistration.where("event_id = :event_id and paid = :paid",{event_id: event.id, paid: true}).all
 
-    date_start = DateTime.new(2014,02,18,18,00)
-    registrations = GouveoleRegistration.where("created_at > :date_start and event_id = :event_id",{date_start: date_start, event_id: event.id}).order("created_at DESC").all
-    @registrations = registrations
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @registrations }
       format.csv {
 
-        csv_string = CsvService.generate(registrations)
+        csv_string = CsvService.generate(@registrations)
 
         send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
           :type => 'text/csv; charset=iso-8859-1; header=present',
           :disposition => "attachment; filename=inscriptions.csv" 
       }
     end
-
   end
 
   def new
-
     event = Event.find_by_short_name!(@event_name)
-    now = DateTime.now
 
+    @registrations_count = registration_number
+
+    now = DateTime.now
     if event.open >= now
       flash.now[:info] = "L'inscription n'est pas encore disponible"
       render "close"
     elsif now >= event.close
       flash.now[:info] = "L'inscription n'est plus disponible"
+      render "close"
+    elsif @registrations_count >= @number_max
+      flash.now[:info] = "Les nombre maximum d'inscriptions pour ce cours a été atteint"
       render "close"
     else
       @registration = GouveoleRegistration.new
@@ -62,13 +61,9 @@ class GouveoleRegistrationsController < ApplicationController
   end
 
   def create
-
-    logger.info "----------------"
-    logger.info "CREATE"
-    logger.info params
-    logger.info "----------------"
-
     event = Event.find_by_short_name!(@event_name)
+
+    @registrations_count = registration_number
 
     @registration = GouveoleRegistration.new(post_params)
     @registration.event = event
@@ -78,7 +73,6 @@ class GouveoleRegistrationsController < ApplicationController
     if @registration.save
       render 'hiddenform'
     else
-      #flash.now[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
       @title = (params[:gouveole_registration][:title])
       @affiliation = (params[:gouveole_registration][:affiliation])
       render 'new'
@@ -122,24 +116,36 @@ class GouveoleRegistrationsController < ApplicationController
 
   def decline
     getParams = request.query_parameters
-    msg = 'PostFinance :: Decline Action'
-    payment_not_accepted(msg, getParams)
+    if getParams["orderID"] != nil
+      tab = getParams["orderID"].split('_')
+      registration = GouveoleRegistration.find_by_id(tab[1])
+    end
+    msg = 'PostFinance/Decline'
+    payment_not_accepted(msg, getParams, registration)
     redirect_to action: "new"
   end
   
   # TODO multi-boutiques
   def cancel
     getParams = request.query_parameters
-    msg = 'PostFinance :: Cancel Action'
-    payment_not_accepted(msg, getParams)
+    if getParams["orderID"] != nil
+      tab = getParams["orderID"].split('_')
+      registration = GouveoleRegistration.find_by_id(tab[1])
+    end
+    msg = 'PostFinance/Cancel'
+    payment_not_accepted(msg, getParams, registration)
     redirect_to action: "new"
   end
   
   # TODO multi-boutiques
   def exception
     getParams = request.query_parameters
-    msg = 'PostFinance :: Exception Action'
-    payment_not_accepted(msg, getParams)
+    if getParams["orderID"] != nil
+      tab = getParams["orderID"].split('_')
+      registration = GouveoleRegistration.find_by_id(tab[1])
+    end
+    msg = 'PostFinance/Exception'
+    payment_not_accepted(msg, getParams, registration)
     redirect_to action: "new"
   end
 
@@ -183,23 +189,38 @@ private
     return sha1.upcase == params["SHASIGN"]
   end
 
+  # after a cancel/decline/exception action
+  def payment_not_accepted(msg,params,registration)
+    logger.error msg
+    flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
+    NotificationMailer.registration_not_completed(msg,params,registration).deliver
+  end
+
+  # after an accept action
+  def registration_ok(msg,registration)
+    if registration_number > @number_limit
+      flash.now[:notice_title] = "Merci, votre demande d'inscription a bien été enregistrée"
+      flash.now[:notice] = "Un message automatique vient d'être envoyé à votre adresse mail."
+      NotificationMailer.success_not_confirmed_email(registration).deliver
+    else
+      flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
+      flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
+      NotificationMailer.success_confirmed_email(registration).deliver
+    end
+  end
+
+  # after an accept action with SHA calculation problem
   def accepted_with_error(msg,params)
     logger.error msg
     flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
     NotificationMailer.error_email(msg, params).deliver
   end
 
-  def payment_not_accepted(msg,params)
-    logger.error msg
-    flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-    NotificationMailer.error_email(msg,params).deliver
-  end
-
-
-  def registration_ok(msg,registration)
-    flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
-    flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
-    NotificationMailer.success_email(registration).deliver
+  # return the number of paid registrations
+  def registration_number
+    event = Event.find_by_short_name!(@event_name)
+    paid_registrations = GouveoleRegistration.where("event_id = :event_id and paid = :paid",{event_id: event.id, paid: true}).all
+    return paid_registrations.count
   end
 
 end

@@ -3,6 +3,9 @@
     h1
       b Inscrivez-vous 
       | à Gouveole (paiement online)
+    - if @registrations_count >= @number_limit
+      h2
+        span class="label label-warning" Le nombre de places disponibles est bientôt atteint, votre inscription<br/> sera définitivement validée compte tenu de l'ordre de réception des paiements
 .row
   .col-md-12
     = form_for @registration, html: {role:"form"} do |f|

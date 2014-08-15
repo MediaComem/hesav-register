@@ -1,0 +1,15 @@
+gouveole:
+    short_name: gouveole
+    name: Gouveole
+    description: Gouveole
+    open: 2014-07-14
+    close: 2014-10-01
+    visible: 1
+
+psy:
+    short_name: psy
+    name: Journée de psychiatrie
+    description: Journée de psychiatrie
+    open: 2014-07-14
+    close: 2014-10-01
+    visible: 0

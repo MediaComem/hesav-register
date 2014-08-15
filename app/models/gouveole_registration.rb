@@ -12,6 +12,7 @@ class GouveoleRegistration < ActiveRecord::Base
   validates :expectations, presence: true
   validates :activities, presence: true
   validates :rules_accepted, presence: true
+  validates :event, presence: true
 
   validate :knowledge
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

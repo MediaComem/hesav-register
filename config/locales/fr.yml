@@ -5,7 +5,7 @@ fr:
       default: "%d %B %Y %H:%M:%S"
       long: "%A %d %B %Y %H:%M"
       short: "%d %b %H:%M"
-      custom: "%d %B %Y à %H:%M"
+      custom: "%d.%m.%Y à %H:%M"
   activerecord:
     attributes:
       gouveole_registration:

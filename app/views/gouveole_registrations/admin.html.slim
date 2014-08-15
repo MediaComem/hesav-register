@@ -1,11 +1,27 @@
-h1 Liste des inscriptions à Gouveole
-= link_to "Export CSV", admin_path(format: :csv)
+h1 Inscriptions à Gouveole
+div class="jumbotron"
+  p 
+    span class="label label-success" 
+      =@paid_registrations.count 
+    |inscriptions payées
+  p 
+    span class="label label-danger" 
+      =@registrations.count - @paid_registrations.count 
+    |inscriptions non-payées
+  p 
+    span class="label label-default"
+      =@registrations.count 
+    |inscriptions au total
+  
+  = link_to "Export CSV", admin_path(format: :csv)    
+
 table.table
   thead
     tr
       th Nom
       th Prénom
       th Email
+      th Téléphone
       th Affiliation
       th Payé
       th Date d'inscription
@@ -15,7 +31,11 @@ table.table
       td =registration.last_name
       td =registration.first_name
       td =registration.email
+      td =registration.phone
       td =registration.affiliation
-      td =registration.paid
+      td 
+        - if registration.paid?
+          span class="label label-success" Oui
+        - else
+          span class="label label-danger" Non
       td =I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
-      
