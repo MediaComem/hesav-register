@@ -1,5 +1,5 @@
 require 'httparty'
-require 'csv_service'
+require 'gouveole_csv_service'
 
 class GouveoleRegistrationsController < ApplicationController
   
@@ -195,7 +195,7 @@ private
   def payment_not_accepted(msg,params,registration)
     logger.error msg
     flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-    NotificationMailer.registration_not_completed(msg,params,registration).deliver
+    GouveoleMailer.registration_not_completed(msg,params,registration).deliver
   end
 
   # after an accept action
@@ -203,11 +203,11 @@ private
     if registration_number > @number_limit
       flash.now[:notice_title] = "Merci, votre demande d'inscription a bien été enregistrée"
       flash.now[:notice] = "Un message automatique vient d'être envoyé à votre adresse mail."
-      NotificationMailer.success_not_confirmed_email(registration).deliver
+      GouveoleMailer.success_not_confirmed_email(registration).deliver
     else
       flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
       flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
-      NotificationMailer.success_confirmed_email(registration).deliver
+      GouveoleMailer.success_confirmed_email(registration).deliver
     end
   end
 
@@ -215,7 +215,7 @@ private
   def accepted_with_error(msg,params)
     logger.error msg
     flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
-    NotificationMailer.error_email(msg, params).deliver
+    GouveoleMailer.error_email(msg, params).deliver
   end
 
   # return the number of paid registrations

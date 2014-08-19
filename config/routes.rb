@@ -4,9 +4,24 @@ Rails.application.routes.draw do
 
   # GOUVEOLE
   get '/gouveole_registrations' => 'gouveole_registrations#new'
-  get '/gouveole_registrations/admin(.:format)', to: 'gouveole_registrations#admin', as: 'admin'
+  get '/gouveole_registrations/admin(.:format)', to: 'gouveole_registrations#admin', as: 'gouveole_admin'
 
   resources :gouveole_registrations do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
+  # 6ème Journée de psychiatrie (Mai 2014)
+  get '/psy14_registrations' => 'psy14_registrations#new'
+  get '/psy14_registrations/admin(.:format)', to: 'psy14_registrations#admin', as: 'psy14_admin'
+
+  resources :psy14_registrations do
     collection do
       get 'new'
       get 'accepted'
