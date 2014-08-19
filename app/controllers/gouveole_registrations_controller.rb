@@ -4,6 +4,8 @@ require 'csv_service'
 class GouveoleRegistrationsController < ApplicationController
   
   before_filter :init_values
+  before_filter :authenticate, only: [:admin]
+
   def init_values
 
     #constants
@@ -221,6 +223,13 @@ private
     event = Event.find_by_short_name!(@event_name)
     paid_registrations = GouveoleRegistration.where("event_id = :event_id and paid = :paid",{event_id: event.id, paid: true}).all
     return paid_registrations.count
+  end
+
+  protected
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+      username == "gouveole" && password == "Vod9we4t"
+    end
   end
 
 end
