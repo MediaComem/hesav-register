@@ -1,6 +1,6 @@
 defaults: &defaults
-  #sha_out: 'CkrJoYtQqKPE7hlA' #prod
-  sha_out: 'n3bdRnJKptigGZ8E' #test
+  sha_out_prod: 'CkrJoYtQqKPE7hlA' #prod
+  sha_out_test: 'n3bdRnJKptigGZ8E' #test
 
 development:
   <<: *defaults

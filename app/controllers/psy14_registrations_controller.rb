@@ -11,7 +11,7 @@ class Psy14RegistrationsController < ApplicationController
     #constants
     @event_name = 'psy14'
     @shop_id = 'psy14dev'
-    @environment = 'test'
+    @environment = 'test' # test/prod
     @language = 'fr_FR'
 
     # layout
@@ -163,6 +163,13 @@ class Psy14RegistrationsController < ApplicationController
     end
 
     def sha_valid(params)
+
+      if @environment == 'test'
+        sha_out = APP_CONFIG["sha_out_test"]
+      else
+        sha_out = APP_CONFIG["sha_out_prod"]
+      end
+      
       # List of parameters to be included in SHA OUT calculation (e-commerce Advanced Documentation)
       sha_out_params = ["AAVADDRESS","AAVCHECK","AAVZIP","ACCEPTANCE","ALIAS","AMOUNT","BRAND","CARDNO","CCCTY","CN","COMPLUS","CURRENCY","CVCCHECK","DCC_COMMPERCENTAGE","DCC_CONVAMOUNT","DCC_CONVCCY","DCC_EXCHRATE","DCC_EXCHRATESOURCE","DCC_EXCHRATETS","DCC_INDICATOR","DCC_MARGINPERCENTAGE","DCC_VALIDHOUS","DIGESTCARDNO","ECI","ED","ENCCARDNO","IP","IPCTY","NBREMAILUSAGE","NBRIPUSAGE","NBRIPUSAGE_ALLTX","NBRUSAGE","NCERROR","ORDERID","PAYID","PM","SCO_CATEGORY","SCORING","STATUS","TRXDATE","VC"]
 
@@ -174,7 +181,7 @@ class Psy14RegistrationsController < ApplicationController
 
       params_sorted.each do |key,value|
         if value != "" && sha_out_params.include?(key)
-          string_to_hash = string_to_hash + key + '=' + value + APP_CONFIG["sha_out"] 
+          string_to_hash = string_to_hash + key + '=' + value + sha_out
         end
       end
 
