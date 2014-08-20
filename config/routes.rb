@@ -33,6 +33,21 @@ Rails.application.routes.draw do
     end
   end
 
+  # Journées d'étude du 8-9 octobre
+  get '/etu14_registrations' => 'etu14_registrations#new'
+  get '/etu14_registrations/admin(.:format)', to: 'etu14_registrations#admin', as: 'etu14_admin'
+
+  resources :etu14_registrations do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
   #OTHER
   #...
 
