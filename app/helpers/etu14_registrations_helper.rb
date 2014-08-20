@@ -1,0 +1,2 @@
+module Etu14RegistrationsHelper
+end
