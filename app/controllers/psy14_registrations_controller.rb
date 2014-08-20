@@ -164,9 +164,8 @@ class Psy14RegistrationsController < ApplicationController
 
     def sha_valid(params)
 
-      if @environment == 'test'
-        sha_out = APP_CONFIG["sha_out_test"]
-      else
+      sha_out = APP_CONFIG["sha_out_test"]
+      if @environment == 'prod'
         sha_out = APP_CONFIG["sha_out_prod"]
       end
       
