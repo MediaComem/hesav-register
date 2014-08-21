@@ -27,6 +27,7 @@ fr:
         employer: "Employeur"
         job: "Profession"
         type_price: "Type d'inscription"
+        workshop: "Atelier à choix"
     errors:
       models:
         gouveole_registration:
@@ -73,4 +74,6 @@ fr:
             job:
               blank: "est requis"
             type_price:
+              inclusion: "est requis"
+            workshop:
               inclusion: "est requis"
