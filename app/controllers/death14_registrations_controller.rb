@@ -67,10 +67,10 @@ class Death14RegistrationsController < ApplicationController
 
     case @registration.type_short_name
     when "prix_normal"
-      @registration.type_price = '100.00'
+      @registration.type_price = '80.00'
       @registration.type_name = "Tarif normal"
     when "prix_reduit"
-      @registration.type_price = '50.00'
+      @registration.type_price = '40.00'
       @registration.type_name = "Tarif réduit"
     when "gratuit"
       @registration.type_price = '00.00'
