@@ -21,6 +21,12 @@ fr:
         expectations: "Attentes de la formation"
         activities: "Activités dans le domaine de l'éolien"
         rules_accepted: ""
+      death14_registration:
+        last_name: "Nom"
+        first_name: "Prenom"
+        employer: "Employeur"
+        job: "Profession"
+        type_price: "Type d'inscription"
     errors:
       models:
         gouveole_registration:
@@ -49,3 +55,22 @@ fr:
               blank: "est requis"
             rules_accepted:
               blank: "Vous devez vous engager à respecter les dispositions"
+        death14_registration:
+          attributes:
+            title:
+              blank: "est requis"
+            last_name:
+              blank: "est requis"
+            first_name:
+              blank: "est requis"
+            phone:
+              blank: "est requis"
+            email:
+              blank: "est requis"
+              invalid: "est invalide"
+            employer:
+              blank: "est requis"
+            job:
+              blank: "est requis"
+            type_price:
+              inclusion: "est requis"
