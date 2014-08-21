@@ -10,7 +10,7 @@ class Death14RegistrationsController < ApplicationController
 
     #constants
     @event_name = 'death14'
-    @shop_id = 'deathdev'
+    @shop_id = 'death14dev'
     @environment = 'test' # test/prod
     @language = 'fr_FR'
 
