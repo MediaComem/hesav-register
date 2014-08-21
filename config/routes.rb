@@ -48,6 +48,21 @@ Rails.application.routes.draw do
     end
   end
 
+    # Soigner la mort le 3 novembre
+  get '/death14_registrations' => 'death14_registrations#new'
+  get '/death14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
+
+  resources :death14_registrations do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
   #OTHER
   #...
 
