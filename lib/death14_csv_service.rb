@@ -14,6 +14,7 @@ class DeathCsvService
               "Type d'inscription",
               "Prix",
               "Payé",
+              "Atelier",
               "Événement",
               "Date d'inscription"
             ]
@@ -38,6 +39,7 @@ class DeathCsvService
           registration.type_name,
           registration.type_price,
           payed,
+          registration.workshop,
           registration.event.name,
           I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
         ]

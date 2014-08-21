@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( psy14.css )
 Rails.application.config.assets.precompile += %w( gouveole.css )
+Rails.application.config.assets.precompile += %w( death14.css )

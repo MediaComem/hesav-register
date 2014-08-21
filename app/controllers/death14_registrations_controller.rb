@@ -159,7 +159,7 @@ class Death14RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:death14_registration).permit(:last_name,:first_name,:type_short_name,:city,:email,:street,:npa,:country,:employer,:job)
+      params.require(:death14_registration).permit(:last_name,:first_name,:type_short_name,:city,:email,:street,:npa,:country,:employer,:job,:workshop)
     end
 
     def sha_valid(params)
