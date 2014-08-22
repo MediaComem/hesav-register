@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p Bonjour,
+    p 
+      |Nous vous remercions de votre inscription 
+      - if @registration.registration_type == 1
+        | à la journée d'étude du 8 octobre
+      - else
+        | aux deux journées d'étude du 8 et du 9 octobre
+    ul
+      li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
+      li Institution : #{@registration.friendly_employer}
+      li Fonction : #{@registration.friendly_job}
+      li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}
+      
+    p Au plaisir de vous acceuillir à HESAV, nous vous transmettons nos meilleures salutations.
+    b
+      p
+        |---------------------------------------------------------------------------
+    p
+      b Journées d'étude du 8 et du 9 octobre
+    p Le pack en institution psychiatrique
+    p 08 et 09 octobre 2014
+    p HESAV, Rue César-Roux 19, 1005 Lausanne 
+    a href="http://recherche.hesav.ch/journees-etude" Lien vers la conférence
+    b
+      p
+        |---------------------------------------------------------------------------
