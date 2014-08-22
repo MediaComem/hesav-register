@@ -221,8 +221,8 @@ fr:
       death14_registration:
         last_name: "Nom"
         first_name: "Prenom"
-        employer: "Employeur"
-        job: "Profession"
+        employer: "Institution"
+        job: "Fonction"
         type_price: "Type d'inscription"
         workshop: "Atelier à choix"
       etu14_registration:
