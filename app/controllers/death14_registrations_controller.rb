@@ -206,7 +206,7 @@ class Death14RegistrationsController < ApplicationController
     def accepted_with_error(msg,params)
       logger.error msg
       flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
-      Death14Mailer.error_email(msg,getParams).deliver
+      Death14Mailer.error_email(msg,params).deliver
     end
   protected
     def authenticate
