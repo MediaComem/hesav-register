@@ -49,10 +49,10 @@ Rails.application.routes.draw do
   end
 
     # Soigner la mort le 3 novembre
-  get '/death14_registrations' => 'death14_registrations#new'
-  get '/death14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
-
-  resources :death14_registrations do
+  get '/scientifique14_registrations' => 'death14_registrations#new'
+  get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
+  
+  resources :death14_registrations, path: 'scientifique14_registrations' do
     collection do
       get 'new'
       get 'accepted'
@@ -62,7 +62,6 @@ Rails.application.routes.draw do
       get 'cgv'
     end
   end
-
   #OTHER
   #...
 

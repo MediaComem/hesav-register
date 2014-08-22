@@ -8,7 +8,7 @@
     p DÉLAI D’INSCRIPTION : 26 OCTOBRE 2014 
 .row
   .col-md-12
-    = form_for @registration, html: {role:"form"} do |f|
+    = form_for @registration, url: {action: "create"}, html: {role:"form"} do |f|
       - @registration.errors.full_messages.each do |msg|
         .row
           .col-md-6
