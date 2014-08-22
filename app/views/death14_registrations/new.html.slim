@@ -1,0 +1,152 @@
+.row
+  .blocktitle.col-md-12
+    h1
+      b Inscrivez-vous 
+      | à la Journée scientifique 2014
+    h2 "Soigner la mort"
+    p LUNDI 3 NOVEMBRE 2014
+    p DÉLAI D’INSCRIPTION : 26 OCTOBRE 2014 
+.row
+  .col-md-12
+    = form_for @registration, html: {role:"form"} do |f|
+      - @registration.errors.full_messages.each do |msg|
+        .row
+          .col-md-6
+            p.bg-danger.text-danger #{msg}
+      #perso-infos
+        .row
+          .col-md-12
+            h3
+              span Informations personnelles
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Nom*
+              .col-md-4
+                = f.text_field(:last_name, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Prénom*
+              .col-md-4
+                = f.text_field(:first_name, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Rue
+              .col-md-4
+                = f.text_field(:street, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Npa / Localité
+              .col-md-1
+                = f.text_field(:npa, class: "form-control")
+              .col-md-3
+                = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Pays
+              .col-md-4
+                = f.text_field(:country, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Institution*
+              .col-md-4
+                = f.text_field(:employer, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Fonction*
+              .col-md-4
+                = f.text_field(:job, class: "form-control")
+        .row      
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Email*
+              .col-md-4
+                = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4
+            p 
+              |(*) champs obligatoires
+      #workshop-info
+        .row
+          .col-md-12
+            h3
+              span ATELIERS À CHOIX
+        .row
+          .col-md-4.col-md-offset-3
+            |Je choisis l’atelier de l’après-midi suivant
+        .row
+          .col-md-6.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:workshop, "inegalite-de-traitement")
+                |Inégalité de traitement en soins palliatifs, entre non-dits et discours organisant la mort à l’hôpital 
+                span Rose-Anna Foley, Professeure, HESAV, Lausanne
+        .row
+          .col-md-6.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:workshop, "deuil-perinatal")
+                |Deuil périnatal : quels « soins » les sages-femmes peuvent-elles offrir ? 
+                span Nicoletta Mena, Membre d’AGAPA Suisse-Romande
+                span Sandrine Limat-Nobile, Psychologue, Membre d’AGAPA Suisse-Romande
+        .row
+          .col-md-6.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:workshop, "lorsque-la-mort")
+                |Lorsque la mort touche une partie de soi : L’accompagnement des patients amputés 
+                span Chantal Junker-Tschopp, Psychologue et professeure filière Psychomotricité, HETS-Genève
+        .row
+          .col-md-6.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:workshop, "faire-parler-les-morts")
+                |Faire parler les morts : expérience et techniques virtuelles en médecine légale
+                span Séverine Rey, Professeur, HESAV, Lausanne
+                span Céline Schnegg, Assistante de recherche, HESAV, Lausanne
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span Type d'inscription
+        .row
+          .col-md-4.col-md-offset-3
+            |PAIEMENT OBLIGATOIRE EN LIGNE
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+              	= f.radio_button(:type_short_name, "prix_normal")
+                |Tarif normal // 80.- | Externe ou autre institution
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:type_short_name, "prix_reduit")
+                |Tarif réduit // 40.- | Etudiant hors HESAV, AVS, AI, chômeur
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:type_short_name, "gratuit")
+                |Public interne // Gratuit | Collaborateur ou étudiant HESAV
+        .row
+          .col-md-4.col-md-offset-4
+            =f.button "Je m'inscris", :class => 'btn btn-success'
+.row
+  .logodiv
+    img.logoimg src=image_path("logo_HESAV.png")

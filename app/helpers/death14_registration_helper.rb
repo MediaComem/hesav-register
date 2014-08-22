@@ -1,0 +1,2 @@
+module Death14RegistrationHelper
+end
