@@ -225,6 +225,18 @@ fr:
         job: "Profession"
         type_price: "Type d'inscription"
         workshop: "Atelier à choix"
+      etu14_registration:
+        title: "Titre"
+        last_name: "Nom"
+        first_name: "Prénom"
+        street: "Rue"
+        npa: "NPA"
+        city: "Ville"
+        country: "Pays"
+        employer: "Institution"
+        job: "Fonction"
+        email: "Email"
+        assistance: "Demande de traduction simultanée"
     errors:
       models:
         gouveole_registration:
@@ -273,4 +285,30 @@ fr:
             type_price:
               inclusion: "est requis"
             workshop:
+              inclusion: "est requis"
+        etu14_registration:
+          attributes:
+            title:
+              blank: "est requis"
+            last_name:
+              blank: "est requis"
+            first_name:
+              blank: "est requis"
+            street:
+              blank: "est requis"
+            npa:
+              blank: "est requis"
+            city:
+              blank: "est requis"
+            country:
+              blank: "est requis"
+            employer:
+              blank: "est requis"
+            job:
+              blank: "est requis"
+            email:
+              invalid: "est invalide"
+            price:
+              blank: "est requis"
+            assistance:
               inclusion: "est requis"

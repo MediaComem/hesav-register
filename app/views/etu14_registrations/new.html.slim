@@ -9,10 +9,12 @@
 .row
   .col-md-12
     = form_for @registration, html: {role:"form"} do |f|
-      - @registration.errors.full_messages.each do |msg|
-        .row
-          .col-md-6
-            p.bg-danger.text-danger #{msg}
+      - unless @registration.errors.full_messages.blank?
+        .alert.alert-danger role="alert"
+          h4 Erreurs
+          - @registration.errors.full_messages.each do |msg|
+            p #{msg}
+
       #perso-infos
         .row
           .col-md-12
@@ -43,14 +45,14 @@
           .form-group.col-md-12
             .row
               .col-md-4
-                label Rue et n°
+                label Rue et n°*
               .col-md-4
                 = f.text_field(:street, class: "form-control")
         .row
           .form-group.col-md-12
             .row
               .col-md-4
-                label NPA / Localité
+                label NPA* / Localité*
               .col-md-1
                 = f.text_field(:npa, class: "form-control")
               .col-md-3
@@ -59,7 +61,7 @@
           .form-group.col-md-12
             .row
               .col-md-4
-                label Pays
+                label Pays*
               .col-md-4
                 = f.text_field(:country, class: "form-control")
         .row
@@ -68,14 +70,14 @@
               .col-md-4
                 label Institution*
               .col-md-4
-                = f.select :employer, options_for_select([["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Autre", "autre"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :employer, options_for_select([["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Autre", "autre"]], @institution), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
               .col-md-4
                 label Fonction*
               .col-md-4
-                = f.select :job, options_for_select([["Infirmier", "infirmier"],["Médecin", "medecin"],["Psychologue", "psychologue"],["Psychomotricien", "psychomotricien"],["Educateur", "educateur"],["Etudiant", "etudiant"],["Autre", "autre"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :job, options_for_select([["Infirmier", "infirmier"],["Médecin", "medecin"],["Psychologue", "psychologue"],["Psychomotricien", "psychomotricien"],["Educateur", "educateur"],["Etudiant", "etudiant"],["Autre", "autre"]], @job), {include_blank: "Selectionner"}, class: "form-control"
         .row      
           .form-group.col-md-12
             .row
