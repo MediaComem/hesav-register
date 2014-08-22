@@ -11,11 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819060310) do
+ActiveRecord::Schema.define(version: 20140821062651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "etu14_registrations", force: true do |t|
+    t.string   "title"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "street"
+    t.integer  "npa"
+    t.string   "city"
+    t.string   "country"
+    t.string   "employer"
+    t.string   "job"
+    t.string   "email"
+    t.integer  "price"
+    t.integer  "registration_type"
+    t.boolean  "assistance"
+    t.boolean  "payed"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "short_name"
