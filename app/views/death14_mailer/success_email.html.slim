@@ -8,7 +8,7 @@ html
     ul
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}
-      li Prix : #{@registration.type_price} CHF
+      li Prix : #{@registration.type_price}.- CHF
     p Au plaisir de vous acceuillir à HESAV, nous vous transmettons nos meilleures salutations.
     b
       p
@@ -16,10 +16,10 @@ html
     p
       b Soigner la mort
     p Accompagnement, négociation et décision autour de la fin de vie.
-    p Lausanne I 03 novembre 2014
+    p Lausanne le 3 novembre 2014
     p Bâtiment du CHUV Lausanne
 
-    a href="http://recherche.hesav.ch/ra-d-et-prestations-de-service/activites/journ%C3%A9e-de-psychiatrie" Lien vers la conférence
+    a href="#" Lien vers la conférence
     b
       p
         |---------------------------------------------------------------------------

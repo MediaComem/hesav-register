@@ -105,7 +105,7 @@ class Death14RegistrationsController < ApplicationController
     else
       if getParams["orderID"] != nil
       # La reference de paiement Postfinance. Attention, cette reference est une concatenation du shopID et de l’orderID transmis precedemment (ex. myShopID_myOrderID)
-      orderID_back = getParams["orderID"].split('-')[1]
+      orderID_back = getParams["orderID"].split('_')[1]
       registration = Death14Registration.find_by_id(orderID_back)
         if registration == nil
           msg = "PostFinance :: Accept Action :: Not Found => (The registration with the id #"+orderID_back+" has not been found)"
