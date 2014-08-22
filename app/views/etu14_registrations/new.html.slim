@@ -1,0 +1,141 @@
+.row
+  .blocktitle.col-md-12
+    h1
+      b Inscrivez-vous 
+      | aux Journées d’étude 2014
+    h2 Le pack en institution psychiatrique
+    p HESAV, Rue César-Roux 19, 1005 Lausanne 
+    p Délai d'inscription : 30 SEPTEMBRE 2014
+.row
+  .col-md-12
+    = form_for @registration, html: {role:"form"} do |f|
+      - @registration.errors.full_messages.each do |msg|
+        .row
+          .col-md-6
+            p.bg-danger.text-danger #{msg}
+      #perso-infos
+        .row
+          .col-md-12
+            h3
+              span Informations personnelles
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Titre*
+              .col-md-4
+                = f.select :title, options_for_select([["Mme.", "mme"],["M.", "m"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Nom*
+              .col-md-4
+                = f.text_field(:last_name, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Prénom*
+              .col-md-4
+                = f.text_field(:first_name, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Rue et n°
+              .col-md-4
+                = f.text_field(:street, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label NPA / Localité
+              .col-md-1
+                = f.text_field(:npa, class: "form-control")
+              .col-md-3
+                = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Pays
+              .col-md-4
+                = f.text_field(:country, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Institution*
+              .col-md-4
+                = f.select :employer, options_for_select([["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Autre", "autre"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Fonction*
+              .col-md-4
+                = f.select :job, options_for_select([["Infirmier", "infirmier"],["Médecin", "medecin"],["Psychologue", "psychologue"],["Psychomotricien", "psychomotricien"],["Educateur", "educateur"],["Etudiant", "etudiant"],["Autre", "autre"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+        .row      
+          .form-group.col-md-12
+            .row
+              .col-md-4
+                label Email*
+              .col-md-4
+                = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4
+            p 
+              |(*) champs obligatoires
+      #add-infos
+        .row
+          .col-md-12
+            h3
+              span Informations
+        .row
+          .blocksubtitle.col-md-10
+            p !!! TODO !!! L’inscription donne droit à l’entrée à la Conférence d’ouverture du jeudi 8 mai. Les personnes souhaitant assister à la Conférence d’ouverture sans s’inscrire au colloque peuvent s’acquitter sur place d’un montant de CHF 20.— sans remplir ce formulaire.
+
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span Type d'inscription
+        .row
+          .col-md-4.col-md-offset-3
+            |Journées à choix
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:registration_type, 1)
+                |La journée d'étude du 8 octobre
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:registration_type, 2)
+                |Aux deux journées d'étude du 8 et du 9 octobre
+        .row
+          .col-md-4.col-md-offset-3
+            |Et j'aurai besoin d'une traduction simultanée pour les conférences données en anglais
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:assistance, true)
+                |Oui
+        .row
+          .col-md-4.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:assistance, false)
+                |Non
+
+
+        .row
+          .col-md-4.col-md-offset-4
+            =f.button "Je m'inscris", :class => 'btn btn-success'
+.row
+  .logodiv
+    img.logoimg src=image_path("logo_HESAV.png")
