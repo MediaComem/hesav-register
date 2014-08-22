@@ -1,3 +1,6 @@
+require 'httparty'
+require 'etu14_csv_service'
+
 class Etu14RegistrationsController < ApplicationController
   
   before_filter :init_values
@@ -16,10 +19,48 @@ class Etu14RegistrationsController < ApplicationController
 
     # layout
     self.class.layout('etu14')
+
+    @institutions = [["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Autre", "autre"]]
+ 
+    max_nb_nant = 25
+    max_nb_valais = 25
+    max_nb_autres = 20
+    max_nb_hesav = 15
+    
+  end
+
+  def admin
+    event = Event.find_by_short_name!(@event_name)
+
+    @registrations = Etu14Registration.where("event_id = :event_id",{event_id: event.id}).order("created_at DESC").all
+    
+    @nant = registrations_by_institution("nant")
+    @valais = registrations_by_institution("valais")
+    @hesav = registrations_by_institution("hesav")
+    @autre = registrations_by_institution("autre")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @registrations }
+      format.csv {
+
+        csv_string = Etu14Service.generate(@registrations)
+
+        send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
+          :type => 'text/csv; charset=iso-8859-1; header=present',
+          :disposition => "attachment; filename=inscriptions.csv" 
+      }
+    end
   end
 
   def new
     event = Event.find_by_short_name!(@event_name)
+
+    @nant = registrations_by_institution("nant")
+    @valais = registrations_by_institution("valais")
+    @hesav = registrations_by_institution("hesav")
+    @autre = registrations_by_institution("autre")
+
     if event.open < DateTime.now && event.close > DateTime.now
       @registration = Etu14Registration.new
     else
@@ -40,14 +81,23 @@ class Etu14RegistrationsController < ApplicationController
     @registration.payed = false
     @registration.event = event
 
-    @registration.price = 100
+    if @registration.employer == "hesav" or @registration.employer == "valais" or @registration.employer == "nant"
+      @registration.price = 0
+    elsif @registration.employer == "autre" and @registration.registration_type = 1 #1 day
+      @registration.price = 150
+    elsif @registration.employer == "autre" and @registration.registration_type = 1 #2 days
+      @registration.price = 250
+    end
 
-    if @registration.save && (@price != '00.00')
+    logger.info "------------------"
+    logger.info @registration.price
+
+    if @registration.save && (@registration.price != 0)
       render 'hiddenform'
     else
-      if @registration.save && (@price == "00.00")
+      if @registration.save && (@registration.price == 0)
         msg = "INFO :: Inscription sans frais"
-        #registration_ok(msg,@registration)
+        registration_ok(msg,@registration)
         render 'accepted'
       else
         @title = params[:etu14_registration][:title]
@@ -120,6 +170,10 @@ class Etu14RegistrationsController < ApplicationController
   end
 
   private
+
+    def registrations_by_institution(institution)
+      Etu14Registration.where("payed = :payed and employer = :employer",{payed: true, employer: institution}).all
+    end
 
     def payment_not_accepted(msg,params)
       logger.error msg

@@ -1,15 +1,51 @@
-h1 Liste des inscriptions
-= link_to "Export CSV", psy14_admin_path(format: :csv)
+h1 Inscriptions à la journée d'étude 2014
+div class="jumbotron"
+  p 
+    span class="label label-success" 
+      =@nant.count
+    |inscriptions payées pour la fondation de Nant
+  p 
+    span class="label label-success" 
+      =@valais.count
+    |inscriptions payées pour DPP-CHVR Hôpital du Valais
+  p 
+    span class="label label-success" 
+      =@hesav.count
+    |inscriptions payées pour HESAV
+  p 
+    span class="label label-success" 
+      =@autre.count
+    |inscriptions payées pour "autres institutions"
+
+  p 
+    | Un total de 
+    span class="label label-info" 
+      =@nant.count+@valais.count+@hesav.count+@autre.count 
+    | inscriptions payées
+  
+  = link_to "Export CSV", etu14_admin_path(format: :csv)    
+
 table.table
   thead
-  	tr
+    tr
       th Nom
       th Prénom
+      th Email
+      th Affiliation
+      th Type d'inscription
+      th Payé
       th Date d'inscription
   tbody
   - @registrations.each do |registration|
     tr
       td =registration.last_name
       td =registration.first_name
+      td =registration.email
+      td =registration.friendly_employer
+      td =registration.friendly_type
+      td 
+        - if registration.payed?
+          span class="label label-success" Oui
+        - else
+          span class="label label-danger" Non
       td =I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
-

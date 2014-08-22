@@ -6,7 +6,6 @@ class Etu14Registration < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :assistance, inclusion: [true, false]
-  #validates :assistance, inclusion: { in: %w(true false), message: "BLABLA" }
   validate :validate_registration_type
 
   def default_values
@@ -16,7 +15,7 @@ class Etu14Registration < ActiveRecord::Base
 
   def validate_registration_type
     if (registration_type.blank?)
-      errors.add(:base, "Veuillez sélectionner par les journées à choix")
+      errors.add(:base, "Veuillez sélectionner les journées à choix")
     end
   end
 
@@ -30,6 +29,15 @@ class Etu14Registration < ActiveRecord::Base
       "HESAV"
     when "autre"
       "Autre"
+    end
+  end
+
+  def friendly_type
+    case registration_type
+    when 1
+      "1 jour (8 octobre)"
+    when 2
+      "2 jours (8-9 octobre)"
     end
   end
 
