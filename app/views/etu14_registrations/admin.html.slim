@@ -1,27 +1,21 @@
-h1 Inscriptions à la journée d'étude 2014
+
 div class="jumbotron"
-  p 
-    span class="label label-success" 
-      =@nant.count
-    |inscriptions payées pour la fondation de Nant
-  p 
-    span class="label label-success" 
-      =@valais.count
-    |inscriptions payées pour DPP-CHVR Hôpital du Valais
-  p 
-    span class="label label-success" 
-      =@hesav.count
-    |inscriptions payées pour HESAV
-  p 
-    span class="label label-success" 
-      =@autre.count
-    |inscriptions payées pour "autres institutions"
+  h1 Journée d'étude 2014
+  p #{@nant.count}/#{@max_nb_nant} inscrits pour la fondation de Nant
+  p #{@valais.count}/#{@max_nb_valais} inscrits pour DPP-CHVR Hôpital du Valais
+  p #{@hesav.count}/#{@max_nb_hesav} inscrits pour HESAV
+  p #{@autre.count}/#{@max_nb_autres} inscrits pour autres institutions
 
   p 
-    | Un total de 
-    span class="label label-info" 
-      =@nant.count+@valais.count+@hesav.count+@autre.count 
-    | inscriptions payées
+    | 
+    span class="label label-success" 
+      | Un total de 
+      =@nant.count+@valais.count+@hesav.count+@autre.count
+      =" "
+      | inscrits sur 
+      =@max_nb_nant+@max_nb_valais+@max_nb_hesav+@max_nb_autres
+      =" "
+      | places disponibles
   
   = link_to "Export CSV", etu14_admin_path(format: :csv)    
 

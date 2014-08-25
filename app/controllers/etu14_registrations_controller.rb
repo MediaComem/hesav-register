@@ -15,17 +15,16 @@ class Etu14RegistrationsController < ApplicationController
     @shop_id = 'etu14dev'
     @environment = 'test'
 
-    @price = 50;
-
     # layout
     self.class.layout('etu14')
 
-    @institutions = [["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Autre", "autre"]]
- 
-    max_nb_nant = 25
-    max_nb_valais = 25
-    max_nb_autres = 20
-    max_nb_hesav = 15
+    @institutions = [["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Public externe ou autre institution", "autre"]]
+    @disabled_institutions = []
+
+    @max_nb_nant = 2#25
+    @max_nb_valais = 1#25
+    @max_nb_autres = 1#20
+    @max_nb_hesav = 1#15
     
   end
 
@@ -61,19 +60,30 @@ class Etu14RegistrationsController < ApplicationController
     @hesav = registrations_by_institution("hesav")
     @autre = registrations_by_institution("autre")
 
-    if event.open < DateTime.now && event.close > DateTime.now
-      @registration = Etu14Registration.new
-    else
-      if event.open > DateTime.now
-        flash.now[:info] = "L'inscription n'est pas encore disponible"
-      else
-        flash.now[:info] = "L'inscription n'est plus disponible"
-      end
+    update_institutions_availability
+
+    now = DateTime.now
+    if event.open >= now
+      flash.now[:info] = "L'inscription n'est pas encore disponible"
       render "close"
+    elsif now >= event.close
+      flash.now[:info] = "L'inscription n'est plus disponible"
+      render "close"
+    elsif !places_left
+      flash.now[:info] = "Les nombre maximal d'inscriptions a été atteint"
+      render "close"
+    else
+      @registration = Etu14Registration.new
     end
+
   end
 
   def create
+
+    @nant = registrations_by_institution("nant")
+    @valais = registrations_by_institution("valais")
+    @hesav = registrations_by_institution("hesav")
+    @autre = registrations_by_institution("autre")
 
     event = Event.find_by_short_name!(@event_name)
     
@@ -83,19 +93,21 @@ class Etu14RegistrationsController < ApplicationController
 
     if @registration.employer == "hesav" or @registration.employer == "valais" or @registration.employer == "nant"
       @registration.price = 0
+      @registration.payed = true
     elsif @registration.employer == "autre" and @registration.registration_type = 1 #1 day
       @registration.price = 150
     elsif @registration.employer == "autre" and @registration.registration_type = 1 #2 days
       @registration.price = 250
+    else
+      @registration.price = 0
     end
 
-    logger.info "------------------"
-    logger.info @registration.price
+    still_possible_to_register = places_left
 
-    if @registration.save && (@registration.price != 0)
+    if @registration.save && (@registration.price != 0) && still_possible_to_register
       render 'hiddenform'
     else
-      if @registration.save && (@registration.price == 0)
+      if @registration.save && (@registration.price == 0) && still_possible_to_register
         msg = "INFO :: Inscription sans frais"
         registration_ok(msg,@registration)
         render 'accepted'
@@ -104,10 +116,7 @@ class Etu14RegistrationsController < ApplicationController
         @institution = params[:etu14_registration][:employer]
         @job = params[:etu14_registration][:job]
 
-        logger.info "--------------------------"
-        logger.info @title
-        logger.info @institution
-        logger.info @job
+        update_institutions_availability
 
         render "new"
       end
@@ -173,6 +182,33 @@ class Etu14RegistrationsController < ApplicationController
 
     def registrations_by_institution(institution)
       Etu14Registration.where("payed = :payed and employer = :employer",{payed: true, employer: institution}).all
+    end
+
+    def places_left
+      @nant.count < @max_nb_nant or @valais.count < @max_nb_valais or @hesav.count < @max_nb_hesav or @autre.count < @max_nb_autres
+    end
+
+    def update_institutions_availability
+      if @nant.count >= @max_nb_nant
+        @disabled_institutions.push("nant")
+        inst = @institutions.detect{ |(_,n)| n == "nant"}
+        inst[0]+=" (COMPLET)"
+      end
+      if @valais.count >= @max_nb_valais
+        @disabled_institutions.push("valais")
+        inst = @institutions.detect{ |(_,n)| n == "valais"}
+        inst[0]+=" (COMPLET)"
+      end
+      if @hesav.count >= @max_nb_hesav
+        @disabled_institutions.push("hesav")
+        inst = @institutions.detect{ |(_,n)| n == "hesav"}
+        inst[0]+=" (COMPLET)"
+      end
+      if @autre.count >= @max_nb_autres
+        @disabled_institutions.push("autre")
+        inst = @institutions.detect{ |(_,n)| n == "autre"}
+        inst[0]+=" (COMPLET)"
+      end
     end
 
     def payment_not_accepted(msg,params)

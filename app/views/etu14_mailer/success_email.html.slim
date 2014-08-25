@@ -14,6 +14,7 @@ html
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
       li Institution : #{@registration.friendly_employer}
       li Fonction : #{@registration.friendly_job}
+      li Prix : #{@registration.price} CHF
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}
       
     p Au plaisir de vous acceuillir à HESAV, nous vous transmettons nos meilleures salutations.

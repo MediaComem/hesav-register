@@ -26,7 +26,7 @@
               .col-md-4
                 label Titre*
               .col-md-4
-                = f.select :title, options_for_select([["Mme.", "mme"],["M.", "m"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :title, options_for_select([["Mme", "mme"],["M.", "m"]], @title), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
@@ -70,7 +70,7 @@
               .col-md-4
                 label Institution*
               .col-md-4
-                = f.select :employer, options_for_select(@institutions, @institution), {include_blank: "Selectionner"}, class: "form-control"
+                = f.select :employer, options_for_select(@institutions, selected: @institution, disabled: @disabled_institutions), {include_blank: "Selectionner"}, class: "form-control"
         .row
           .form-group.col-md-12
             .row
@@ -89,15 +89,6 @@
           .col-md-4
             p 
               |(*) champs obligatoires
-      #add-infos
-        .row
-          .col-md-12
-            h3
-              span Informations
-        .row
-          .blocksubtitle.col-md-10
-            p !!! TODO !!! L’inscription donne droit à l’entrée à la Conférence d’ouverture du jeudi 8 mai. Les personnes souhaitant assister à la Conférence d’ouverture sans s’inscrire au colloque peuvent s’acquitter sur place d’un montant de CHF 20.— sans remplir ce formulaire.
-
       #registration-info
         .row
           .col-md-12
@@ -111,20 +102,24 @@
             .radio
               label
                 = f.radio_button(:registration_type, 1)
-                |La journée d'étude du 8 octobre (CHF 150.-)
+                |La journée d'étude du 8 octobre (150 CHF*)
         .row
           .col-md-6.col-md-offset-4
             .radio
               label
                 = f.radio_button(:registration_type, 2)
-                |Aux deux journées d'étude du 8 et du 9 octobre (CHF 250.-)
+                |Aux deux journées d'étude du 8 et du 9 octobre (250 CHF*).
         .row
           .col-md-6.col-md-offset-4
             .alert.alert-info
-              p Public externe ou autre Institution (150/250 CHF)
-              p Collaborateur de la Fondation de Nant (GRATUIT)
-              p Collaborateur DPP-CHVR Hôpital du Valais (GRATUIT)
-              p Collaborateur ou étudiant HESAV (GRATUIT)
+              p * Inscription GRATUITE pour
+              p - collaborateurs de la Fondation de Nant
+              p - collaborateurs DPP-CHVR Hôpital du Valais
+              p - collaborateurs ou étudiants HESAV
+        .row
+          .col-md-6.col-md-offset-4
+            .alert.alert-warning
+              p Les ateliers d’échange de pratiques et le débat de clôture de l’après-midi du 9 octobre sont ouverts uniquement aux collaborateurs de la Fondation de Nant, des DPP-CHVR et de HESAV.
       #registration-info
         .row
           .col-md-12
