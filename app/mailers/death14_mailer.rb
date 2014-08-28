@@ -1,5 +1,5 @@
 class Death14Mailer < ActionMailer::Base
-  default from: "admission@hesav.ch"
+  default from: "recherche@hesav.ch"
   before_filter :init_values
   def init_values
     #@super_admin = "adrien.bigler@heig-vd.ch"
