@@ -1,5 +1,5 @@
 class Etu14Mailer < ActionMailer::Base
-  default from: "jleglaunec+todo@gmail.com"
+  default from: "recherche@hesav.ch"
   before_filter :init_values
   def init_values
     @super_admin = "julien.le-glaunec@heig-vd.ch"

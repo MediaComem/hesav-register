@@ -21,10 +21,10 @@ class Etu14RegistrationsController < ApplicationController
     @institutions = [["Fondation de Nant", "nant"],["DPP-CHVR Hôpital du Valais", "valais"],["HESAV", "hesav"],["Public externe ou autre institution", "autre"]]
     @disabled_institutions = []
 
-    @max_nb_nant = 20#25
-    @max_nb_valais = 1#25
-    @max_nb_autres = 1#20
-    @max_nb_hesav = 1#15
+    @max_nb_nant = 25
+    @max_nb_valais = 25
+    @max_nb_autres = 20
+    @max_nb_hesav = 15
     
   end
 
