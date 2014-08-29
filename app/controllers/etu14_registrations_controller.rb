@@ -4,6 +4,7 @@ require 'etu14_csv_service'
 class Etu14RegistrationsController < ApplicationController
   
   before_filter :init_values
+  before_filter :authenticate, only: [:admin]
 
   def init_values
 
@@ -268,4 +269,10 @@ class Etu14RegistrationsController < ApplicationController
 
     end
 
+  protected
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+      username == "admin" && password == "uLp4Ush1"
+    end
+  end
 end
