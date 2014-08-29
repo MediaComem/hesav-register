@@ -13,8 +13,10 @@ class Etu14RegistrationsController < ApplicationController
     @language = 'fr_FR'
     
     # shop
-    @shop_id = 'etu14dev'
-    @environment = 'test'
+    #@shop_id = 'etu14dev'
+    #@environment = 'test'
+    @shop_id = 'etu14'
+    @environment = 'prod'
 
     # layout
     self.class.layout('etu14')
