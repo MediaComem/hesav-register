@@ -20,7 +20,7 @@ class Death14RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2014,28,08,18,00)
+    date_start = DateTime.new(2014,8,28,18,00)
     registrations = Death14Registration.where("created_at > :date_start",{date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
     
