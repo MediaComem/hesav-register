@@ -99,7 +99,7 @@ class Etu14RegistrationsController < ApplicationController
       @registration.payed = true
     elsif @registration.employer == "autre" and @registration.registration_type = 1 #1 day
       @registration.price = 150
-    elsif @registration.employer == "autre" and @registration.registration_type = 1 #2 days
+    elsif @registration.employer == "autre" and @registration.registration_type = 2 #2 days
       @registration.price = 250
     else
       @registration.price = 0
