@@ -1,22 +1,12 @@
-doctype html
-html
-  head
-    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
-  body
-    p Bonjour,
-    p Votre demande de préinscription est complète et nous vous en remercions. Les informations de contact que vous avez transmis sont:
-    ul
-      li #{@registration.first_name} #{@registration.last_name}
-      li
-        |Email: 
-        |#{@registration.email}
-      li
-        |Tél: 
-        |#{@registration.phone}
+.row
+  .col-md-12
+    p Votre demande de préinscription est complète et nous vous en remercions.
     p Notre équipe va maintenant instruire votre demande. Sous réserve de disponibilités, vous recevrez un courrier électronique accompagné de la facture correspondante sous 72 heures. Nous vous rappelons que pour valider votre inscription vous devez réaliser le paiement par virement bancaire au crédit du compte mentionné dans cette facture sous 10 jours. A défaut, votre pré-inscription sera annulée et la place attribuée à la personne suivante sur la liste d’attente.
     p Si la formation est complète, vous serez inscrit sur liste d’attente. Nous vous contacterons pour vous donnez de plus amples informations au besoin.
     p 
-      |Pour toute question, nous sommes à votre disposition. N’hésitez pas à nous contacter :<br/>
+      |Pour toute question, nous sommes à votre disposition.<br>
+      |N’hésitez pas à nous contacter :
+    p
       |Haute école d’ingénierie et de gestion du Canton de Vaud (Heig-VD)<br/>
       |Institut G2C, Groupe PlanI-D<br/>
       |Route de Cheseaux 1<br/>
@@ -24,3 +14,7 @@ html
       |Courrier électronique : gouveole@heig-vd.ch<br/>
       |Téléphones directs : +41 (0)24 557 62 68 ou 23 24<br/>
       |Site web : http://gouveole.heig-vd.ch<br/>
+.row
+  .col-md-12
+    .progress
+      .progress-bar.progress-bar-success role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"

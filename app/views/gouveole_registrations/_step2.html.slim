@@ -1,0 +1,68 @@
+.row
+  .col-md-12
+    h2
+      span Formulaire d'engagement
+.row
+  .col-md-12
+    p Afin de garantir une formation de qualité dans une ambiance des plus agréables, la participation de chacun à cette formation implique le respect des quelques règles suivantes.
+.row
+  .col-md-12
+    .panel-group id="accordion"
+
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+              |Règle 1. Se placer dans une position d’apprentissage
+        .panel-collapse.collapse id="collapseOne"
+          .panel-body
+            |Chaque personne, membre ou non d’un groupe constitué (association, parti, entreprise, administration, etc.), participe à titre individuel. Nul ne bénéficie dans le cadre de cette formation d’une position privilégiée. Sans exclure un point de vue critique, le participant accepte de se placer dans une position d’apprentissage en questionnant ses savoirs et ses certitudes.
+
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+              |Règle 2. Ne pas monopoliser la parole ou confisquer les échanges
+        .panel-collapse.collapse id="collapseTwo"
+          .panel-body
+            |La formation sur la participation publique dans les projets d’énergies renouvelables n’est pas une tribune politique, mais un moment d’apprentissage. Dans tous les cas, le participant s’engage à ne pas confisquer la parole lorsqu’elle est lui est donnée par les organisateurs.
+
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+              |Règle 3. Rester courtois en toutes circonstances
+        .panel-collapse.collapse id="collapseThree"
+          .panel-body
+            |En toutes circonstances, le participant s’interdit de proférer des insultes, d’intimider ou de discriminer une personne ou un groupe social, tant par ses propos et ses gestes que par son attitude.
+
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+              |Règle 4. Accepter le désaccord et respecter la contradiction
+        .panel-collapse.collapse id="collapseFour"
+          .panel-body
+            |La formation n’a pas pour finalité de partager des opinions, des croyances ou des valeurs communes, mais de mieux comprendre la construction des décisions collectives dans un contexte où les divergences sont nombreuses. Le participant s’engage à laisser s’exprimer des positions divergentes de la sienne.
+
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"
+              |Règle 5. Respecter les règles de travail collectif
+        .panel-collapse.collapse id="collapseFive"
+          .panel-body
+            |La formation est gérée et construite en différentes étapes. Pour son bon déroulement, les organisateurs indiquent au participant les situations dans lesquelles ses propos sont hors sujet, extérieurs à l’étendue de l’apprentissage ou abordés à un autre moment. En toutes circonstances, le participant s’engage à suivre les consignes de l’équipe d’organisation.
+
+.row
+  .col-md-12
+    p Tout manquement à l’une de ces règles peut amener à mise en garde de la part des organisateurs. La HEIG-VD se réserve le droit d’exclure de la formation, immédiatement et sans droit à aucune compensation, toute personne régulièrement inscrite qui, après une première mise en garde des organisateurs, ne respecterait pas les principes auxquels elle a souscrit lors de son inscription, et/ou adopterait un comportement, proférerait des paroles ou accomplirait des gestes qui nuisent au bon déroulement de la formation. Dans ce cas, la personne mise en cause ne pourra se prévaloir d’aucun remboursement de ses frais d’inscription. 
+    p Dans les cas les plus extrêmes, la HEIG-VD se réserve le droit d’entamer des poursuites contre le contrevenant et d’exiger des dommages-intérêts en compensation du préjudice subi.
+    p En m’inscrivant à cette formation, je m’engage à respecter ses dispositions et je certifie avoir parfaitement compris les conséquences possibles du non respect de ces dispositions. 
+
+.row
+  .col-md-12
+    .checkbox
+      label
+        = f.check_box :rules_accepted, {}
+        | Je m'engage à respecter les précédentes dispositions

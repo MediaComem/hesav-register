@@ -1,0 +1,117 @@
+#perso-infos
+.row
+  .col-md-12
+    h2
+      span Informations personnelles
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Titre*
+      .col-md-4
+        = f.select :title, options_for_select([["M.", "m"], ["Mme.", "mme"]], @title), {include_blank: "Selectionner"}, class: "form-control"
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Nom*
+      .col-md-4
+        = f.text_field(:last_name, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Prénom*
+      .col-md-4
+        = f.text_field(:first_name, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Email*
+      .col-md-4
+        = f.text_field(:email, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Téléphone*
+      .col-md-4
+        = f.text_field(:phone, class: "form-control")
+.row
+  .col-md-12
+    h2
+      span Affiliation
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Affiliation*
+      .col-md-4
+        = f.select :affiliation, options_for_select([["Association", "association"], ["Entreprise", "entreprise"], ["Administration","administration"], ["Elus", "elus"]], @affiliation), {include_blank: "Selectionner"}, class: "form-control"
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Adresse de l’organisation-institution d’affiliation*
+      .col-md-4
+        = f.text_area(:affiliation_address, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Position / Poste / Responsabilité*
+      .col-md-4
+        = f.text_area(:job, class: "form-control")
+.row
+  .col-md-12
+    h2
+      span Formation
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Connaissances des démarches participatives*
+      .col-md-4.choice
+        .checkbox
+          label 
+            = f.check_box :theorical_knowledge, {}
+            | Théorique
+        .checkbox
+          label
+            = f.check_box :practical_p_knowledge, {}
+            | Pratique comme participant
+        .checkbox
+          label
+            = f.check_box :practical_o_knowledge, {}
+            | Pratique comme organisateur
+        .checkbox
+          label
+            = f.check_box :no_knowledge, {}
+            | Aucune connaissance
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Qu'attendez-vous de cette formation?*
+      .col-md-4
+        = f.text_area(:expectations, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Décrivez vos activités dans le domaine de l’éolien/territoire ? *
+      .col-md-4
+        = f.text_area(:activities, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Autres remarques (champ libre à compléter)
+      .col-md-4
+        = f.text_area(:remarks, class: "form-control")
+
+.row
+  .col-md-4
+    p 
+      |(*) champs obligatoires
