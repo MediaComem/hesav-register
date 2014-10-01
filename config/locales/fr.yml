@@ -206,13 +206,13 @@ fr:
   activerecord:
     attributes:
       gouveole_registration:
-        title: "Titre"
+        title: "Formule d'appel"
         last_name: "Nom"
         first_name: "Prénom"
         phone: "Téléphone"
-        email: "Email"
+        email: "Courriel"
         affiliation: "Affiliation"
-        affiliation_address: "Adresse de l'organisation-institution d’affiliation"
+        affiliation_address: "Adresse postale de facturation"
         job: "Position / Poste / Responsabilité"
         billing_address: "Adresse de facturation"
         expectations: "Attentes de la formation"

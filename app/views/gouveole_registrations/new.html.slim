@@ -1,0 +1,37 @@
+.row
+  .col-md-12
+    .back-to-projects
+      a.back-link href="http://gouveole.heig-vd.ch/autres-projets/participation-publique-et-acceptabilite-sociale-des-enr/"
+        .back-image
+        .link-info Retour à la page de la formation
+.row
+  .blocktitle.col-md-12
+    h1 Préinscription au séminaire de formation
+    h2 16 & 23 Janvier 2015
+.row
+  .col-md-12
+    - if @registration.errors.any?
+      .alert.alert-danger
+        - @registration.errors.full_messages.each do |msg|
+          p #{msg}
+.row
+  .col-md-12
+    = form_for @registration do |f|
+      = f.hidden_field :current_step, value: @registration.current_step
+      = render "step#{@registration.current_step+1}", f: f
+
+      .progress
+        .progress-bar.progress-bar-info role="progressbar" aria-valuenow="#{@registration.current_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{@registration.current_percentage}%"
+      - if !@registration.first_step?
+        = f.submit "Etape précédente", :name => 'back_button', :class => 'btn btn-info'
+      .pull-right
+        - if @registration.current_step == 0
+          = f.submit "Commencer ma préinscription à la formation", :class => 'btn btn-info'
+        - elsif @registration.current_step == 1
+          = f.submit "Valider et poursuivre ma préinscription", :class => 'btn btn-info'
+        - elsif @registration.current_step == 2
+          = f.submit "Je valide ma préinscription", :class => 'btn btn-info'
+.row
+  .col-md-12
+    <br/>
+

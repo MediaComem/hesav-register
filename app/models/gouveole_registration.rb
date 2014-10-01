@@ -13,11 +13,13 @@ class GouveoleRegistration < ActiveRecord::Base
   validates :activities, presence: true, if: :step3?
   validates :event, presence: true, if: :step3?
 
-  validate :rules, if: :step2?
-  validate :knowledge, if: :step3?
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, if: :step3?
+  validates_confirmation_of :email, if: :step3?
+
+  validate :rules, if: :step2?
+  validate :knowledge, if: :step3?
+  validate :accept, if: :step3?
   
   #relations
   belongs_to :event
@@ -41,13 +43,21 @@ private
   def knowledge
     # at least one checkbox should be checked
     if (theorical_knowledge.blank? and practical_p_knowledge.blank? and practical_o_knowledge.blank? and no_knowledge.blank?)
-      errors.add(:base, "Sélectionner au moins une connaissance des démarches participatives")
+      errors.add(:base, "Vous devez sélectionner au moins une connaissance des démarches participatives")
     end
   end
   def rules
     # registrants must accept the formation rules
     if (rules_accepted.blank?)
       errors.add(:base, "Vous devez vous engager à respecter les dispositions")
+    end
+  end
+  def accept
+    if (certified_infos.blank?)
+      errors.add(:base, 'Vous devez cocher la case "Je certifie que les informations indiquées sont exactes" pour continuer')
+    end
+    if (accept_conditions.blank?)
+      errors.add(:base, 'Vous devez cocher la case "J’accepte les Conditions générales de la formation" pour continuer')
     end
   end
 end

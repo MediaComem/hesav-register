@@ -18,16 +18,9 @@ class CsvService
               'Activités dans le domaine éolien',
               'Remarques',
               'Prix',
-              'Payé',
               'Date d\'inscription'
             ]
       registrations.each do |registration|
-
-        if registration.paid == true
-          payed = "oui"
-        else
-          payed = "non"
-        end
 
         csv << [registration.id,
           registration.title,
@@ -46,7 +39,6 @@ class CsvService
           registration.activities,
           registration.remarks,
           registration.price,
-          payed,
           I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
         ]
       end

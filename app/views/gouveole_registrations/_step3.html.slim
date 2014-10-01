@@ -2,12 +2,12 @@
 .row
   .col-md-12
     h2
-      span Informations personnelles
+      p.input-title Informations personnelles
 .row
   .form-group.col-md-12
     .row
       .col-md-4
-        label Titre*
+        label Formule d'appel*
       .col-md-4
         = f.select :title, options_for_select([["M.", "m"], ["Mme.", "mme"]], @title), {include_blank: "Selectionner"}, class: "form-control"
 .row
@@ -28,9 +28,16 @@
   .form-group.col-md-12
     .row
       .col-md-4
-        label Email*
+        label Courriel*
       .col-md-4
         = f.text_field(:email, class: "form-control")
+.row
+  .form-group.col-md-12
+    .row
+      .col-md-4
+        label Confirmation du courriel*
+      .col-md-4
+        = f.text_field(:email_confirmation, class: "form-control")
 .row
   .form-group.col-md-12
     .row
@@ -41,7 +48,7 @@
 .row
   .col-md-12
     h2
-      span Affiliation
+      p.input-title Affiliation
 .row
   .form-group.col-md-12
     .row
@@ -53,7 +60,7 @@
   .form-group.col-md-12
     .row
       .col-md-4
-        label Adresse de l’organisation-institution d’affiliation*
+        label Adresse postale de facturation *
       .col-md-4
         = f.text_area(:affiliation_address, class: "form-control")
 .row
@@ -66,7 +73,7 @@
 .row
   .col-md-12
     h2
-      span Formation
+      p.input-title Formation
 .row
   .form-group.col-md-12
     .row
@@ -110,6 +117,17 @@
         label Autres remarques (champ libre à compléter)
       .col-md-4
         = f.text_area(:remarks, class: "form-control")
+
+.row
+  .col-md-12
+    .checkbox
+      label
+        = f.check_box :certified_infos, {}
+        | Je certifie que les informations indiquées sont exactes *
+    .checkbox
+      label
+        = f.check_box :accept_conditions, {}
+        | J’accepte les Conditions générales de la formation *
 
 .row
   .col-md-4

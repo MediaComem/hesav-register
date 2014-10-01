@@ -10,11 +10,27 @@ html
     = csrf_meta_tag
     meta name="viewport" content="width=device-width, initial-scale=1"
   body
-    .container
-      .row
-        .col-md-12
-          p GOUVEOLE LAYOUT
-      .row
-        .col-md-12
-          == render 'shared/flash'
-      = yield
+    div id="page-container"
+      header id="page-header"
+        div id="header-top"
+        div id="header-bottom"
+          .container
+            .row
+              .col-md-12
+                h1.site-title
+                  a href="http://gouveole.heig-vd.ch"
+                nav#main-nav
+                  .nav-item 
+                    span Préinscription
+      div id="page-body"
+        .container
+          .row
+            .col-md-12
+              == render 'shared/flash'
+          = yield
+      footer id="page-footer"
+        .container
+          .row
+            .col-md-12
+              p id="copyright" Gouveole Copyrights. © 2014
+
