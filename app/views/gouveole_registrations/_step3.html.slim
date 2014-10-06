@@ -55,7 +55,7 @@
       .col-md-4
         label Affiliation*
       .col-md-4
-        = f.select :affiliation, options_for_select([["Association", "association"], ["Entreprise", "entreprise"], ["Administration","administration"], ["Elus", "elus"]], @affiliation), {include_blank: "Selectionner"}, class: "form-control"
+        = f.select :affiliation, options_for_select([["Association", "association"], ["Entreprise", "entreprise"], ["Administration","administration"], ["Elu", "elu"], ["Autre","autres"]], @affiliation), {include_blank: "Selectionner"}, class: "form-control"
 .row
   .form-group.col-md-12
     .row
@@ -127,7 +127,9 @@
     .checkbox
       label
         = f.check_box :accept_conditions, {}
-        | J’accepte les Conditions générales de la formation *
+        | J’accepte les 
+        a href="http://gouveole.heig-vd.ch/autres-projets/participation-publique-et-acceptabilite-sociale-des-enr/#ert_pane1-3" target="_blank" Conditions générales de la formation
+        | *
 
 .row
   .col-md-4
