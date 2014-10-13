@@ -3,7 +3,7 @@ class GouveoleMailer < ActionMailer::Base
   before_filter :init_values
   def init_values
     #@super_admin = "julien.le-glaunec@heig-vd.ch"
-    @admin = "pierre-henri.bombenger@heig-vd.ch"
+    @admin = "gouveole@heig-vd.ch"
     @super_admin = "julien.le-glaunec@heig-vd.ch"
     #@admin = "julien.le-glaunec@heig-vd.ch"
   end
