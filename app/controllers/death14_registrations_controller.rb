@@ -4,7 +4,7 @@ require 'death14_csv_service'
 class Death14RegistrationsController < ApplicationController
   
   before_filter :init_values
-  before_filter :authenticate, only: [:index]
+  before_filter :authenticate, only: [:admin]
 
   def init_values
 
