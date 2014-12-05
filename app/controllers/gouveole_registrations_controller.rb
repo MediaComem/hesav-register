@@ -43,7 +43,7 @@ class GouveoleRegistrationsController < ApplicationController
       flash.now[:info] = "L'inscription n'est pas encore disponible"
       render "close"
     elsif now >= event.close
-      flash.now[:info] = "L'inscription n'est plus disponible"
+      flash.now[:info] = "Les inscriptions à la formation sont maintenant closes. Pour toute demande, vous pouvez nous contacter à gouveole@heig-vd.ch"
       render "close"
     else
       @registration = @wizard.object
