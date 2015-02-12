@@ -5,14 +5,22 @@ body{
     color: #005E23;
 }
 .container { 
+    width: 1140px;
     background-color: #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.05) inset, 0 10px 20px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.05) inset, 0 10px 20px rgba(0, 0, 0, 0.2);
     -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.05) inset, 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.row.content {
+    padding-left:65px;
+}
+.banner {
+    padding-left:0;
+    padding-right:0;
+}
 .blocktitle {
-    color: #4EA64F;
-    padding: 30px 0 20px 50px;    
+    color: #005E23;
+    padding: 30px 0 20px 65px; 
 }
 .blocktitle h1 {
     text-transform:uppercase;
