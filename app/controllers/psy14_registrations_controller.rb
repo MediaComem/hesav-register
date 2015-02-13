@@ -4,7 +4,7 @@ require 'psy14_csv_service'
 class Psy14RegistrationsController < ApplicationController
 
   before_filter :init_values
-  before_filter :authenticate, only: [:index]
+  before_filter :authenticate, only: [:admin]
 
   def init_values
 
@@ -20,7 +20,7 @@ class Psy14RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2015,02,12,12,00)
+    date_start = DateTime.new(2015,02,13,9,00)
     registrations = Psy14Registration.where("created_at > :date_start",{date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
     
