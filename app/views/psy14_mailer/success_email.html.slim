@@ -9,7 +9,12 @@ html
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
       li Employeur : #{@registration.employer}
       li Profession : #{@registration.job}
-      li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}
+      li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
+      - if @registration.type_price == '00.00'
+        li Votre inscription gratuite a bien été enregistrée.
+      - else
+        li Votre paiement de #{@registration.type_price} CHF à la Haute école de santé Vaud, Lausanne, a bien été enregistré.
+
     p Au plaisir de vous acceuillir à HESAV, nous vous transmettons nos meilleures salutations.
     b
       p
