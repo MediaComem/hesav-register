@@ -8,7 +8,7 @@
     p DÉLAI D’INSCRIPTION : 17 AVRIL 2015
 .row
   .col-md-12
-    = form_for @registration, html: {role:"form"} do |f|
+    = form_for @registration, url: {action: "create"}, html: {role:"form"} do |f|
       - @registration.errors.full_messages.each do |msg|
         .row
           .col-md-6
@@ -19,58 +19,58 @@
             h3
               span Informations personnelles
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Nom*
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:last_name, class: "form-control")
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Prénom*
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:first_name, class: "form-control")
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Rue
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:street, class: "form-control")
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Npa / Localité
-              .col-md-1
+              .col-md-1.col-sm-1.col-xs-1
                 = f.text_field(:npa, class: "form-control")
-              .col-md-3
+              .col-md-3.col-sm-3.col-xs-3
                 = f.text_field(:city, class: "form-control")
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Employeur*
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:employer, class: "form-control")
         .row
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Profession*
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:job, class: "form-control")
         .row      
-          .form-group.col-md-12
+          .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4
+              .col-md-4.col-sm-2.col-xs-2
                 label Email*
-              .col-md-4
+              .col-md-4.col-sm-6.col-xs-4
                 = f.text_field(:email, class: "form-control")
         .row
-          .col-md-4
+          .col-md-4.col-sm-2.col-xs-2
             p 
               |(*) champs obligatoires
       #add-infos

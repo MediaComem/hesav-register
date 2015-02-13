@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # 6ème Journée de psychiatrie (Mai 2014)
-  get '/psy14_registrations' => 'psy14_registrations#new'
-  get '/psy14_registrations/admin(.:format)', to: 'psy14_registrations#admin', as: 'psy14_admin'
+  # 7ème Journée de psychiatrie (Avril 2015)
+  get '/psy' => 'psy14_registrations#new'
+  get '/psy/admin(.:format)', to: 'psy14_registrations#admin', as: 'psy14_admin'
 
-  resources :psy14_registrations do
+  resources :psy14_registrations, path: 'psy' do
     collection do
       get 'new'
       get 'accepted'
@@ -32,6 +32,21 @@ Rails.application.routes.draw do
       get 'cgv'
     end
   end
+
+  # get '/scientifique14_registrations' => 'death14_registrations#new'
+  # get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
+  
+  # resources :death14_registrations, path: 'scientifique14_registrations' do
+  #   collection do
+  #     get 'new'
+  #     get 'accepted'
+  #     get 'exception'
+  #     get 'decline'
+  #     get 'cancel'
+  #     get 'cgv'
+  #   end
+  # end
+
 
   # Journées d'étude du 8-9 octobre
   get '/etu14_registrations' => 'etu14_registrations#new'
