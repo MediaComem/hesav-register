@@ -59,6 +59,7 @@ class Psy14RegistrationsController < ApplicationController
     event = Event.find_by_short_name!(@event_name)
     
     @registration = Psy14Registration.new(post_params)
+    @registration.id = Psy14Registration.last.id + 1
     @registration.shopID = @shop_id
     @registration.environment = @environment
     @registration.language = @language
