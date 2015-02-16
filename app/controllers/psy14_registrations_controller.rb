@@ -10,8 +10,8 @@ class Psy14RegistrationsController < ApplicationController
 
     #constants
     @event_name = 'psy14'
-    @shop_id = 'psy14dev'
-    @environment = 'test' # test/prod
+    @shop_id = 'psy14' # psy14dev / psy14
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
 
     # layout
@@ -20,7 +20,7 @@ class Psy14RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2015,02,13,9,00)
+    date_start = DateTime.new(2015,02,16,14,40)
     registrations = Psy14Registration.where("created_at > :date_start",{date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
     
