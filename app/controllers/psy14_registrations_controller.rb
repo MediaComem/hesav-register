@@ -20,8 +20,8 @@ class Psy14RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2015,02,16,14,40)
-    registrations = Psy14Registration.where("created_at > :date_start",{date_start: date_start}).order("created_at DESC").all
+    date_start = DateTime.new(2015,02,16,14,30)
+    registrations = Psy14Registration.where("created_at > :date_start AND payed",{date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
     
     respond_to do |format|
