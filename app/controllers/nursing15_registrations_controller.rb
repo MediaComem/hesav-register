@@ -45,9 +45,9 @@ class Nursing15RegistrationsController < ApplicationController
       @registration = Nursing15Registration.new
     else
       if event.open > DateTime.now
-        flash.now[:info] = "L'inscription n'est pas encore disponible"
+        flash.now[:info] = "The registration is not yet available."
       else
-        flash.now[:info] = "L'inscription n'est plus disponible"
+        flash.now[:info] = "The registration is not available anymore."
       end
       render "close"
     end
@@ -108,7 +108,7 @@ class Nursing15RegistrationsController < ApplicationController
         registration_ok(msg,@registration)
         render 'accepted'
       else
-        flash.now[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
+        flash.now[:notice_error] = "An error occured. Please start your registration again."
         render "new"
       end
     end
@@ -212,21 +212,21 @@ class Nursing15RegistrationsController < ApplicationController
 
     def registration_ok(msg,registration)
       logger.info msg
-      flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
-      flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
-      Psy14Mailer.success_email(registration).deliver
+      flash.now[:notice_title] = "Thank you, your registration has been confirmed."
+      flash.now[:notice] = "An automated confirmation mail was sent to your mail addresse."
+      Nursing15Mailer.success_email(registration).deliver
     end
 
     def payment_not_accepted(msg,params)
       logger.error msg
-      flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-      Psy14Mailer.error_email(msg,params).deliver
+      flash[:notice_error] = "An error occured. Please start your registration again."
+      Nursing15Mailer.error_email(msg,params).deliver
     end
 
     def accepted_with_error(msg,params)
       logger.error msg
-      flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
-      Psy14Mailer.error_email(msg,getParams).deliver
+      flash.now[:notice] = "The administrator has been informed. You will be contacted soon.."
+      Nursing15Mailer.error_email(msg,getParams).deliver
     end
   protected
     def authenticate

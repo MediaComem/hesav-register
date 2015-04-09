@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p Dear #{@registration.title}  #{@registration.last_name},
+    p Thank you for registring to international symposium Teaching Nursing Sciences in Bachelor programs : International perspectives.
+    ul
+      li Last name/First name : #{@registration.last_name} #{@registration.first_name}
+      li Institution/University/Organistation : #{@registration.employer}
+      li Job title : #{@registration.job}
+      li Registration date : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
+      - if @registration.type_price == '00.00'
+        li Your free registration has been confirmed.
+      - else
+        li Your payment #{@registration.type_price} CHF to the Haute Ecole de Santé Vaud, Lausanne, has been received.
+      - if @registration.type_day == '2 days'
+        li Your registration is valid for June 8 and 9.
+      - if
+        li Your registration is valid for #{@registration.type_day}.
+
+    p We are looking forward to see you at HESAV.
+    p Best regards
+    b
+      p
+        |---------------------------------------------------------------------------
+    p
+      b INTERNATIONAL SYMPOSIUM
+    p Jeudi 23 avril 2015, à 20h
+    p 
+      b Teaching Nursing Sciences in Bachelor programs : International perspectives
+    p Lausanne | 8 & 9 june 2015
+    p Auditoire HESAV
+    a href="www.hesav.ch/nursing 2015" Link to the conference
+    b
+      p
+        |---------------------------------------------------------------------------
