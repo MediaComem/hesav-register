@@ -33,6 +33,20 @@ Rails.application.routes.draw do
     end
   end
 
+  # Nursing2015 (Juin 2015)
+  get '/nursing2015' => 'nursing15_registrations#new'
+  get '/nursing2015/admin(.:format)', to: 'nursing15_registrations#admin', as: 'nursing15_admin'
+
+  resources :nursing15_registrations, path: 'nursing2015' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
   # get '/scientifique14_registrations' => 'death14_registrations#new'
   # get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
   

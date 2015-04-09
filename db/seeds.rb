@@ -12,3 +12,10 @@ Event.create!(short_name:"gouveole",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2014,10,01),
     visible: true)
+
+Event.create!(short_name:"nursing15", 
+    name:"Nursing2015",
+    description:"Nursing 2015",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2016,10,01),
+    visible: true)
