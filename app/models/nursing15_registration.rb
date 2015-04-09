@@ -7,7 +7,8 @@ validates :email, format: { with: VALID_EMAIL_REGEX }
 store_accessor :registration_type, [
     :type_price,
     :type_name,
-    :type_short_name
+    :type_short_name,
+    :type_day
   ]
 def default_values
     self.payed ||= false

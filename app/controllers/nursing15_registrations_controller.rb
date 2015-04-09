@@ -58,7 +58,7 @@ class Nursing15RegistrationsController < ApplicationController
     event = Event.find_by_short_name!(@event_name)
     
     @registration = Nursing15Registration.new(post_params)
-    @registration.id = Nursing15Registration.last.id + 1
+    # @registration.id = Nursing15Registration.last.id + 1
     @registration.shopID = @shop_id
     @registration.environment = @environment
     @registration.language = @language
@@ -69,15 +69,19 @@ class Nursing15RegistrationsController < ApplicationController
     when "normal_fee_2days"
       @registration.type_price = '250.00'
       @registration.type_name = "Normal fee 2 days"
+      @registration.type_day = "2 days"
     when "faculty_fee_2days"
       @registration.type_price = '200.00'
       @registration.type_name = "Faculty fee 2 days"
+      @registration.type_day = "2 days"
     when "student_fee_2days"
       @registration.type_price = '75.00'
       @registration.type_name = "Student fee 2 days"
+      @registration.type_day = "2 days"
     when "free_2days"
       @registration.type_price = '00.00'
       @registration.type_name = "Free 2 days"
+      @registration.type_day = "2 days"
       @registration.payed = true      
     when "normal_fee_1day"
       @registration.type_price = '150.00'
@@ -88,9 +92,10 @@ class Nursing15RegistrationsController < ApplicationController
     when "student_fee_1day"  
       @registration.type_price = '50.00'
       @registration.type_name = "Student fee 1 day"
-    when "student_fee_1day"    
+    when "free_1day"    
       @registration.type_price = '00.00'
       @registration.type_name = "Free 1 day"
+      @registration.payed = true
     else
       @registration.type_price = '-1'
     end
@@ -174,7 +179,7 @@ class Nursing15RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:nursing15_registration).permit(:last_name,:first_name,:type_short_name,:city,:email,:street,:npa,:employer,:job,:country,:title)
+      params.require(:nursing15_registration).permit(:last_name,:first_name,:type_short_name,:city,:email,:street,:npa,:employer,:job,:country,:title,:type_day)
     end
 
     def sha_valid(params)
