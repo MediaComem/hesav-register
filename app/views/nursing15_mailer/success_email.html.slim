@@ -16,7 +16,7 @@ html
         li Your payment #{@registration.type_price} CHF to the Haute Ecole de Santé Vaud, Lausanne, has been received.
       - if @registration.type_day == '2 days'
         li Your registration is valid for June 8 and 9.
-      - if
+      - else
         li Your registration is valid for #{@registration.type_day}.
 
     p We are looking forward to see you at HESAV.
@@ -26,10 +26,9 @@ html
         |---------------------------------------------------------------------------
     p
       b INTERNATIONAL SYMPOSIUM
-    p Jeudi 23 avril 2015, à 20h
+    p Lausanne | 8 & 9 June 2015
     p 
       b Teaching Nursing Sciences in Bachelor programs : International perspectives
-    p Lausanne | 8 & 9 june 2015
     p Auditoire HESAV
     a href="www.hesav.ch/nursing 2015" Link to the conference
     b

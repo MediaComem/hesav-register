@@ -1,4 +1,4 @@
-class Nusring15Mailer < ActionMailer::Base
+class Nursing15Mailer < ActionMailer::Base
   default from: "admission@hesav.ch"
   before_filter :init_values
   def init_values
@@ -12,6 +12,6 @@ class Nusring15Mailer < ActionMailer::Base
   end
   def success_email(registration)
     @registration  = registration
-    mail(to: @registration.email, bcc: @super_admin, subject: "Confirmation d'inscription")
+    mail(to: @registration.email, bcc: @super_admin, subject: "Registration confirmation")
   end
 end

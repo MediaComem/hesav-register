@@ -225,7 +225,7 @@ class Nursing15RegistrationsController < ApplicationController
 
     def accepted_with_error(msg,params)
       logger.error msg
-      flash.now[:notice] = "The administrator has been informed. You will be contacted soon.."
+      flash.now[:notice] = "The administrator has been informed. You will be contacted soon."
       Nursing15Mailer.error_email(msg,getParams).deliver
     end
   protected
