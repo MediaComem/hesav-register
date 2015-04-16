@@ -10,8 +10,8 @@ class Nursing15RegistrationsController < ApplicationController
 
     #constants
     @event_name = 'nursing15'
-    @shop_id = 'nurs15dev' # psy14dev / psy14
-    @environment = 'test' # test/prod
+    @shop_id = 'nurs15' # psy14dev / psy14
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
 
     # layout
