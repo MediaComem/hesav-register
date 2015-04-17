@@ -1,7 +1,7 @@
 set :application, 'hesav-forms'
 set :domain, 'webwww06'
 set :deploy_to, '/srv/www/hesav-forms'
-set :repository, 'git@gitlab.heig-vd.ch:jleglaunec/register.git'
+set :repository, 'git@gitlabd.heig-vd.ch:10022/jleglaunec/register.git'
 set :revision, 'origin/master'
 set :skip_scm, false
 set :sudo_flags, sudo_flags << '-S'
