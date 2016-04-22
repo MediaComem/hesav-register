@@ -19,3 +19,10 @@ Event.create!(short_name:"nursing15",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2016,10,01),
     visible: true)
+
+Event.create!(short_name:"psy16", 
+    name:"Le Soin intensif en psychiatrie",
+    description:"Le Soin intensif en psychiatrie",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2016,10,10),
+    visible: true)

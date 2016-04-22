@@ -46,7 +46,7 @@ group :doc do
 end
 
 group :development do
-    gem 'pry'
+    gem 'pry',"0.9.12.2"
 end
 
 group :development, :test do

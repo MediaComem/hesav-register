@@ -5,7 +5,6 @@ gouveole:
     open: 2014-07-14
     close: 2014-10-01
     visible: 1
-
 psy:
     short_name: psy
     name: Journée de psychiatrie
@@ -13,3 +12,15 @@ psy:
     open: 2014-07-14
     close: 2014-10-01
     visible: 0
+nursing15:
+    short_name: nursing15
+    name: Nursing 2015
+    description: Nursing 2015
+    close: 2015-10-10
+    visible: 1
+psy16:
+    short_name: psy16
+    name:  Le Soin intensif en psychiatrie
+    description: Le Soin intensif en psychiatrie
+    close: 2016-10-10
+    visible: 1

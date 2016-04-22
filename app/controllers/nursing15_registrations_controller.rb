@@ -20,7 +20,7 @@ class Nursing15RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2015,04,15,14,30)
+    date_start = DateTime.new(2014,04,15,14,30)
     registrations = Nursing15Registration.where("created_at > :date_start AND payed",{date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
     
