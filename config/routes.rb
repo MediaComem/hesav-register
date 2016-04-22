@@ -47,6 +47,21 @@ Rails.application.routes.draw do
       get 'cgv'
     end
   end
+
+  # Psy16 (Mai 2016)
+  get '/psy16' => 'psy16_registrations#new'
+  get '/psy16/admin(.:format)', to: 'psy16_registrations#admin', as: 'psy16_admin'
+
+  resources :psy16_registrations, path: 'psy16' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
   # get '/scientifique14_registrations' => 'death14_registrations#new'
   # get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
   

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html
+  head
+    title Inscription à la journée Le Soin intensif en psychiatrie
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "psy16"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1"
+  body
+    .container
+      .row
+        .col-md-12.banner
+          img src=image_path("banner_psychiatrie_15.png")
+      .row
+        .col-md-12
+          == render 'shared/flash'
+      = yield
