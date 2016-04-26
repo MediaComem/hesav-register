@@ -98,7 +98,7 @@ class Psy16RegistrationsController < ApplicationController
       if getParams["orderID"] != nil
       # La reference de paiement Postfinance. Attention, cette reference est une concatenation du shopID et de l’orderID transmis precedemment (ex. myShopID_myOrderID)
       orderID_back = getParams["orderID"].split('_')[1]
-      registration = Nursing15Registration.find_by_id(orderID_back)
+      registration = Psy16Registration.find_by_id(orderID_back)
         if registration == nil
           msg = "PostFinance :: Accept Action :: Not Found => (The registration with the id #"+orderID_back+" has not been found)"
           accepted_with_error(msg,getParams)
@@ -184,20 +184,20 @@ class Psy16RegistrationsController < ApplicationController
 
     def registration_ok(msg,registration)
       logger.info msg
-      flash.now[:notice_title] = "Thank you, your registration has been confirmed."
-      flash.now[:notice] = "An automated confirmation mail was sent to your mail addresse."
+      flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
+      flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
       Psy16Mailer.success_email(registration).deliver
     end
 
     def payment_not_accepted(msg,params)
       logger.error msg
-      flash[:notice_error] = "An error occured. Please start your registration again."
+      flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
       Psy16Mailer.error_email(msg,params).deliver
     end
 
     def accepted_with_error(msg,params)
       logger.error msg
-      flash.now[:notice] = "The administrator has been informed. You will be contacted soon."
+      flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
       Psy16Mailer.error_email(msg,getParams).deliver
     end
   protected
