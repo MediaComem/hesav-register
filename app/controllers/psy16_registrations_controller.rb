@@ -60,7 +60,6 @@ class Psy16RegistrationsController < ApplicationController
     @registration.language = @language
     @registration.payed = false
     @registration.event = event
-    binding.pry
     case @registration.type_price
     when "free"
       @registration.type_price = 'free'
