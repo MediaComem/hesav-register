@@ -1,4 +1,5 @@
 require 'httparty'
+require 'psy16_csv_service'
 
 class Psy16RegistrationsController < ApplicationController
 
@@ -18,23 +19,22 @@ class Psy16RegistrationsController < ApplicationController
   end
 
   def admin
-
-    # date_start = DateTime.new(2014,04,15,14,30)
-    # registrations = Nursing15Registration.where("created_at > :date_start AND payed",{date_start: date_start}).order("created_at DESC").all
-    # @registrations = registrations
+    date_start = DateTime.new(2014,04,15,14,30)
+    registrations = Psy16Registration.where("created_at > :date_start AND payed",{date_start: date_start}).order("created_at DESC").all
+    @registrations = registrations
     
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @registrations }
-    #   format.csv {
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @registrations }
+      format.csv {
 
-    #     csv_string = Csv2Service.generate(registrations)
+        csv_string = Csv2Service.generate(registrations)
 
-    #     send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
-    #       :type => 'text/csv; charset=iso-8859-1; header=present',
-    #       :disposition => "attachment; filename=inscriptions.csv" 
-    #   }
-    # end
+        send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
+          :type => 'text/csv; charset=iso-8859-1; header=present',
+          :disposition => "attachment; filename=inscriptions.csv" 
+      }
+    end
   end
 
   def new
@@ -55,13 +55,12 @@ class Psy16RegistrationsController < ApplicationController
 
     event = Event.find_by_short_name!(@event_name)
     @registration = Psy16Registration.new(post_params)
-    # @registration.id = Nursing15Registration.last.id + 1
     @registration.shopID = @shop_id
     @registration.environment = @environment
     @registration.language = @language
     @registration.payed = false
     @registration.event = event
-
+    binding.pry
     case @registration.type_price
     when "free"
       @registration.type_price = 'free'
@@ -151,7 +150,7 @@ class Psy16RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:psy16_registration).permit(:last_name,:first_name,:type_price,:city,:email,:street,:npa,:employer,:job,:country,:title)
+      params.require(:psy16_registration).permit(:last_name,:first_name,:type_price,:type_afternoon,:type_lunch,:type_morning,:city,:email,:street,:npa,:employer,:job,:country,:title)
     end
 
     def sha_valid(params)

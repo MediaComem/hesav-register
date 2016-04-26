@@ -1,11 +1,10 @@
 .row
   .blocktitle.col-md-12
     h1
-      b Inscrivez-vous 
-      | à la 7ème Journée de Psychiatrie 2015
-    h2 "Les maux croisés de la dépression"
-    p VENDREDI 24 AVRIL 2015
-    p DÉLAI D’INSCRIPTION : 17 AVRIL 2015
+      | Le Soin intensif en psychiatrie
+    h2 2ème journée latine du soin psychique 
+    p 9 JUIN 2016 
+    p DÉLAI D’INSCRIPTION : 2 JUIN 2016
 .row
   .col-md-12
     = form_for @registration, url: {action: "create"}, html: {role:"form"} do |f|
@@ -89,7 +88,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m1")
+                = f.radio_button(:type_morning, "Une alternative à la gestion contraignante de la crise")
                 |"Une alternative à la gestion contraignante de la crise"
                 br
                 |Marina Jovanova, Francesca Brazzola (Tessin)
@@ -97,7 +96,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m2")
+                = f.radio_button(:type_morning, "De la chambre fermée aux soins intensifs de psychiatrie")
                 |"De la chambre fermée aux soins intensifs de psychiatrie"
                 br
                 |Corinne Nalier et Myriam Vaucher (Genève)
@@ -105,7 +104,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m3")
+                = f.radio_button(:type_morning, "Intégration d’un pair praticien dans les soins en psychiatrie")
                 |"Intégration d’un pair praticien dans les soins en psychiatrie"
                 br
                 |Claudine Favero IRUS et Andrea Ehretsmann (Genève)
@@ -113,7 +112,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m4")
+                = f.radio_button(:type_morning, "Maîtrise de l’agitation psychomotrice")
                 |"Maîtrise de l’agitation psychomotrice : méthode CFB ®"
                 br
                 |Nicolas Weiss et Axel Moreau (Valais)
@@ -121,7 +120,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m5")
+                = f.radio_button(:type_morning, "Psychopharmacologie d’urgence")
                 |"Psychopharmacologie d’urgence "
                 br
                 |Chin Eap Bin (Vaud)
@@ -129,7 +128,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_morning, "m6")
+                = f.radio_button(:type_morning, "Chambre des soins intensifs")
                 |"Chambre des soins intensifs : vécu du patient et alliance thérapeutique"
                 br
                 |Aurélie Perritaz (Fribourg)
@@ -142,7 +141,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a1")
+                = f.radio_button(:type_afternoon, "Une alternative à la gestion contraignante de la crise")
                 |"Une alternative à la gestion contraignante de la crise"
                 br
                 |Marina Jovanova, Francesca Brazzola (Tessin)
@@ -150,7 +149,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a2")
+                = f.radio_button(:type_afternoon, "De la chambre fermée aux soins intensifs de psychiatrie")
                 |"De la chambre fermée aux soins intensifs de psychiatrie"
                 br
                 |Corinne Nalier et Myriam Vaucher (Genève)
@@ -158,7 +157,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a3")
+                = f.radio_button(:type_afternoon, "Intégration d’un pair praticien dans les soins en psychiatrie")
                 |"Intégration d’un pair praticien dans les soins en psychiatrie"
                 br
                 |Claudine Favero IRUS et Andrea Ehretsmann (Genève)
@@ -166,7 +165,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a4")
+                = f.radio_button(:type_afternoon, "Maîtrise de l’agitation psychomotrice")
                 |"Maîtrise de l’agitation psychomotrice : méthode CFB ®"
                 br
                 |Nicolas Weiss et Axel Moreau (Valais)
@@ -174,7 +173,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a5")
+                = f.radio_button(:type_afternoon, "Psychopharmacologie d’urgence")
                 |"Psychopharmacologie d’urgence"
                 br
                 |Chin Eap Bin (Vaud)
@@ -182,7 +181,7 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_afternoon, "a6")
+                = f.radio_button(:type_afternoon, "Chambre des soins intensifs")
                 |"Chambre des soins intensifs : vécu du patient et alliance thérapeutique"
                 br
                 |Aurélie Perritaz (Fribourg)
@@ -226,6 +225,17 @@
         .row
           .col-md-4.col-md-offset-4
             =f.button "Je m'inscris", :class => 'btn btn-success'
-.row
-  .logodiv
-    img.logoimg src=image_path("logo_HESAV.png")
+.row.footer-firstrow
+  .col-md-4
+    img src=image_path("footer_psy16_hesav.png")
+  .col-md-4
+    img src=image_path("footer_psy16_nant.png")
+  .col-md-4
+    img src=image_path("footer_psy16_valais.png")
+.row.footer-secondrow
+  .col-md-4
+    img src=image_path("footer_psy16_tessin.png")
+  .col-md-4
+    img src=image_path("footer_psy16_hug.png")
+  .col-md-4
+    img src=image_path("footer_psy16_chuv.png")
