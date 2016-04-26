@@ -237,6 +237,18 @@ fr:
         job: "Fonction"
         email: "Email"
         assistance: "Demande de traduction simultanée"
+      psy16_registration:
+        title: "Titre"
+        last_name: "Nom"
+        first_name: "Prénom"
+        street: "Rue"
+        npa: "NPA"
+        city: "Ville"
+        country: "Pays"
+        employer: "Employeur"
+        job: "Profession"
+        email: "Email"
+        assistance: "Demande de traduction simultanée"
     errors:
       models:
         gouveole_registration:

@@ -36,18 +36,25 @@
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
               .col-md-4.col-sm-2.col-xs-2
-                label Rue
+                label Rue*
               .col-md-4.col-sm-4.col-xs-4
                 = f.text_field(:street, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
               .col-md-4.col-sm-2.col-xs-2
-                label Npa / Localité
+                label Npa / Localité*
               .col-md-1.col-sm-1.col-xs-1
                 = f.text_field(:npa, class: "form-control")
               .col-md-3.col-sm-3.col-xs-3
                 = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Pays*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:country, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
@@ -73,29 +80,142 @@
           .col-md-4.col-sm-2.col-xs-2
             p 
               |(*) champs obligatoires
-      #add-infos
-        .row
-          .col-md-12
-            h3
-              span Informations
-        .row.content    
-          p L’inscription donne droit à l’entrée à la Conférence d’ouverture du jeudi 23 avril 2015. Les personnes souhaitant assister à la Conférence d’ouverture sans s’inscrire au colloque peuvent s’acquitter sur place d’un montant de CHF 20.- sans remplir ce formulaire.
       #registration-info
         .row
           .col-md-12
             h3
-              span Type d'inscription
+              span SESSIONS PARALLELES – MATIN (UNE AU CHOIX)
         .row
-          .col-md-4.col-md-offset-3
-            |PAIEMENT OBLIGATOIRE EN LIGNE
-        .row
-          .col-md-4.col-md-offset-4
+          .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_price, "pay")
+                = f.radio_button(:type_morning, "m1")
+                |"Une alternative à la gestion contraignante de la crise"
+                br
+                |Marina Jovanova, Francesca Brazzola (Tessin)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_morning, "m2")
+                |"De la chambre fermée aux soins intensifs de psychiatrie"
+                br
+                |Corinne Nalier et Myriam Vaucher (Genève)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_morning, "m3")
+                |"Intégration d’un pair praticien dans les soins en psychiatrie"
+                br
+                |Claudine Favero IRUS et Andrea Ehretsmann (Genève)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_morning, "m4")
+                |"Maîtrise de l’agitation psychomotrice : méthode CFB ®"
+                br
+                |Nicolas Weiss et Axel Moreau (Valais)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_morning, "m5")
+                |"Psychopharmacologie d’urgence "
+                br
+                |Chin Eap Bin (Vaud)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_morning, "m6")
+                |"Chambre des soins intensifs : vécu du patient et alliance thérapeutique"
+                br
+                |Aurélie Perritaz (Fribourg)
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span SESSIONS PARALLELES – APRES-MIDI (UNE AU CHOIX)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a1")
+                |"Une alternative à la gestion contraignante de la crise"
+                br
+                |Marina Jovanova, Francesca Brazzola (Tessin)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a2")
+                |"De la chambre fermée aux soins intensifs de psychiatrie"
+                br
+                |Corinne Nalier et Myriam Vaucher (Genève)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a3")
+                |"Intégration d’un pair praticien dans les soins en psychiatrie"
+                br
+                |Claudine Favero IRUS et Andrea Ehretsmann (Genève)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a4")
+                |"Maîtrise de l’agitation psychomotrice : méthode CFB ®"
+                br
+                |Nicolas Weiss et Axel Moreau (Valais)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a5")
+                |"Psychopharmacologie d’urgence"
+                br
+                |Chin Eap Bin (Vaud)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_afternoon, "a6")
+                |"Chambre des soins intensifs : vécu du patient et alliance thérapeutique"
+                br
+                |Aurélie Perritaz (Fribourg)
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span CHOIX DE VOTRE LUNCH BOX
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_lunch, "veg")
+                |Végétarien (ovo-lacto)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_lunch, "standard")
+                |Standard
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span INSCRIPTION EN LIGNE OBLIGATOIRE
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "pay",:checked => true)
                 |Tarif normal // 120.-
         .row
-          .col-md-4.col-md-offset-4
+          .col-md-5.col-md-offset-3
             .radio
               label
                 = f.radio_button(:type_price, "free")
