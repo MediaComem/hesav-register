@@ -17,3 +17,6 @@
 
 # Ignore the .env file
 .env
+
+# Ignore all files for JetBrains IDE
+.idea
