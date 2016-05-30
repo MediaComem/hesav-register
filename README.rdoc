@@ -27,6 +27,18 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
+== Database Configuration
+
+The <tt>config/database.yml</tt> file uses environment variable for some config values. Each contributor must have a <tt>.env</tt> file in the app root with values for the following environment variable:
+
+* <tt>REGISTER_DB_USER</tt>
+
+=== Example
+    
+<tt>.env</tt> content
+    REGISTER_DB_USER=[your_db_username]
+
+== URLS
 
 ###ACCEPTED URL###
 http://localhost:3000/gouveole_registrations/accepted?orderID=test_4&currency=CHF&amount=500&PM=CreditCard&ACCEPTANCE=test123&STATUS=9&CARDNO=XXXXXXXXXXXX1111&ED=0215&CN=Julien+Le+Glaunec&TRXDATE=07%2F30%2F14&PAYID=33617925&NCERROR=0&BRAND=VISA&IPCTY=CH&CCCTY=US&ECI=12&CVCCheck=NO&AAVCheck=NO&VC=NO&IP=193%2E134%2E216%2E2&SHASIGN=9A061DDDE88F0498426659D1451AAAF257361F9A
