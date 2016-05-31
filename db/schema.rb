@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422074926) do
+ActiveRecord::Schema.define(version: 20160531123847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,25 @@ ActiveRecord::Schema.define(version: 20160422074926) do
     t.integer  "event_id"
     t.boolean  "certified_infos"
     t.boolean  "accept_conditions"
+  end
+
+  create_table "js16_registrations", force: true do |t|
+    t.string   "title"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "street"
+    t.integer  "npa"
+    t.string   "city"
+    t.string   "email"
+    t.string   "employer"
+    t.string   "shopID"
+    t.string   "environment"
+    t.string   "language"
+    t.boolean  "payed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.hstore   "registration_type"
   end
 
   create_table "nursing15_registrations", force: true do |t|
