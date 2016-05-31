@@ -67,53 +67,19 @@
             h3
               span ATELIERS À CHOIX
         .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "Une alternative à la gestion contraignante de la crise")
-                |"Une alternative à la gestion contraignante de la crise"
-                br
-                |Marina Jovanova, Francesca Brazzola (Tessin)
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2.text-right
+                label 1<sup>er</sup> CHOIX*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.select(:type_choice_1, [['Vieillesse et mise en sens des pratiques de soins', 'ATELIER 1'], ['Des nouveaux âges : vulnérabilité et marginalisation', 'ATELIER 2'], ['Lieux ouverts, lieux fermés : le vieillissement au défi des lieux de vie', 'ATELIER 3']], {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
         .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "De la chambre fermée aux soins intensifs de psychiatrie")
-                |"De la chambre fermée aux soins intensifs de psychiatrie"
-                br
-                |Corinne Nalier et Myriam Vaucher (Genève)
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "Intégration d’un pair praticien dans les soins en psychiatrie")
-                |"Intégration d’un pair praticien dans les soins en psychiatrie"
-                br
-                |Claudine Favero IRUS et Andrea Ehretsmann (Genève)
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "Maîtrise de l’agitation psychomotrice")
-                |"Maîtrise de l’agitation psychomotrice : méthode CFB ®"
-                br
-                |Nicolas Weiss et Axel Moreau (Valais)
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "Psychopharmacologie d’urgence")
-                |"Psychopharmacologie d’urgence "
-                br
-                |Chin Eap Bin (Vaud)
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_morning, "Chambre des soins intensifs")
-                |"Chambre des soins intensifs : vécu du patient et alliance thérapeutique"
-                br
-                |Aurélie Perritaz (Fribourg)
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2.text-right
+                label 2<sup>eme</sup> CHOIX*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.select(:type_choice_2, [['Vieillesse et mise en sens des pratiques de soins', 'ATELIER 1'], ['Des nouveaux âges : vulnérabilité et marginalisation', 'ATELIER 2'], ['Lieux ouverts, lieux fermés : le vieillissement au défi des lieux de vie', 'ATELIER 3']], {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
       #registration-info
         .row
           .col-md-12
