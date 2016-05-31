@@ -249,18 +249,6 @@ fr:
         job: "Profession"
         email: "Email"
         assistance: "Demande de traduction simultanée"
-      js16_registration:
-        last_name: "Nom"
-        first_name: "Prénom"
-        street: "Rue"
-        npa: "NPA"
-        city: "Ville"
-        country: "Pays"
-        employer: "Employeur"
-        email: "Email"
-        type_choice_1: "1er CHOIX"
-        type_choice_2: "2eme CHOIX"
-        assistance: "Demande de traduction simultanée"
     errors:
       models:
         gouveole_registration:

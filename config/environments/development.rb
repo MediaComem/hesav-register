@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -39,12 +39,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => 'caa917f9354ea2',
-    :password => 'de646786cfb1de',
+    :user_name => '74476af4d890edc0',
+    :password => '857f568cbfece5',
     :address => 'mailtrap.io',
     :domain => 'mailtrap.io',
     :port => '2525',
     :authentication => :cram_md5
   }
-
+  
 end

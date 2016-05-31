@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160531123847) do
   end
 
   create_table "js16_registrations", force: true do |t|
+    t.string   "title"
     t.string   "last_name"
     t.string   "first_name"
     t.string   "street"

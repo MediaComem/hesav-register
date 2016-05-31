@@ -21,7 +21,7 @@ class Js16RegistrationsController < ApplicationController
   # TODO : Modifier le code pour l'adapter à js16
   def admin
     date_start = DateTime.new(2016, 05, 02, 00, 00)
-    registrations = Js16Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").all
+    registrations = Psy16Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
 
     respond_to do |format|
@@ -38,10 +38,11 @@ class Js16RegistrationsController < ApplicationController
     end
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def new
     event = Event.find_by_short_name!(@event_name)
     if event.open < DateTime.now && event.close > DateTime.now
-      @registration = Js16Registration.new
+      @registration = Psy16Registration.new
     else
       if event.open > DateTime.now
         flash.now[:info] = "The registration is not yet available."
@@ -52,10 +53,11 @@ class Js16RegistrationsController < ApplicationController
     end
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def create
 
     event = Event.find_by_short_name!(@event_name)
-    @registration = Js16Registration.new(post_params)
+    @registration = Psy16Registration.new(post_params)
     @registration.shopID = @shop_id
     @registration.environment = @environment
     @registration.language = @language
@@ -65,10 +67,8 @@ class Js16RegistrationsController < ApplicationController
       when "free"
         @registration.type_price = 'free'
         @registration.payed = true
-      when "normal"
-        @registration.type_price = '100.00'
-      when "reduced"
-        @registration.type_price = '80.00'
+      when "pay"
+        @registration.type_price = '120.00'
       else
         @registration.type_price = '-1'
     end
@@ -87,6 +87,7 @@ class Js16RegistrationsController < ApplicationController
     end
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def accepted
 
     getParams = request.query_parameters
@@ -99,7 +100,7 @@ class Js16RegistrationsController < ApplicationController
       if getParams["orderID"] != nil
         # La reference de paiement Postfinance. Attention, cette reference est une concatenation du shopID et de l’orderID transmis precedemment (ex. myShopID_myOrderID)
         orderID_back = getParams["orderID"].split('_')[1]
-        registration = Js16Registration.find_by_id(orderID_back)
+        registration = Psy16Registration.find_by_id(orderID_back)
         if registration == nil
           msg = "PostFinance :: Accept Action :: Not Found => (The registration with the id #"+orderID_back+" has not been found)"
           accepted_with_error(msg, getParams)
@@ -119,6 +120,7 @@ class Js16RegistrationsController < ApplicationController
 
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def decline
 
     getParams = request.query_parameters
@@ -128,6 +130,7 @@ class Js16RegistrationsController < ApplicationController
 
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def cancel
 
     getParams = request.query_parameters
@@ -137,6 +140,7 @@ class Js16RegistrationsController < ApplicationController
 
   end
 
+  # TODO : Modifier le code pour l'adapter à js16
   def exception
 
     getParams = request.query_parameters
@@ -153,7 +157,7 @@ class Js16RegistrationsController < ApplicationController
 
   # TODO : Modifier le code pour l'adapter à js16
   def post_params
-    params.require(:js16_registration).permit(:last_name, :first_name, :type_price, :type_choice_1, :type_choice_2, :city, :email, :street, :npa, :employer)
+    params.require(:psy16_registration).permit(:last_name, :first_name, :type_price, :type_afternoon, :type_lunch, :type_morning, :city, :email, :street, :npa, :employer, :job, :country, :title)
   end
 
   # TODO : Modifier le code pour l'adapter à js16
@@ -190,21 +194,21 @@ class Js16RegistrationsController < ApplicationController
     logger.info msg
     flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
     flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
-    Js16Mailer.success_email(registration).deliver
+    Psy16Mailer.success_email(registration).deliver
   end
 
   # TODO : Modifier le code pour l'adapter à js16
   def payment_not_accepted(msg, params)
     logger.error msg
     flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-    Js16Mailer.error_email(msg, params).deliver
+    Psy16Mailer.error_email(msg, params).deliver
   end
 
   # TODO : Modifier le code pour l'adapter à js16
   def accepted_with_error(msg, params)
     logger.error msg
     flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
-    Js16Mailer.error_email(msg, getParams).deliver
+    Psy16Mailer.error_email(msg, getParams).deliver
   end
 
   protected
