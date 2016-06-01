@@ -1,7 +1,6 @@
 class CreateJs16Registration < ActiveRecord::Migration
   def change
     create_table :js16_registrations do |t|
-      t.string :title
       t.string :last_name
       t.string :first_name
       t.string :street
