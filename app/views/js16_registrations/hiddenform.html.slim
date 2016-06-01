@@ -1,0 +1,12 @@
+h1 redirecting...
+form action="http://epayproxy.heig-vd.ch" method="post" id="epayPaymentForm" name="epayPaymentForm"
+  input type="hidden" name="shopID" value="#{@shop_id}"
+  input type="hidden" name="orderID" value="#{@registration.id.to_s}"
+  input type="hidden" name="amount" value="#{@registration.type_price}"
+  input type="hidden" name="language" value="#{@registration.language}"
+  input type="hidden" name="environment" value="#{@registration.environment}"
+  input type="hidden" name="CN" value="#{@registration.first_name} #{@registration.last_name}"
+  input type="hidden" name="EMAIL" value="#{@registration.email}"
+  input type="hidden" name="owneraddress" value="#{@registration.city}"
+  input type="hidden" name="language" value="fr_FR"
+= javascript_tag "$('#epayPaymentForm').submit();"

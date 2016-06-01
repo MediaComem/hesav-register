@@ -92,11 +92,26 @@ Rails.application.routes.draw do
     end
   end
 
-    # Soigner la mort le 3 novembre
+  # Soigner la mort le 3 novembre
   get '/scientifique14_registrations' => 'death14_registrations#new'
   get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
-  
+
   resources :death14_registrations, path: 'scientifique14_registrations' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
+  # Journées scientifiques 2016
+  get '/js16' => 'js16_registrations#new'
+  get '/js16/admin(.:format)', to: 'js16_registrations#admin', as: 'js16_admin'
+
+  resources :js16_registrations, path: 'js16' do
     collection do
       get 'new'
       get 'accepted'

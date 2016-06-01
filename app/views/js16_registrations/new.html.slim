@@ -1,0 +1,131 @@
+.row
+  .blocktitle.col-md-12
+    p DÉLAI D’INSCRIPTION : 1 NOVEMBRE 2016
+.row
+  .col-md-12
+    = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
+      - @registration.errors.full_messages.each do |msg|
+        .row
+          .col-md-6
+            p.bg-danger.text-danger #{msg}
+      #perso-infos
+        .row
+          .col-md-12
+            h3
+              span Informations personnelles
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Nom*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:last_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Prénom*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:first_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Rue
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:street, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Npa / Localité
+              .col-md-1.col-sm-1.col-xs-1
+                = f.text_field(:npa, class: "form-control")
+              .col-md-3.col-sm-3.col-xs-3
+                = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Société / Employeur*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:employer, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2
+                label Email*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4.col-sm-2.col-xs-2
+            p
+              |(*) champs obligatoires
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span ATELIERS À CHOIX
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2.text-right
+                label 1<sup>er</sup> CHOIX*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.select(:type_choice_1, @ateliers, {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-2.col-xs-2.text-right
+                label 2<sup>eme</sup> CHOIX*
+              .col-md-4.col-sm-4.col-xs-4
+                = f.select(:type_choice_2, @ateliers, {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
+      #payment-info
+        .row
+          .col-md-12
+            h3
+              span PAIEMENT OBLIGATOIRE EN LIGNE
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "normal", :checked => true)
+                |Tarif normal // 100.-
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "reduced")
+                |Tarif normal // 80.-
+                br
+                span.small
+                  |(étudiants hors HESAV, AVS, AI, apprentis, chômeurs sur présentation d’un justificatif à l’entrée)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "free")
+                |Public interne // GRATUIT
+                br
+                span.small
+                  |(Collaborateurs et étudiants de HESAV)
+        .row
+          .col-md-8.col-md-offset-3
+            = link_to 'Lire les Conditions Générales', "http://forms.hesav.ch/js16/cgv", :target => "_blank"
+        .row
+          .col-md-4.col-md-offset-4
+            = f.button "Je m'inscris", :class => 'btn btn-success'
+.row.footer-firstrow
+  .col-md-4
+    img src=image_path("footer_psy16_hesav.png")
+  .col-md-4
+    img src=image_path("footer_psy16_nant.png")
+  .col-md-4
+    img src=image_path("footer_psy16_valais.png")
+.row.footer-secondrow
+  .col-md-4
+    img src=image_path("footer_psy16_tessin.png")
+  .col-md-4
+    img src=image_path("footer_psy16_hug.png")
+  .col-md-4
+    img src=image_path("footer_psy16_chuv.png")

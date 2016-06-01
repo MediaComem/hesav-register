@@ -1,0 +1,15 @@
+h1 Liste des inscriptions
+= link_to "Export CSV", js16_admin_path(format: :csv)
+table.table
+  thead
+    tr
+      th Nom
+      th Prénom
+      th Date d'inscription
+  tbody
+  - @registrations.each do |registration|
+    tr
+      td =registration.last_name
+      td =registration.first_name
+      td =I18n.l(registration.created_at, :format => (I18n.t 'time.formats.custom'))
+

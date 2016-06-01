@@ -26,3 +26,10 @@ Event.create!(short_name:"psy16",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2016,10,10),
     visible: true)
+
+Event.create!(short_name:"js16",
+    name:"Journée scientifique 2016",
+    description:"Vieillir en institution, vieillesses institutionnalisées. Nouvelles populations, nouveaux lieux, nouvelles pratiques",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2016,11,01),
+    visible: true)
