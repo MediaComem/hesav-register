@@ -16,7 +16,7 @@ class Js16RegistrationsController < ApplicationController
     @ateliers = [
       ['VIEILLESSE ET MISE EN SENS DES PRATIQUES DE SOINS', 'Atelier 1'],
       ['DES NOUVEAUX AGES : VULNERABILITE ET MARGINALISATION', 'Atelier 2'],
-      ['LIEUX OUVERTS, LIEUX FERMES : LE VIELLISSEMENT AU DEFI DES LIEUX DE VIE', '3']
+      ['LIEUX OUVERTS, LIEUX FERMES : LE VIELLISSEMENT AU DEFI DES LIEUX DE VIE', 'Atelier 3']
     ]
 
     # layout
@@ -97,7 +97,6 @@ class Js16RegistrationsController < ApplicationController
 
   end
 
-  # TODO : Modifier le code pour l'adapter à js16
   def accepted
 
     getParams = request.query_parameters
