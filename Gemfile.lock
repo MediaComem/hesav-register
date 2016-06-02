@@ -182,6 +182,3 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vlad
   vlad-git
-
-BUNDLED WITH
-   1.12.5
