@@ -67,20 +67,32 @@
             h3
               span ATELIERS À CHOIX
         .row
-          .form-group.col-md-12.col-sm-12.col-xs-12
-            .row
-              .col-md-4.col-sm-2.col-xs-2.text-right
-                label 1<sup>er</sup> CHOIX*
-              .col-md-4.col-sm-4.col-xs-4
-                = f.select(:type_choice_1, @ateliers, {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 1")
+                |ATELIER 1 :
+                br
+                strong
+                  |VIEILLESSE ET MISE EN SENS DES PRATIQUES DE SOINS
         .row
-          .form-group.col-md-12.col-sm-12.col-xs-12
-            .row
-              .col-md-4.col-sm-2.col-xs-2.text-right
-                label 2<sup>eme</sup> CHOIX*
-              .col-md-4.col-sm-4.col-xs-4
-                = f.select(:type_choice_2, @ateliers, {include_blank: "Sélectionner un atelier"}, {class: "form-control"})
-      #payment-info
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 2")
+                |ATELIER 2 :
+                br
+                strong
+                  |DES NOUVEAUX AGES : VULNERABILITE ET MARGINALISATION
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 3")
+                |ATELIER 3 :
+                br
+                strong
+                  |LIEUX OUVERTS, LIEUX FERMES : LE VIELLISSEMENT AU DEFI DES LIEUX DE VIE
         .row
           .col-md-12
             h3
