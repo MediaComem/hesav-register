@@ -162,7 +162,7 @@ class Js16RegistrationsController < ApplicationController
   private
 
   def post_params
-    params.require(:js16_registration).permit(:last_name, :first_name, :type_price, :type_choice_1, :type_choice_2, :city, :email, :street, :npa, :employer)
+    params.require(:js16_registration).permit(:last_name, :first_name, :type_price, :type_choice, :city, :email, :street, :npa, :employer)
   end
 
   def sha_valid(params)
