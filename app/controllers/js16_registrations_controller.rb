@@ -195,8 +195,8 @@ class Js16RegistrationsController < ApplicationController
 
   def registration_ok(msg, registration)
     logger.info msg
-    flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
-    flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
+    flash.now[:notice_title] = "Nous vous remercions de votre inscription."
+    flash.now[:notice] = "Un courrier électronique vient de vous être envoyé."
     Js16Mailer.success_email(registration).deliver
   end
 
