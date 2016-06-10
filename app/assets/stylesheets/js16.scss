@@ -18,6 +18,9 @@ body {
 
 .row.content {
   padding: 0 50px;
+  h2 ~ ul, h2 ~ p {
+    margin-left: 15px;
+  }
 }
 
 .banner {
