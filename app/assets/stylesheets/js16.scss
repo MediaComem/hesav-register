@@ -17,7 +17,7 @@ body {
 }
 
 .row.content {
-  padding-left: 65px;
+  padding: 0 50px;
 }
 
 .banner {
@@ -110,9 +110,7 @@ input:focus:invalid:focus {
 }
 
 .logoimg {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  float: right;
 }
 
 .blockcontent {
