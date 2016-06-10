@@ -24,23 +24,23 @@ body {
 .banner {
   padding-left: 0;
   padding-right: 0;
-  //overflow: hidden;
+  overflow: hidden;
 }
 
-//.title {
-//  padding: 40px 50px;
-//  letter-spacing: 0.05em;
-//  h1 {
-//    font-size: 3em;
-//  }
-//  h2 {
-//    font-size: 2em;
-//    font-style: italic;
-//  }
-//  h3 {
-//    background: none;
-//  }
-//}
+.title {
+  padding: 40px 50px;
+  letter-spacing: 0.05em;
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+    font-style: italic;
+  }
+  h3 {
+    background: none;
+  }
+}
 
 .blocktitle {
   color: $main-color;
