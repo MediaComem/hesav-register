@@ -1,6 +1,8 @@
 .row
   .blocktitle.col-md-12
-    p DÉLAI D’INSCRIPTION : 1 NOVEMBRE 2016
+    p
+      |DÉLAI D’INSCRIPTION :
+      span.date  1 NOVEMBRE 2016
 .row
   .col-md-12
     = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
@@ -16,49 +18,49 @@
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
-                label Nom*
               .col-md-4.col-sm-4.col-xs-4
+                label Nom*
+              .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:last_name, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
-                label Prénom*
               .col-md-4.col-sm-4.col-xs-4
+                label Prénom*
+              .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:first_name, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
-                label Rue
               .col-md-4.col-sm-4.col-xs-4
+                label Rue
+              .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:street, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
+              .col-md-4.col-sm-4.col-xs-4
                 label Npa / Localité
-              .col-md-1.col-sm-1.col-xs-1
+              .col-md-1.col-sm-2.col-xs-3
                 = f.text_field(:npa, class: "form-control")
-              .col-md-3.col-sm-3.col-xs-3
+              .col-md-3.col-sm-4.col-xs-5
                 = f.text_field(:city, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
-                label Société / Employeur*
               .col-md-4.col-sm-4.col-xs-4
+                label Société / Employeur*
+              .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:employer, class: "form-control")
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
-              .col-md-4.col-sm-2.col-xs-2
-                label Email*
               .col-md-4.col-sm-4.col-xs-4
+                label Email*
+              .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:email, class: "form-control")
         .row
-          .col-md-4.col-sm-2.col-xs-2
+          .col-md-4.col-sm-4.col-xs-6
             p
               |(*) champs obligatoires
       #registration-info
@@ -67,7 +69,7 @@
             h3
               span ATELIERS À CHOIX
         .row
-          .col-md-5.col-md-offset-3
+          .col-md-5.col-md-offset-3.col-xs-12
             .radio
               label
                 = f.radio_button(:type_choice, "ATELIER 1")
