@@ -77,7 +77,7 @@ class Js16RegistrationsController < ApplicationController
       when "normal"
         @registration.type_price = '100.00'
       when "reduced"
-        @registration.type_price = '80.00'
+        @registration.type_price = '50.00'
       else
         @registration.type_price = '-1'
     end
