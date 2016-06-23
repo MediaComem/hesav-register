@@ -4,8 +4,8 @@ class Js16Mailer < ActionMailer::Base
 
   def init_values
 
-    @super_admin = 'mathias.oberson@heig-vd.ch'
-    # @super_admin = "adrien.bigler@heig-vd.ch"
+    # @super_admin = 'mathias.oberson@heig-vd.ch'
+    @super_admin = "adrien.bigler@heig-vd.ch"
     # @super_admin = "julien.le-glaunec@heig-vd.ch"
 
   end

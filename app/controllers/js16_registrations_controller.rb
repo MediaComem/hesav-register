@@ -10,8 +10,8 @@ class Js16RegistrationsController < ApplicationController
 
     #constants
     @event_name = 'js16'
-    @shop_id = 'js16dev' # js16dev / js16
-    @environment = 'test' # test/prod
+    @shop_id = 'js16' # js16dev / js16
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
     @ateliers = [
       ['VIEILLESSE ET MISE EN SENS DES PRATIQUES DE SOINS', 'Atelier 1'],
