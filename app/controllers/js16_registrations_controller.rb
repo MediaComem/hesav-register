@@ -26,7 +26,7 @@ class Js16RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2016, 05, 02, 00, 00)
+    date_start = DateTime.new(2016, 06, 22, 00, 00)
     registrations = Js16Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
 
