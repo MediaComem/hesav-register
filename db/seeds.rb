@@ -33,3 +33,10 @@ Event.create!(short_name:"js16",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2016,11,01),
     visible: true)
+
+Event.create!(short_name:"jpsy16",
+    name:"Journée de Psychiatrie 2016",
+    description:"L’EMPATHIE À L’ÉPREUVE DU FEU",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2016,11,19),
+    visible: true)

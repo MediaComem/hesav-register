@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html
+  head
+    title HESAV - 8ème Journée de Psychiatrie 2016
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "js16"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1"
+  body
+    .container
+      .row
+        .col-sm-12.banner
+          img src=image_path("banner_jpsy16.jpg")
+      .row
+        .col-md-12
+          == render 'shared/flash'
+      = yield
+      .row
+        .logodiv
+          img.logoimg src=image_path("logo_HESAV.png")
