@@ -8,7 +8,17 @@ body {
   background-color: #dcdcdc;
   color: $main-color;
 }
-
+a{
+  color: #000;
+  &:hover{
+    color: #000;
+  }
+}
+.mail{
+  a{
+    color: $main-color;
+  }
+}
 .container {
   background-color: #fff;
   max-width: 1140px;
