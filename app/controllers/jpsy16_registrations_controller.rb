@@ -10,8 +10,8 @@ class Jpsy16RegistrationsController < ApplicationController
 
     #constants
     @event_name = 'jpsy16'
-    @shop_id = 'jpsy16dev' # jpsy16dev / jpsy16
-    @environment = 'test' # test/prod
+    @shop_id = 'jpsy16' # jpsy16dev / jpsy16
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
     @ateliers = [
       ['VIEILLESSE ET MISE EN SENS DES PRATIQUES DE SOINS', 'Atelier 1'],
