@@ -8,7 +8,7 @@ class Jpsy162CsvService
               "Rue",
               "Npa",
               "Localité",
-              "Employeurx",
+              "Employeur",
               "Prix",
               "Payé",
               "Événement",

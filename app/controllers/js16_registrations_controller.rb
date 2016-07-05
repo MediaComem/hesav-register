@@ -35,7 +35,7 @@ class Js16RegistrationsController < ApplicationController
       format.json { render json: @registrations }
       format.csv {
 
-        csv_string = Csv2Service.generate(registrations)
+        csv_string = JS16Csv2Service.generate(registrations)
 
         send_data csv_string.encode("iso-8859-1", :invalid => :replace, :undef => :replace, :replace => "?"),
                   :type => 'text/csv; charset=iso-8859-1; header=present',
