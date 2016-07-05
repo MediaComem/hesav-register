@@ -1,4 +1,4 @@
-class Csv2Service
+class Jpsy162CsvService
   def self.generate(registrations)
     csv_string = CSV.generate(col_sep: ";") do |csv|
       csv << ["Id",
