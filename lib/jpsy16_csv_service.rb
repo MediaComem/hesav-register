@@ -8,7 +8,7 @@ class Csv2Service
               "Rue",
               "Npa",
               "Localité",
-              "Employeur",
+              "Employeurx",
               "Prix",
               "Payé",
               "Événement",
