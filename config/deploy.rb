@@ -1,7 +1,7 @@
 set :application, 'hesav-forms'
 set :domain, 'webwww06'
 set :deploy_to, '/srv/www/hesav-forms'
-set :repository, 'git@gitlab.com:sysin/register.git'
+set :repository, 'https://github.com/MediaComem/hesav-register.git'
 set :revision, 'origin/master'
 set :skip_scm, false
 set :sudo_flags, sudo_flags << '-S'
