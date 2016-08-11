@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: register_dev
+  host: 127.0.0.1
+  pool: 5
+  username: <%= ENV['REGISTER_DB_USER'] %>
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: register_test
+  host: 127.0.0.1
+  pool: 5
+  username: <%= ENV['REGISTER_DB_USER'] %>
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['REGISTER_DB_NAME'] %>
+  host: <%= ENV['REGISTER_DB_HOST'] %>
+  username: <%= ENV['REGISTER_DB_USERNAME'] %>
+  password: <%= ENV['REGISTER_DB_PASSWORD'] %>
+  pool: 5
