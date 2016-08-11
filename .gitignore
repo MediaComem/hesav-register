@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore the .env file
-.env
+.env*
 
 # Ignore all files for JetBrains IDE
 .idea
