@@ -25,6 +25,11 @@ namespace :vlad do
     run "source ~/.rvm/scripts/rvm && cd #{current_path} && RAILS_ENV=production bundle exec rake assets:precompile"
   end
 
+  desc "Copy .env file"
+  remote_task :copy_env do
+    rsync ".env.production", "#{current_path}/.env"
+  end
+
   desc "Refresh Passenger"
   remote_task :refresh_passenger do
     run "touch #{current_path}/tmp/restart.txt"
@@ -36,6 +41,7 @@ namespace :vlad do
     vlad:update
     vlad:bundle_update
     vlad:precompile_assets
+    vlad:copy_env
     vlad:refresh_passenger
   )
 end
