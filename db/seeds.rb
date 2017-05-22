@@ -40,3 +40,10 @@ Event.create!(short_name:"jpsy16",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2016,11,19),
     visible: true)
+
+Event.create!(short_name:"auto17",
+    name:"Journée scientifique sage-femme",
+    description:"Autonomie et responsabilité des sages-femmes en milieu hospitalier",
+    open: DateTime.new(2017,01,01),
+    close: DateTime.new(2017,11,19),
+    visible: true)

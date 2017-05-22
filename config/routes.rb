@@ -136,6 +136,21 @@ Rails.application.routes.draw do
       get 'cgv'
     end
   end
+
+  # Autonomie et responsabilité des sages-femmes en milieu hospitalier
+  get '/auto17' => 'auto17_registrations#new'
+  get '/auto17/admin(.:format)', to: 'auto17_registrations#admin', as: 'auto17_admin'
+
+  resources :auto17_registrations, path: 'auto17' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
   #OTHER
   #...
 
