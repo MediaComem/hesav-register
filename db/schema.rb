@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170522064318) do
     t.string   "city"
     t.string   "email"
     t.string   "employer"
+    t.string   "job"
     t.string   "shopID"
     t.string   "environment"
     t.string   "language"

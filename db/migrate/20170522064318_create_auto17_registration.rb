@@ -8,6 +8,7 @@ class CreateAuto17Registration < ActiveRecord::Migration
       t.string :city
       t.string :email
       t.string :employer
+      t.string :job
       t.string :shopID
       t.string :environment
       t.string :language
