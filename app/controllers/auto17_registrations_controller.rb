@@ -149,7 +149,7 @@ class Auto17RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:auto17_registration).permit(:last_name,:first_name,:type_price,:type_afternoon,:type_lunch,:type_morning,:city,:email,:street,:npa,:employer,:job,:country,:title)
+      params.require(:auto17_registration).permit(:last_name,:first_name,:type_price,:type_afternoon,:type_lunch,:type_morning,:city,:email,:street,:npa,:employer,:job,:title)
     end
 
     def sha_valid(params)
@@ -184,19 +184,19 @@ class Auto17RegistrationsController < ApplicationController
       logger.info msg
       flash.now[:notice_title] = "Merci, votre inscription a bien été enregistrée"
       flash.now[:notice] = "Un message automatique de confirmation vient d'être envoyé à votre adresse mail."
-      auto17Mailer.success_email(registration).deliver
+      Auto17Mailer.success_email(registration).deliver
     end
 
     def payment_not_accepted(msg,params)
       logger.error msg
       flash[:notice_error] = "Une erreur est survenue. Veuillez recommencer le processus d'inscription."
-      auto17Mailer.error_email(msg,params).deliver
+      Auto17Mailer.error_email(msg,params).deliver
     end
 
     def accepted_with_error(msg,params)
       logger.error msg
       flash.now[:notice] = "L'administrateur a été informé et vous serez contacté prochainement."
-      auto17Mailer.error_email(msg,getParams).deliver
+      Auto17Mailer.error_email(msg,getParams).deliver
     end
   protected
     def authenticate
