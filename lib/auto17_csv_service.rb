@@ -10,9 +10,8 @@ class Csv2Service
               "Localité",
               "Employeur",
               "Profession",
-              "Matin",
-              "Après-midi",
-              "Lunch",
+              "Traduction",
+              "Repas",
               "Prix",
               "Payé",
               "Événement",
@@ -25,6 +24,16 @@ class Csv2Service
         else
           payed = "non"
         end
+        if registration.food == true
+          food = "oui"
+        else
+          food = "non"
+        end
+        if registration.translate == true
+          translate = "oui"
+        else
+          translate = "non"
+        end
 
         csv << [registration.id,
           registration.last_name,
@@ -35,9 +44,8 @@ class Csv2Service
           registration.city,
           registration.employer,
           registration.job,
-          registration.type_morning,
-          registration.type_afternoon,
-          registration.type_lunch,
+          translate,
+          food,
           registration.type_price,
           payed,
           registration.event.name,

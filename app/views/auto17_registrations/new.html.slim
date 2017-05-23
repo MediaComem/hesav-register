@@ -40,7 +40,7 @@
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
               .col-md-4.col-sm-4.col-xs-4
-                label Npa / Localité
+                label Npa* / Localité*
               .col-md-1.col-sm-2.col-xs-3
                 = f.text_field(:npa, class: "form-control")
               .col-md-3.col-sm-4.col-xs-5
@@ -66,6 +66,23 @@
                 label Email*
               .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:email, class: "form-control")
+      #additionnal-info
+        .row
+          .col-md-12
+            h3
+              span Informations complémentaires
+        .row
+          .col-md-5.col-md-offset-3
+            .checkbox
+              label
+                = f.check_box(:food)
+                |REPAS : Je souhaite réserver un repas à la cafeteria de HESAV, prix 
+        .row
+          .col-md-5.col-md-offset-3
+            .checkbox
+              label
+                = f.check_box(:translate)
+                |Je souhaite bénéficier de la traduction simultanée (allemand et/ou anglais vers le français)
         .row
           .col-md-4.col-sm-4.col-xs-6
             p
@@ -92,7 +109,7 @@
                   |(Collaborateurs et étudiants de HESAV)
         .row
           .col-md-8.col-md-offset-3
-            = link_to 'Lire les Conditions Générales', "http://forms.hesav.ch/jpsy16/cgv", :target => "_blank"
+            = link_to 'Lire les Conditions Générales', "auto17/cgv"
         .row.success-section
           .col-md-4.col-md-offset-4
             = f.button "S'inscrire", :class => 'btn btn-success'
