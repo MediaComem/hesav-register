@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'application#index'
 
+  resources :charges
+
   # GOUVEOLE
   get '/gouveole_registrations' => 'gouveole_registrations#new'
   get '/gouveole_registrations/admin(.:format)', to: 'gouveole_registrations#admin', as: 'gouveole_admin'

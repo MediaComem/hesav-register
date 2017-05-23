@@ -4,9 +4,9 @@ html
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
   body
     p Bonjour,
-    p Nous vous remercions de votre inscription à la 2ème journée latine du soin psychique:
+    p Nous vous remercions de votre inscription à la Journée scientifique sage-femme:
     p
-      b « Soin intensif en psychiatrie »
+      b « Autonomie et responsabilité des sages-femmes en milieu hospitalier »
 
     ul
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
@@ -15,8 +15,10 @@ html
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
       - if @registration.type_price == 'free'
         li Votre inscription gratuite a bien été enregistrée.
+      - else if @registration.type_price == 'normal'
+        li Votre paiement de CHF 100.- a bien été enregistré.
       - else
-        li Votre paiement de CHF 120.- a bien été enregistré.
+        li Votre paiement de CHF 50.- a bien été enregistré.
     p Au plaisir de vous accueillir à HESAV, nous vous transmettons nos meilleures salutations.
     b
       p
@@ -24,11 +26,11 @@ html
     span HESAV-Haute Ecole de Santé Vaud
     br 
     span
-      b « Le Soin intensif en psychiatrie »
+      b « Autonomie et responsabilité des sages-femmes en milieu hospitalier »
     br 
-    span 2ème journée latine du soin psychique
+    span Journée scientifique sage-femme
     br
-    span Jeudi 9 juin 2016
+    span Jeudi 5 octobre 2017
     br
     span
       a href="http://www.hesav.ch/autres/news/2016/03/02/save-the-date-le-soin-intensif-en-psychiatrie" Lien vers la conférence
