@@ -52,7 +52,6 @@ end
 
 group :development do
     gem 'pry',"0.9.12.2"
-    gem 'dotenv-rails'
 end
 
 group :development, :test do
