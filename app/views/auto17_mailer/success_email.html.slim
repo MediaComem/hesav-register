@@ -15,10 +15,8 @@ html
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
       - if @registration.type_price == 'free'
         li Votre inscription gratuite a bien été enregistrée.
-      - else if @registration.type_price == 'normal'
-        li Votre paiement de CHF 100.- a bien été enregistré.
       - else
-        li Votre paiement de CHF 50.- a bien été enregistré.
+        li Votre paiement de CHF 140.- a bien été enregistré.
     p Au plaisir de vous accueillir à HESAV, nous vous transmettons nos meilleures salutations.
     b
       p

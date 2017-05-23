@@ -66,11 +66,8 @@ class Auto17RegistrationsController < ApplicationController
       @registration.type_price = 'free'
       @registration.payed = true  
     when "normal"
-      @registration.type_price = '100.00'
-      @amount = 10000
-    when "reduced"
-      @registration.type_price = '50.00'
-      @amount = 5000
+      @registration.type_price = '140.00'
+      @amount = 14000
     else
       @registration.type_price = '-1'
     end
