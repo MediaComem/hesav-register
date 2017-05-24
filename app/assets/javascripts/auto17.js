@@ -16,10 +16,7 @@ $( document ).ready(function() {
 	  // Open Checkout with further options:
 	  var emailadress = $('#auto17_registration_email').val()
 	  var fees = $('input[name=auto17_registration\\[type_price\\]]:checked').val()
-	  var amount = 10000
-	  if(fees === "reduced"){
-	  	amount = 5000
-	  }
+	  var amount = 14000
 	  if(fees != "free"){
 		  	handler.open({
 		    name: 'forms.hesav.ch',
