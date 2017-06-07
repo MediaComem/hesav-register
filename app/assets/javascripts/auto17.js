@@ -17,16 +17,20 @@ $( document ).ready(function() {
 	  var emailadress = $('#auto17_registration_email').val()
 	  var fees = $('input[name=auto17_registration\\[type_price\\]]:checked').val()
 	  var amount = 14000
-	  if(fees != "free"){
+	  if( $('#cgvaccept:checkbox:checked').length>0){
+  		if(fees != "free"){
 		  	handler.open({
 		    name: 'forms.hesav.ch',
 		    description: '',
 		    currency: 'chf',
 		    amount: amount,
 		    email: emailadress
-		  });
-	  }else{
-	  	$("#new_auto17_registration").get(0).submit()
-	  }
+			  });
+		  }else{
+		  	$("#new_auto17_registration").get(0).submit()
+		  } 
+    }else{
+    	alert("Vous devez accepter les conditions générales pour valider votre inscription")
+    }
 	});
 });

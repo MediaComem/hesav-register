@@ -99,6 +99,16 @@
               label
                 = f.check_box(:translate)
                 |Je souhaite bénéficier de la traduction simultanée (allemand et/ou anglais vers le français)
+        .row
+          .col-md-12
+            h3
+              span Conditions générales
+        .row
+          .col-md-12
+            .checkbox
+              label
+                = check_box_tag 'cgvaccept'
+                |J’accepte les conditions générales
       #registration-info
         .row
           .col-md-12
@@ -115,10 +125,10 @@
             .radio
               label
                 = f.radio_button(:type_price, "free", :checked => true)
-                |Public interne // GRATUIT
+                |Public interne étudiant // GRATUIT
                 br
                 span.small
-                  |(Collaborateurs et étudiants de HESAV)
+                  |(HESAV et HEdS-Genève)
         .row
           .col-md-8.col-md-offset-3
             = link_to 'Lire les Conditions Générales', "auto17/cgv"
