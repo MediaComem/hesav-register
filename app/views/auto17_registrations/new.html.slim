@@ -76,15 +76,25 @@
         .row
           .col-md-12
             h3
-              span Informations complémentaires
+              span Repas de midi
+            p La pause de midi est libre. Merci de noter que la reprise des conférences se fera à 13h30 précise.
         .row
-          .col-md-5.col-md-offset-3
+          .col-md-12
+            p Options pour le lunch
+            ul
+              li Cafétérias de HESAV ou du CHUV (inscriptions, voir plus bas)
+              li Petite restauration dans le quartier 
+              li Possibilité d’emmener son pique-nique
             .checkbox
               label
                 = f.check_box(:food)
-                |REPAS : Je souhaite réserver un repas à la cafeteria de HESAV, prix 
+                |REPAS : Je souhaite m’inscrire pour obtenir un bon qui me permettra d’accéder aux cafétérias de HESAV et du CHUV.
         .row
-          .col-md-5.col-md-offset-3
+          .col-md-12
+            h3
+              span Traduction
+        .row
+          .col-md-12
             .checkbox
               label
                 = f.check_box(:translate)
