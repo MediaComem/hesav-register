@@ -3,27 +3,6 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
@@ -38,16 +17,6 @@ The <tt>config/database.yml</tt> file uses environment variable for some config 
 <tt>.env</tt> content
     REGISTER_DB_USER=[your_db_username]
 
-== URLS
+=== Production migration
 
-###ACCEPTED URL###
-http://localhost:3000/gouveole_registrations/accepted?orderID=test_4&currency=CHF&amount=500&PM=CreditCard&ACCEPTANCE=test123&STATUS=9&CARDNO=XXXXXXXXXXXX1111&ED=0215&CN=Julien+Le+Glaunec&TRXDATE=07%2F30%2F14&PAYID=33617925&NCERROR=0&BRAND=VISA&IPCTY=CH&CCCTY=US&ECI=12&CVCCheck=NO&AAVCheck=NO&VC=NO&IP=193%2E134%2E216%2E2&SHASIGN=9A061DDDE88F0498426659D1451AAAF257361F9A
-
-###DECLINE URL###
-http://localhost:3000/gouveole_registrations/decline?orderID=test_9&currency=CHF&amount=500&PM=CreditCard&ACCEPTANCE=&STATUS=2&CARDNO=XXXXXXXXXXXX3333&ED=0220&CN=asdf+dfasd&TRXDATE=07%2F30%2F14&PAYID=33618277&NCERROR=30001001&BRAND=VISA&IPCTY=CH&CCCTY=US&ECI=12&CVCCheck=NO&AAVCheck=NO&VC=NO&IP=193%2E134%2E216%2E2&SHASIGN=73BAC236A30930493F0C4B05B2928E692279AD29
-
-###UNCERTAIN URL###
-http://localhost:3000/gouveole_registrations/exception?orderID=test_10&currency=CHF&amount=500&PM=CreditCard&ACCEPTANCE=&STATUS=92&CARDNO=XXXXXXXXXXXX6666&ED=0218&CN=asdf+dfasd&TRXDATE=07%2F30%2F14&PAYID=33618307&NCERROR=20001001&BRAND=VISA&IPCTY=CH&CCCTY=US&ECI=12&CVCCheck=NO&AAVCheck=NO&VC=NO&IP=193%2E134%2E216%2E2&SHASIGN=84DCC57430C00A093F7A01C6A5EF80ADED380407
-
-###CANCEL URL###
-http://localhost:3000/gouveole_registrations/cancel?orderID=test_11&currency=CHF&amount=500&PM=&ACCEPTANCE=&STATUS=1&CARDNO=&ED=&CN=asdf+dfasd&TRXDATE=07%2F30%2F14&PAYID=33618311&NCERROR=&BRAND=&IPCTY=CH&CCCTY=&ECI=&CVCCheck=&AAVCheck=&VC=&IP=193%2E134%2E216%2E2&SHASIGN=F2167A37AA5C37C83C7D428DA0B56F981FC5EDB5
+`RAILS_ENV=production rake db:migrate`
