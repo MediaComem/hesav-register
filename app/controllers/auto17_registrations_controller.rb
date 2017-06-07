@@ -110,7 +110,7 @@ class Auto17RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:auto17_registration).permit(:last_name,:first_name,:type_price,:type_afternoon,:type_lunch,:type_morning,:city,:email,:street,:npa,:employer,:job,:title,:stripeToken,:food,:translate)
+      params.require(:auto17_registration).permit(:last_name,:first_name,:type_price,:type_afternoon,:type_lunch,:type_morning,:city,:email,:street,:streetnumber,:npa,:employer,:job,:title,:stripeToken,:food,:translate)
     end
 
     def registration_ok(msg,registration)

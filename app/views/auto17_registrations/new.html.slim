@@ -2,7 +2,7 @@
   .blocktitle.col-md-12
     p
       |DÉLAI D’INSCRIPTION :
-      span.date  18 NOVEMBRE 2016
+      span.date  22 SEPTEMBRE 2017
 .row
   .col-md-12
     = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
@@ -33,9 +33,11 @@
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
               .col-md-4.col-sm-4.col-xs-4
-                label Rue*
-              .col-md-4.col-sm-6.col-xs-8
+                label Rue* / Numéro*
+              .col-md-3.col-sm-4.col-xs-5
                 = f.text_field(:street, class: "form-control")
+              .col-md-1.col-sm-2.col-xs-3
+                = f.text_field(:streetnumber, class: "form-control")                
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
@@ -66,6 +68,10 @@
                 label Email*
               .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4.col-sm-4.col-xs-6
+            p
+              |(*) champs obligatoires
       #additionnal-info
         .row
           .col-md-12
@@ -83,10 +89,6 @@
               label
                 = f.check_box(:translate)
                 |Je souhaite bénéficier de la traduction simultanée (allemand et/ou anglais vers le français)
-        .row
-          .col-md-4.col-sm-4.col-xs-6
-            p
-              |(*) champs obligatoires
       #registration-info
         .row
           .col-md-12

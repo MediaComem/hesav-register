@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523151945) do
+ActiveRecord::Schema.define(version: 20170607074129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170523151945) do
     t.hstore   "registration_type"
     t.boolean  "food"
     t.boolean  "translate"
+    t.integer  "streetnumber"
   end
 
   create_table "death14_registrations", force: true do |t|
