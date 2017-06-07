@@ -104,6 +104,8 @@
             h3
               span Conditions générales
         .row
+          .col-md-8
+            = link_to 'Conditions Générales', "cgv"
           .col-md-12
             .checkbox
               label
@@ -129,9 +131,6 @@
                 br
                 span.small
                   |(HESAV et HEdS-Genève)
-        .row
-          .col-md-8.col-md-offset-3
-            = link_to 'Lire les Conditions Générales', "auto17/cgv"
         .row.success-section
           .col-md-4.col-md-offset-4
             = f.button "S'inscrire", :class => 'btn btn-success'
