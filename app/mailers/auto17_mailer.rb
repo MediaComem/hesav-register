@@ -1,5 +1,5 @@
 class Auto17Mailer < ActionMailer::Base
-  default from: "admission@hesav.ch"
+  default from: "noreply@hesav.ch"
   before_filter :init_values
   def init_values
     @super_admin = "adrien.bigler@heig-vd.ch"
