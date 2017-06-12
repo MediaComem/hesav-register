@@ -1,4 +1,4 @@
-class Csv2Service
+class Auto17Csv2Service
   def self.generate(registrations)
     csv_string = CSV.generate(col_sep: ";") do |csv|
       csv << ["Id",
