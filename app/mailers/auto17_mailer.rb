@@ -12,6 +12,6 @@ class Auto17Mailer < ActionMailer::Base
   end
   def success_email(registration)
     @registration  = registration
-    mail(to: @registration.email, bcc: @super_admin, subject: "Confirmation d'inscription")
+    mail(to: @registration.email, bcc: @super_admin, subject: "Confirmation d'inscription / Journée Scientifique Sage-Femme")
   end
 end
