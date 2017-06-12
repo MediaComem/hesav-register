@@ -17,6 +17,14 @@ html
         li Votre inscription gratuite a bien été enregistrée.
       - else
         li Votre paiement de CHF 140.- a bien été enregistré.
+      - if @registration.translate == true
+        li Casque traduction: oui
+      - else
+        li Casque traduction: non
+      - if @registration.food == true
+        li Repas: oui
+      - else
+        li Repas: non
     p Au plaisir de vous accueillir, nous vous transmettons nos meilleures salutations.
     b
       p
