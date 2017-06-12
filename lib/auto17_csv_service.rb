@@ -3,7 +3,7 @@ class Csv2Service
     csv_string = CSV.generate(col_sep: ";") do |csv|
       csv << ["Id",
               "Prénom",
-              "Nom",
+              "Name",
               "Email",
               "Rue",
               "Npa",
