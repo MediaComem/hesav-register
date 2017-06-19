@@ -105,7 +105,7 @@
               span Conditions générales
         .row
           .col-md-8
-            = link_to 'Conditions Générales', asset_path("cgv/auto17.pdf")
+            = link_to 'Conditions Générales', asset_path("cgv/auto17.pdf"), target: "_blank"
           .col-md-12
             .checkbox
               label
@@ -120,13 +120,13 @@
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_price, "normal")
+                = f.radio_button(:type_price, "normal",:checked => true)
                 |Tarif normal // 140.-
         .row
           .col-md-5.col-md-offset-3
             .radio
               label
-                = f.radio_button(:type_price, "free", :checked => true)
+                = f.radio_button(:type_price, "free")
                 |Public étudiant HESAV et HEdS-Genève // GRATUIT**
                 br
                 span.small
