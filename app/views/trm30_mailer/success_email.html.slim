@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p Bonjour,
+    p Nous vous remercions pour votre inscription, vous recevrez d’ici la mi-juillet, toutes les indications nécessaires à l’envoi de votre image.
+    p
+      b Concours TRM 30 ans
+
+    ul
+      li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
+      li Employeur/Institution : #{@registration.employer}
+    p Au plaisir de votre participation, nous vous adressons nos meilleures salutations.
+    b
+      p
+        |---------------------------------------------------------------------------
+    span Au plaisir de votre participation, nous vous adressons nos meilleures salutations.
+    br 
+    p Ceci est un message généré automatiquement, merci de ne pas y répondre.
+    p
+      | Pour toute information complémentaire, vous pouvez nous contacter à l’adresse email :
+      a href="mailto:trm30ans@hesav.ch" trm30ans@hesav.ch
+    b
+      p
+        |---------------------------------------------------------------------------

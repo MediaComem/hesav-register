@@ -94,6 +94,20 @@ Rails.application.routes.draw do
       get 'cgv'
     end
   end
+
+  # Trm30 (Juin 2017)
+  get '/trm30' => 'trm30_registrations#new'
+  get '/trm30/admin(.:format)', to: 'trm30_registrations#admin', as: 'trm30_admin'
+
+  resources :trm30_registrations, path: 'trm30' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+    end
+  end
   # get '/scientifique14_registrations' => 'death14_registrations#new'
   # get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
   

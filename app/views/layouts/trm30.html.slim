@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html
+  head
+    title TRM 30 ans de la filière
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "trm30"
+    = javascript_include_tag "application"
+    = javascript_include_tag "trm30"
+    = csrf_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1"
+  body
+    .container
+      .row
+        .col-sm-12.banner
+          img src=image_path("banner_auto_17.png")
+      .row
+        .col-md-12
+          == render 'shared/flash'
+      = yield

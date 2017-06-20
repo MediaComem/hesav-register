@@ -1,0 +1,92 @@
+.row
+  .blocktitle.col-md-12
+    p
+      |DÉLAI D’INSCRIPTION :
+      span.date  10 Juillet 2017
+.row
+  .col-md-12
+    = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
+      - @registration.errors.full_messages.each do |msg|
+        .row
+          .col-md-6
+            p.bg-danger.text-danger #{msg}
+      #perso-infos
+        .row
+          .col-md-12
+            h3
+              span Informations personnelles
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Nom*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:last_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Prénom*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:first_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Rue* / Numéro*
+              .col-md-3.col-sm-4.col-xs-5
+                = f.text_field(:street, class: "form-control")
+              .col-md-1.col-sm-2.col-xs-3
+                = f.text_field(:streetnumber, class: "form-control")                
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Npa* / Localité*
+              .col-md-1.col-sm-2.col-xs-3
+                = f.text_field(:npa, class: "form-control")
+              .col-md-3.col-sm-4.col-xs-5
+                = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Employeur / Institution*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:employer, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Email*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4.col-sm-4.col-xs-6
+            p
+              |(*) champs obligatoires
+        .row
+          .col-md-12
+            h3
+              span Conditions générales
+        .row
+          .col-md-8
+            = link_to 'Conditions Générales', asset_path("cgv/auto17.pdf"), target: "_blank"
+          .col-md-12
+            .checkbox
+              label
+                = check_box_tag 'cgvaccept'
+                |J’accepte les conditions générales
+      #registration-info
+        .row
+          .col-md-12.col-sm-12.col-xs-12
+            p Vous vous trouvez à la première étape pour participer au concours 30 ans TRM, suite à votre inscription vous recevrez (d’ici la mi-juillet), les indications pour l’envoi des images.
+        .row.success-section
+          .col-md-4.col-md-offset-4
+            = f.button "S'inscrire", :class => 'btn btn-success'
+        .row.stripe-section
+          .col-md-4.col-md-offset-4
+            article
+              - if flash[:error].present?
+                #error_explanation
+                  p= flash[:error]
