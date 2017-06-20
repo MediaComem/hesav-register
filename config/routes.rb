@@ -96,8 +96,8 @@ Rails.application.routes.draw do
   end
 
   # Trm30 (Juin 2017)
-  get '/trm30' => 'trm30_registrations#new'
-  get '/trm30/admin(.:format)', to: 'trm30_registrations#admin', as: 'trm30_admin'
+  get '/trm30ans' => 'trm30_registrations#new'
+  get '/trm30ans/admin(.:format)', to: 'trm30_registrations#admin', as: 'trm30_admin'
 
   resources :trm30_registrations, path: 'trm30' do
     collection do
