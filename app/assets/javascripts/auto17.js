@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-	console.log("Auto167")
   $(".stripe-button").attr('data-email',"test@google.com")
   var handler = StripeCheckout.configure({
 	  key: 'pk_live_LEMIGU9HW4SfXh87LyMyQw8g',

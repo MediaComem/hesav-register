@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-	console.log("trm30")
 	$(".btn-success").on('click', function(e) {
 		e.preventDefault();
 	  // Open Checkout with further options:
