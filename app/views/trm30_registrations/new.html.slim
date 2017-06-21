@@ -14,7 +14,18 @@
         .row
           .col-md-12
             h3
-              span Informations personnelles
+              span Informations
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Nom de l’équipe (dans le cas d’une participation collective)
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:team, class: "form-control")
+        .row
+          .col-md-12
+            h3
+              span Coordonnées de la personne de contact
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
@@ -68,15 +79,15 @@
         .row
           .col-md-12
             h3
-              span Conditions générales
+              span Conditions de participation
         .row
           .col-md-8
-            = link_to 'Conditions Générales', asset_path("cgv/auto17.pdf"), target: "_blank"
+            = link_to 'Conditions générales de participation', asset_path("cgv/trm30ans.pdf"), target: "_blank"
           .col-md-12
             .checkbox
               label
                 = check_box_tag 'cgvaccept'
-                |J’accepte les conditions générales
+                |J’accepte les conditions générales de participation
       #registration-info
         .row
           .col-md-12.col-sm-12.col-xs-12

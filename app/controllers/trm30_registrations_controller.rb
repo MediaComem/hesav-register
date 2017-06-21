@@ -78,7 +78,7 @@ class Trm30RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:trm30_registration).permit(:last_name,:first_name,:city,:email,:street,:streetnumber,:npa,:employer)
+      params.require(:trm30_registration).permit(:last_name,:first_name,:city,:email,:street,:streetnumber,:npa,:employer,:team)
     end
 
     def registration_ok(msg,registration)
