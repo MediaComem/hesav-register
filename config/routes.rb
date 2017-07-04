@@ -6,6 +6,21 @@ Rails.application.routes.draw do
   resources :charges
 
   # Autonomie et responsabilité des sages-femmes en milieu hospitalier
+  get '/js17' => 'js17_registrations#new'
+  get '/js17/admin(.:format)', to: 'js17_registrations#admin', as: 'js17_admin'
+
+  resources :js17_registrations, path: 'js17' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
+  # Autonomie et responsabilité des sages-femmes en milieu hospitalier
   get '/auto17' => 'auto17_registrations#new'
   get '/auto17/admin(.:format)', to: 'auto17_registrations#admin', as: 'auto17_admin'
 

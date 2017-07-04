@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p Bonjour,
+    p Nous vous remercions de votre inscription à la Journée scientifique HESAV:
+    p
+      b « L’activité physique dans tous ses états mardi 7 novembre 2017 »
+
+    ul
+      li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
+      li Employeur : #{@registration.employer}
+      li Profession : #{@registration.job}
+      li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
+
+      - if @registration.type_choice == 'ATELIER 1'
+        li Choix de l'atelier: Système de synchronisation de signaux physiologiques et biomécaniques en cyclisme : contrôle de paramètres de santé
+      - elsif @registration.type_choice == 'ATELIER 2'
+        li Choix de l'atelier: Entraînement sur vélo : de l’endurance continue au sprints répétés
+      - elsif @registration.type_choice == 'ATELIER 3'
+        li Choix de l'atelier: Dynamique de l'échographie du membre supérieur
+      - elsif @registration.type_choice == 'ATELIER 4'
+        li Choix de l'atelier: Activité physique et cancer chez l’enfant : PASTEC pour avoir la pêche !
+      - elsif @registration.type_choice == 'ATELIER 5'
+        li Choix de l'atelier: Promotion du mouvement chez la femme enceinte, programme cantonal « ça marche »
+      - else
+        li Choix de l'atelier: Je marche plus d'une heure par jour, et je m'en porte très bien, merci!
+
+      - if @registration.type_price == 'free'
+        li Votre inscription gratuite a bien été enregistrée.
+      - elsif @registration.type_price == "50.00"
+        li Votre paiement de CHF 50.- a bien été enregistré.
+      - elsif @registration.type_price == "80.00"
+        li Votre paiement de CHF 80.- a bien été enregistré.
+    p Au plaisir de vous accueillir, nous vous transmettons nos meilleures salutations.
+    b
+      p
+        |---------------------------------------------------------------------------
+    span HESAV- Haute Ecole de Santé Vaud
+    br 
+    span
+      b « L’activité physique dans tous ses états mardi 7 novembre 2017 »
+    br 
+    span Journée scientifique HESAV
+    span Mardi 7 novembre 2017
+    br
+    span
+      a href="#" Lien vers la conférence
+    p Ceci est un message généré automatiquement, merci de ne pas y répondre.
+    p
+      | Pour toute information complémentaire, vous pouvez nous contacter à l’adresse email :
+      a href="mailto:jssf@hesav.ch" jssf@hesav.ch
+    b
+      p
+        |---------------------------------------------------------------------------

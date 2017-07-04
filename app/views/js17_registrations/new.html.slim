@@ -1,0 +1,186 @@
+.row
+  .blocktitle.col-md-12
+    p
+      |DÉLAI D’INSCRIPTION :
+      span.date  31 OCTOBRE 2017
+.row
+  .col-md-12
+    = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
+      - @registration.errors.full_messages.each do |msg|
+        .row
+          .col-md-6
+            p.bg-danger.text-danger #{msg}
+      #perso-infos
+        .row
+          .col-md-12
+            h3
+              span Informations personnelles
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Nom*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:last_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Prénom*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:first_name, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Rue* / Numéro*
+              .col-md-3.col-sm-4.col-xs-5
+                = f.text_field(:street, class: "form-control")
+              .col-md-1.col-sm-2.col-xs-3
+                = f.text_field(:streetnumber, class: "form-control")                
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Npa* / Localité*
+              .col-md-1.col-sm-2.col-xs-3
+                = f.text_field(:npa, class: "form-control")
+              .col-md-3.col-sm-4.col-xs-5
+                = f.text_field(:city, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Employeur / Institution*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:employer, class: "form-control")
+        .row
+          .form-group.col-md-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Profession*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:job, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Email*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:email, class: "form-control")
+        .row
+          .col-md-4.col-sm-4.col-xs-6
+            p
+              |(*) champs obligatoires
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span ATELIERS À CHOIX
+        .row
+          .col-md-5.col-md-offset-3.col-xs-12
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 1",)
+                |ATELIER 1 : 
+                br
+                strong
+                  |Système de synchronisation de signaux physiologiques et biomécaniques en cyclisme : contrôle de paramètres de santé
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 2")
+                |ATELIER 2 :
+                br
+                strong
+                  |Entraînement sur vélo : de l’endurance continue au sprints répétés
+                br
+                strong
+                  |Tenue de sport nécessaire, atelier limité à 15 personnes 
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 3")
+                |ATELIER 3 :
+                br
+                strong
+                  |Dynamique de l'échographie du membre supérieur
+                br
+                strong
+                  |Atelier pratique, limité à 16 personnes
+        .row
+          .col-md-5.col-md-offset-3.col-xs-12
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 4",)
+                |ATELIER 4 : 
+                br
+                strong
+                  |Activité physique et cancer chez l’enfant : PASTEC pour avoir la pêche !
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 5")
+                |ATELIER 5 :
+                br
+                strong
+                  |Promotion du mouvement chez la femme enceinte, programme cantonal « ça marche »
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_choice, "ATELIER 6")
+                |ATELIER 6 :
+                br
+                strong
+                  |Je marche plus d'une heure par jour, et je m'en porte très bien, merci!
+      #additionnal-info
+        .row
+          .col-md-12
+            h3
+              span Conditions générales
+        .row
+          .col-md-8
+            = link_to 'Conditions Générales', asset_path("cgv/js17.pdf"), target: "_blank"
+          .col-md-12
+            .checkbox
+              label
+                = check_box_tag 'cgvaccept'
+                |J’accepte les conditions générales
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span PAIEMENT OBLIGATOIRE EN LIGNE
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "normal",:checked => true)
+                |Tarif normal // 80.-
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "reduced",:checked => true)
+                |Tarif normal // 50.-
+                |(étudiants hors HESAV, AVS, AI, apprentis, chômeurs, sur présentation d’un justificatif à l’entrée)
+        .row
+          .col-md-5.col-md-offset-3
+            .radio
+              label
+                = f.radio_button(:type_price, "free")
+                |Public interne // GRATUIT**
+                |(collaborateurs et étudiants de HESAV, sur présentation d’un justificatif à l’entrée)
+        .row.success-section
+          .col-md-4.col-md-offset-4
+            = f.button "S'inscrire", :class => 'btn btn-success'
+        .row.stripe-section
+          .col-md-4.col-md-offset-4
+            article
+              - if flash[:error].present?
+                #error_explanation
+                  p= flash[:error]
