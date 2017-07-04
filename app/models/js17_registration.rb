@@ -1,6 +1,6 @@
 class Js17Registration < ActiveRecord::Base
 	before_save :default_values
-	validates :last_name,:first_name,:employer,:job,:email,:shopID,:npa,:city,:street,:streetnumber,  presence: true
+	validates :last_name,:first_name,:employer,:job,:email,:shopID,:npa,:city,:street,:streetnumber,:type_choice,  presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, format: { with: VALID_EMAIL_REGEX }
 	store_accessor :registration_type, [

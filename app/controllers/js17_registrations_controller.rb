@@ -91,7 +91,6 @@ class Js17RegistrationsController < ApplicationController
       end
     else
       if @registration.save && (@registration.type_price == "free")
-        binding.pry
         msg = "INFO :: Inscription sans frais"
         registration_ok(msg,@registration)
         render 'accepted'
