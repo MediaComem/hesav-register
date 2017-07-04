@@ -19,4 +19,4 @@ The <tt>config/database.yml</tt> file uses environment variable for some config 
 
 === Production migration
 
-`RAILS_ENV=production rake db:migrate`
+		RAILS_ENV=production rake db:migrate

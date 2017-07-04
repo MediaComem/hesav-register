@@ -148,3 +148,7 @@ Dans le fichier nouvellement créé, modifier les noms des attributs du deuxièm
 ## Message d'erreur
 
 Dans le fichier `config/locales/fr.yml`, sous la clé `activerecord.attributes`, créer une nouvelle clé nommée `[nom_raccourci]_registration`. Sous cette clé, créer une nouvelle clé pour chaque attribut du formulaire et lui donner comme valeur le nom à afficher pour cet attribut lors des messages d'erreurs.
+
+## Traductions
+
+Dans le dossier `config/locales`, ajouter les entrées correspondantes
