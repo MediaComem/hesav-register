@@ -167,6 +167,7 @@
               label
                 = f.radio_button(:type_price, "reduced",:checked => true)
                 |Tarif normal // 50.-
+                br
                 |(étudiants hors HESAV, AVS, AI, apprentis, chômeurs, sur présentation d’un justificatif à l’entrée)
         .row
           .col-md-5.col-md-offset-3
@@ -174,6 +175,7 @@
               label
                 = f.radio_button(:type_price, "free")
                 |Public interne // GRATUIT**
+                br
                 |(collaborateurs et étudiants de HESAV, sur présentation d’un justificatif à l’entrée)
         .row.success-section
           .col-md-4.col-md-offset-4
