@@ -5,7 +5,21 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  # Autonomie et responsabilité des sages-femmes en milieu hospitalier
+  # 3ème journée latine du soin psychique de l’ARIP-HESAV
+  get '/psy17' => 'psy17_registrations#new'
+  get '/psy17/admin(.:format)', to: 'psy17_registrations#admin', as: 'psy17_admin'
+
+  resources :psy17_registrations, path: 'psy17' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+    end
+  end
+
+  # Journée Scientifique 2017
   get '/js17' => 'js17_registrations#new'
   get '/js17/admin(.:format)', to: 'js17_registrations#admin', as: 'js17_admin'
 
