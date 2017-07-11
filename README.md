@@ -2,11 +2,8 @@
 
 To create new form [follow this link](new_form_process.md)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Environment variables
+`.env` is required locally to run the project. For updating production `.env` file, create and edit `.env.production`.
 
 ## Database Configuration
 

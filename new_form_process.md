@@ -156,3 +156,10 @@ Dans le fichier `config/locales/fr.yml`, sous la clé `activerecord.attributes`,
 ## Traductions
 
 Dans le dossier `config/locales`, ajouter les entrées correspondantes
+
+## Paiements avec Stripe
+
+Le formulaire utilise [Stripe Checkout](https://stripe.com/docs/checkout/tutorial) pour traiter les paiements. Les clés à insérer dans les fichiers `.env` sont disponibles directement dans la documentation _checkout_ ou dans la dashboard Stripe dans la rubrique _API_
+
+
+Les clés nécessaire pour le 
