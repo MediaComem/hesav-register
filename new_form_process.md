@@ -67,7 +67,7 @@ end
 ```
 
 ### Public folder
-Les fichiers PDF des CGV sont déposés dans `public/cgv` et accessible avec `asset_path("cgv/file_name.pdf")`
+Les fichiers PDF des CGV sont déposés dans `public/cgv` et accessibles avec `asset_path("cgv/file_name.pdf")`
 
 ## Contrôleur
 
@@ -144,7 +144,7 @@ Dans le fichier `success_email.html.slim`, modifier le template pour qu'il corre
 
 ## Assets
 
-Les fichiers __CSS__ et __JS__ sont à déclarés dans `config/initilizers/assets.rb` afin de pouvoir y accèder depuis les fichiers layout de cette manière `= stylesheet_link_tag "js17"` `= javascript_include_tag "file_name"`
+Les fichiers __CSS__ et __JS__ sont à déclarés dans `config/initilizers/assets.rb` afin de pouvoir y faire référence depuis les fichiers layout de cette manière `= stylesheet_link_tag "file_name"` `= javascript_include_tag "file_name"`
 
 ## Export CSV
 
