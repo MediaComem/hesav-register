@@ -13,6 +13,8 @@ class Js17RegistrationsController < ApplicationController
     @shop_id = 'js17' # psy14dev / psy14
     @environment = 'test' # test/prod
     @language = 'fr_FR'
+    @atelier2_limit = 16
+    @atelier3_limit = 15
 
     # layout
     self.class.layout('js17')
@@ -38,6 +40,18 @@ class Js17RegistrationsController < ApplicationController
   end
 
   def new
+    atelier2_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier2", value: "oui").count
+    atelier3_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier3", value: "oui").count
+    @atelier2_limit_reached = false
+    @atelier3_limit_reached = false
+    
+    if atelier2_count >= @atelier2_limit
+      @atelier2_limit_reached = true
+    end
+    if atelier3_count >= @atelier3_limit
+      @atelier3_limit_reached = true
+    end
+    
     event = Event.find_by_short_name!(@event_name)
     if event.open < DateTime.now && event.close > DateTime.now
       @registration = Js17Registration.new
@@ -61,6 +75,9 @@ class Js17RegistrationsController < ApplicationController
     @registration.payed = false
     @registration.event = event
     @amount = 0
+    hash_ateliers = Hash[Js17Registration.ateliers.map{|atelier| [atelier[:slug]]}]
+    hash_ateliers[@registration.type_choice] = "oui"
+    @registration.ateliers = hash_ateliers
     case @registration.type_price
     when "free"
       @registration.type_price = 'free'
@@ -75,7 +92,13 @@ class Js17RegistrationsController < ApplicationController
       @registration.type_price = '-1'
     end
 
-    if (@registration.type_price != 'free' && @registration.save)
+    atelier2_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier2", value: "oui").count
+    atelier3_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier3", value: "oui").count
+
+    if (atelier2_count >= @atelier2_limit) || (atelier3_count >= @atelier3_limit)
+      flash.now[:notice_error] = "L'inscription n'a pas pu être effectuée. La limite de participants à l'atelier sélectionné a été atteinte."
+      render "new"
+    elsif (@registration.type_price != 'free' && @registration.save)
       begin
         charge = Stripe::Charge.create(
           :source  => params[:stripeToken],
@@ -113,7 +136,7 @@ class Js17RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:js17_registration).permit(:last_name,:first_name,:type_price,:type_choice,:city,:email,:street,:streetnumber,:npa,:employer,:job,:title,:stripeToken)
+      params.require(:js17_registration).permit(:last_name,:first_name,:type_price,:type_choice,:city,:email,:street,:streetnumber,:npa,:employer,:job,:title,:stripeToken,ateliers: params[:js17_registration][:ateliers].try(:keys))
     end
 
     def registration_ok(msg,registration)

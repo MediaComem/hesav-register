@@ -77,66 +77,38 @@
           .col-md-12
             h3
               span ATELIERS À CHOIX
-        .row
-          .col-md-5.col-md-offset-3.col-xs-12
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 1",)
-                |ATELIER 1 : 
-                br
-                strong
-                  |Système de synchronisation de signaux physiologiques et biomécaniques en cyclisme : contrôle de paramètres de santé
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 2")
-                |ATELIER 2 :
-                br
-                strong
-                  |Entraînement sur vélo : de l’endurance continue au sprints répétés
-                br
-                strong
-                  |Tenue de sport nécessaire, atelier limité à 15 personnes 
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 3")
-                |ATELIER 3 :
-                br
-                strong
-                  |Dynamique de l'échographie du membre supérieur
-                br
-                strong
-                  |Atelier pratique, limité à 16 personnes
-        .row
-          .col-md-5.col-md-offset-3.col-xs-12
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 4",)
-                |ATELIER 4 : 
-                br
-                strong
-                  |Activité physique et cancer chez l’enfant : PASTEC pour avoir la pêche !
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 5")
-                |ATELIER 5 :
-                br
-                strong
-                  |Promotion du mouvement chez la femme enceinte, programme cantonal « ça marche »
-        .row
-          .col-md-5.col-md-offset-3
-            .radio
-              label
-                = f.radio_button(:type_choice, "ATELIER 6")
-                |ATELIER 6 :
-                br
-                strong
-                  |Je marche plus d'une heure par jour, et je m'en porte très bien, merci!
+        - Js17Registration.ateliers.each do |atelier|
+          .row
+            .col-md-5.col-md-offset-3.col-xs-12
+              .radio
+                label
+                  - if @atelier2_limit_reached && atelier[:slug] == 'atelier2'
+                    = f.radio_button(:type_choice, atelier[:slug], disabled: true)
+                    = atelier[:name] 
+                    |: 
+                    br
+                    strong
+                      = atelier[:descr]
+                    p La limite de participants à cet atlier a été atteinte
+                  - if @atelier3_limit_reached && atelier[:slug] == 'atelier3'
+                    = f.radio_button(:type_choice, atelier[:slug], disabled: true)
+                    = atelier[:name] 
+                    |: 
+                    br
+                    strong
+                      = atelier[:descr]
+                    br
+                    p La limite de participants à cet atlier a été atteinte
+                  - unless (@atelier3_limit_reached && atelier[:slug] == 'atelier3') || (@atelier2_limit_reached && atelier[:slug] == 'atelier2')
+                    = f.radio_button(:type_choice, atelier[:slug])
+                    = atelier[:name] 
+                    |: 
+                    br
+                    strong
+                      = atelier[:descr]
+                    br
+                    - if atelier[:more]
+                      = atelier[:more]
       #additionnal-info
         .row
           .col-md-12
