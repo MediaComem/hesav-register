@@ -13,19 +13,8 @@ html
       li Employeur : #{@registration.employer}
       li Profession : #{@registration.job}
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
-
-      - if @registration.type_choice == 'ATELIER 1'
-        li Choix de l'atelier: Système de synchronisation de signaux physiologiques et biomécaniques en cyclisme : contrôle de paramètres de santé
-      - elsif @registration.type_choice == 'ATELIER 2'
-        li Choix de l'atelier: Entraînement sur vélo : de l’endurance continue au sprints répétés
-      - elsif @registration.type_choice == 'ATELIER 3'
-        li Choix de l'atelier: Dynamique de l'échographie du membre supérieur
-      - elsif @registration.type_choice == 'ATELIER 4'
-        li Choix de l'atelier: Activité physique et cancer chez l’enfant : PASTEC pour avoir la pêche !
-      - elsif @registration.type_choice == 'ATELIER 5'
-        li Choix de l'atelier: Promotion du mouvement chez la femme enceinte, programme cantonal « ça marche »
-      - else
-        li Choix de l'atelier: Je marche plus d'une heure par jour, et je m'en porte très bien, merci!
+      
+      li Atelier: #{Js17Registration.ateliers.select {|father| father[:slug] == @registration.type_choice}[0][:descr]}
 
       - if @registration.type_price == 'free'
         li Votre inscription gratuite a bien été enregistrée.
@@ -46,11 +35,11 @@ html
     span Mardi 7 novembre 2017
     br
     span
-      a href="#" Lien vers la conférence
+      a href="http://www.hesav.ch/recherche-et-developpement/evenements-activites/journee-scientifique-HESAV/edition-2017" Lien vers la conférence
     p Ceci est un message généré automatiquement, merci de ne pas y répondre.
     p
       | Pour toute information complémentaire, vous pouvez nous contacter à l’adresse email :
-      a href="mailto:jssf@hesav.ch" jssf@hesav.ch
+      a href="mailto:recherche@hesav.ch" recherche@hesav.ch
     b
       p
         |---------------------------------------------------------------------------

@@ -13,8 +13,8 @@ class Js17RegistrationsController < ApplicationController
     @shop_id = 'js17' # psy14dev / psy14
     @environment = 'test' # test/prod
     @language = 'fr_FR'
-    @atelier2_limit = 16
-    @atelier3_limit = 15
+    @atelier2_limit = 2
+    @atelier3_limit = 2
 
     # layout
     self.class.layout('js17')
@@ -44,7 +44,7 @@ class Js17RegistrationsController < ApplicationController
     atelier3_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier3", value: "oui").count
     @atelier2_limit_reached = false
     @atelier3_limit_reached = false
-    
+
     if atelier2_count >= @atelier2_limit
       @atelier2_limit_reached = true
     end
@@ -95,7 +95,8 @@ class Js17RegistrationsController < ApplicationController
     atelier2_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier2", value: "oui").count
     atelier3_count = Js17Registration.where("ateliers @> hstore(:key, :value)",key: "atelier3", value: "oui").count
 
-    if (atelier2_count >= @atelier2_limit) || (atelier3_count >= @atelier3_limit)
+
+    if ((atelier2_count >= @atelier2_limit) && @registration.type_choice == "atelier2") || ((atelier3_count >= @atelier3_limit) && @registration.type_choice == "atelier3")
       flash.now[:notice_error] = "L'inscription n'a pas pu être effectuée. La limite de participants à l'atelier sélectionné a été atteinte."
       render "new"
     elsif (@registration.type_price != 'free' && @registration.save)
