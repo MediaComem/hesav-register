@@ -66,6 +66,9 @@ resources :[nom_raccourci]_registrations, path: '[url_du_nouveau_formulaire]' do
 end
 ```
 
+### Public folder
+Les fichiers PDF des CGV sont déposés dans `public/cgv` et accessible avec `asset_path("cgv/file_name.pdf")`
+
 ## Contrôleur
 
 Dans le dossier `app/controllers`, copier/coller un des contrôleurs présents en modifiant le nom de fichier comme suit : `[nom_raccourci]_registration_controller.rb`.
@@ -139,6 +142,10 @@ Dans le fichier `error_email.html.slim`, remplacer la valeur du h1 par le titre 
 
 Dans le fichier `success_email.html.slim`, modifier le template pour qu'il corresponde au corps de mail souhaité.
 
+## Assets
+
+Les fichiers __CSS__ et __JS__ sont à déclarés dans `config/initilizers/assets.rb` afin de pouvoir y accèder depuis les fichiers layout de cette manière `= stylesheet_link_tag "js17"` `= javascript_include_tag "file_name"`
+
 ## Export CSV
 
 Dans le dossier `lib`, copier/coller un des fichiers présents et le renommer comme suit : `[nom_raccourci]_csv_service.rb`.
@@ -159,7 +166,10 @@ Dans le dossier `config/locales`, ajouter les entrées correspondantes
 
 ## Paiements avec Stripe
 
-Le formulaire utilise [Stripe Checkout](https://stripe.com/docs/checkout/tutorial) pour traiter les paiements. Les clés à insérer dans les fichiers `.env` sont disponibles directement dans la documentation _checkout_ ou dans la dashboard Stripe dans la rubrique _API_
+Le formulaire utilise [Stripe Checkout](https://stripe.com/docs/checkout/tutorial) pour traiter les paiements. Les clés à insérer dans les fichiers `.env` sont disponibles directement dans la documentation _checkout_ ou dans le dashboard Stripe dans la rubrique _API_.
 
+Il n'est pas possible de passer un formulaire en mode test en ligne (forms.hesav.ch) et d'en avoir un autre en mode production au niveau de Stripe. A partir du moment où la `secret_key` est en mode production, tous les formulaires du shop forms.hesav.ch sont censés l'être.
 
-Les clés nécessaire pour le 
+## Déploiement
+
+Le projet se déploie sur `webwww06` (HEIG-VD) avec [Vlad](http://docs.seattlerb.org/vlad/). Les informations de déploiement sont visibles dans le fichier `deploy.rb`.
