@@ -145,6 +145,10 @@ Dans le dossier `lib`, copier/coller un des fichiers présents et le renommer co
 
 Dans le fichier nouvellement créé, modifier les noms des attributs du deuxième tableau pour qu'ils correspondent à ceux du formulaire. Modifier les noms du premier tableau en conséquence.
 
+## Workshop ou atlier à places limitées
+
+En cas de besoin de limitation dans le nombre d'inscription à un workshop dans une conf, la conf JS17 propose un nombre de place limitées pour les ateliers 2 et 3. 
+
 ## Message d'erreur
 
 Dans le fichier `config/locales/fr.yml`, sous la clé `activerecord.attributes`, créer une nouvelle clé nommée `[nom_raccourci]_registration`. Sous cette clé, créer une nouvelle clé pour chaque attribut du formulaire et lui donner comme valeur le nom à afficher pour cet attribut lors des messages d'erreurs.
