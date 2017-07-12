@@ -274,6 +274,19 @@ fr:
         employer: "Employeur"
         email: "Email"
         type_choice: "Atelier"
+      psy17_registration:
+        title: "Titre"
+        last_name: "Nom"
+        first_name: "Prénom"
+        street: "Rue"
+        streetnumber: "Numéro"
+        npa: "NPA"
+        city: "Ville"
+        country: "Pays"
+        employer: "Employeur"
+        email: "Email"
+        type_choice_pm: "Atelier après-midi"
+        type_choice_am: "Atelier matin"
     errors:
       models:
         gouveole_registration:
