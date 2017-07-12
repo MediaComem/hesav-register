@@ -6,7 +6,7 @@ Créer la migration pour le nouveau formulaire grâce à cette commande (depuis 
 
 Dans le fichier nouvellement créé, rajouter le code suivant à l'intérieur de la méthode `change` :
 
-```
+```ruby
 create_table :js16_registrations do |t|
   # Les champs suivants sont à modifier pour être adapté aux besoins du nouveau formulaire
   t.string :last_name
@@ -29,7 +29,7 @@ create_table :js16_registrations do |t|
 
 Pour un travail en local, modifier le fichier `db/seed.rb` et ajouter un seed pour le nouveau formulaire :
 
-```
+```ruby
 # Ruby
 # À la fin du document
 Event.create!(
@@ -50,7 +50,7 @@ Ne pas oublier de migrer et seeder les nouvelles infos :
 ## Routes
 Modifier le fichier `config/routes.rb`et ajouter les lignes suivantes après la dernière route (en indiquant les informations propre au nouveau formulaire) :
 
-```
+```ruby
 get '/[url_du_nouveau_formulaire]' => '[nom_raccourci]_registrations#new'
 get '/[url_du_nouveau_formulaire]/admin(.:format)', to: '[nom_raccourci]_registrations#admin', as: '[nom_raccourci]_admin'
 
