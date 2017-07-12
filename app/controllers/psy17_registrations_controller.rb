@@ -61,6 +61,16 @@ class Psy17RegistrationsController < ApplicationController
     @registration.payed = false
     @registration.event = event
     @amount = 0
+    @registration.ateliers.select{|k,v| v == "1"}.each do |atelier|
+      atelier_slug = atelier[0].dup
+      if atelier_slug.include? "am"
+        @registration.type_choice_am = atelier_slug
+        @registration.type_choice_am.slice! "am"
+      else
+        @registration.type_choice_pm = atelier_slug
+        @registration.type_choice_pm.slice! "pm"
+      end
+    end
     case @registration.type_price
     when "free"
       @registration.type_price = 'free'
@@ -110,7 +120,7 @@ class Psy17RegistrationsController < ApplicationController
   private
 
     def post_params
-      params.require(:psy17_registration).permit(:last_name,:first_name,:type_price,:city,:email,:street,:streetnumber,:npa,:employer,:job,:title,:stripeToken)
+      params.require(:psy17_registration).permit(:last_name,:first_name,:type_price,:type_choice_am,:type_choice_pm,:city,:email,:street,:streetnumber,:npa,:employer,:job,:title,:stripeToken,ateliers: params[:psy17_registration][:ateliers].try(:keys))
     end
 
     def registration_ok(msg,registration)

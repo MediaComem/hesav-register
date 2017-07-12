@@ -12,6 +12,8 @@ html
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
       li Employeur : #{@registration.employer}
       li Profession : #{@registration.job}
+      li Atelier matin: #{Psy17Registration.ateliers.select {|atelier| atelier[:slug] == @registration.type_choice_am}[0][:descr]}
+      li Atelier après-midi: #{Psy17Registration.ateliers.select {|atelier| atelier[:slug] == @registration.type_choice_pm}[0][:descr]}
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
       - if @registration.type_price == 'free'
         li Votre inscription gratuite a bien été enregistrée.
@@ -31,11 +33,11 @@ html
     span Jeudi 21 septembre 2017
     br
     span
-      a href="#" Lien vers la conférence
+      a href="http://www.hesav.ch/recherche-et-developpement/evenements-activites/le-soin-intensif-en-psychiatrie/3%C3%A8me-journ%C3%A9e-latine" Lien vers la conférence
     p Ceci est un message généré automatiquement, merci de ne pas y répondre.
     p
       | Pour toute information complémentaire, vous pouvez nous contacter à l’adresse email :
-      a href="mailto:jssf@hesav.ch" jssf@hesav.ch
+      a href="mailto:recherche@hesav.ch" recherche@hesav.ch
     b
       p
         |---------------------------------------------------------------------------

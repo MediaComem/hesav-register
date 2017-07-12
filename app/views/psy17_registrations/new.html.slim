@@ -72,6 +72,30 @@
           .col-md-4.col-sm-4.col-xs-6
             p
               |(*) champs obligatoires
+      #registration-info
+        .row
+          .col-md-12
+            h3
+              span ATELIERS À CHOIX
+        = f.fields_for :ateliers do |ff|             
+          - Psy17Registration.ateliers.each do |atelier|
+            .row
+              .col-md-6.col-md-offset-2.col-xs-12.atelier
+                = atelier[:name]
+                |: 
+                br
+                strong
+                  = atelier[:descr]
+                div
+                  | Je m’inscris à l’atelier du 
+                  .checkbox-inline
+                    label
+                      = ff.check_box "#{atelier[:slug]}am"
+                      | matin
+                  .checkbox-inline
+                    label
+                      = ff.check_box "#{atelier[:slug]}pm"
+                      | Après-midi
       #additionnal-info
         .row
           .col-md-12
@@ -101,10 +125,10 @@
             .radio
               label
                 = f.radio_button(:type_price, "free")
-                |Public étudiants
+                |Public étudiants // Gratuit
                 br
                 span.small
-                  |étudiants de HESAV et HEP-BEJUNE, sur présentation d’un justificatif à l’entrée
+                  |étudiants de HESAV, sur présentation d’un justificatif à l’entrée
         .row.success-section
           .col-md-4.col-md-offset-4
             = f.button "S'inscrire", :class => 'btn btn-success'
