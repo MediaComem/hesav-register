@@ -11,7 +11,7 @@ class Psy17RegistrationsController < ApplicationController
     #constants
     @event_name = 'psy17'
     @shop_id = 'psy17' # psy14dev / psy14
-    @environment = 'test' # test/prod
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
 
     # layout

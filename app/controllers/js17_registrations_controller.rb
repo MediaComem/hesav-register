@@ -11,7 +11,7 @@ class Js17RegistrationsController < ApplicationController
     #constants
     @event_name = 'js17'
     @shop_id = 'js17' # psy14dev / psy14
-    @environment = 'test' # test/prod
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
     @atelier2_limit = 16
     @atelier3_limit = 15
