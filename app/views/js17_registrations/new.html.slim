@@ -89,7 +89,7 @@
                     br
                     strong
                       = atelier[:descr]
-                    p La limite de participants à cet atlier a été atteinte
+                    p.bg-danger La limite de participants à cet atelier a été atteinte
                   - if @atelier3_limit_reached && atelier[:slug] == 'atelier3'
                     = f.radio_button(:type_choice, atelier[:slug], disabled: true)
                     = atelier[:name] 
@@ -98,7 +98,7 @@
                     strong
                       = atelier[:descr]
                     br
-                    p La limite de participants à cet atlier a été atteinte
+                    p.bg-danger La limite de participants à cet atelier a été atteinte
                   - unless (@atelier3_limit_reached && atelier[:slug] == 'atelier3') || (@atelier2_limit_reached && atelier[:slug] == 'atelier2')
                     = f.radio_button(:type_choice, atelier[:slug])
                     = atelier[:name] 
@@ -157,4 +157,4 @@
             article
               - if flash[:error].present?
                 #error_explanation
-                  p= flash[:error]
+                  p.bg-danger = flash[:error]

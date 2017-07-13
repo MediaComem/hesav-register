@@ -16,5 +16,6 @@ html
           img src=image_path("banner_js17.jpg")
       .row
         .col-md-12
-          == render 'shared/flash'
+          - unless flash[:notice_error].blank?
+            .bg-danger = flash[:notice_error]
       = yield
