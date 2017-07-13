@@ -76,7 +76,7 @@
         .row
           .col-md-12
             h3
-              span ATELIERS À CHOIX
+              span ATELIERS À CHOIX (Vous devez choisir deux ateliers différents, un le matin et un autre l'après-midi)
         = f.fields_for :ateliers do |ff|             
           - Psy17Registration.ateliers.each do |atelier|
             .row
@@ -125,10 +125,10 @@
             .radio
               label
                 = f.radio_button(:type_price, "free")
-                |Public étudiants // Gratuit
+                |Public interne HESAV // Gratuit
                 br
                 span.small
-                  |étudiants de HESAV, sur présentation d’un justificatif à l’entrée
+                  |(étudiants de HESAV, sur présentation d’un justificatif à l’entrée)
         .row.success-section
           .col-md-4.col-md-offset-4
             = f.button "S'inscrire", :class => 'btn btn-success'
