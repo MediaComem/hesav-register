@@ -13,8 +13,8 @@ class Js17RegistrationsController < ApplicationController
     @shop_id = 'js17' # psy14dev / psy14
     @environment = 'test' # test/prod
     @language = 'fr_FR'
-    @atelier2_limit = 2
-    @atelier3_limit = 2
+    @atelier2_limit = 16
+    @atelier3_limit = 15
 
     # layout
     self.class.layout('js17')
