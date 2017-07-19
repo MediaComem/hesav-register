@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   $(".stripe-button").attr('data-email',"test@google.com")
   var handler = StripeCheckout.configure({
-	  key: 'pk_test_oVKjxRsLBU75cvBPaxgu2GGV',
+	  key: 'pk_live_LEMIGU9HW4SfXh87LyMyQw8g',
 	  image: '',
 	  locale: 'auto',
 	  token: function(token) {
