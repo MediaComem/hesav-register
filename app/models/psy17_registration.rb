@@ -15,12 +15,12 @@ class Psy17Registration < ActiveRecord::Base
   end
   def self.ateliers
     [
-      {:name=>"ATELIER 1",:slug=>"atelier1",:descr=>"Espace musical dans la chambre de soins intensifs (DP-CHUV & HESAV)"},
-      {:name=>"ATELIER 2",:slug=>"atelier2",:descr=>"Comment je parle de ma maladie à mes enfants ? Pôle de Psychiatrie et Psychothérapie, Hôpital du Valais / CHVR"},
-      {:name=>"ATELIER 3",:slug=>"atelier3",:descr=>"Traitement à domicile (Mendrisio, Tessin)"},
-      {:name=>"ATELIER 4",:slug=>"atelier4",:descr=>"Polyphonie de la crise psychique : pratiques et regards entre police et psychiatrie (RFSM)"},
-      {:name=>"ATELIER 5",:slug=>"atelier5",:descr=>"Tandem compétentiel infirmier au coeur d’un nouveau modèle d’intervention au SMUR (CPN)"},
-      {:name=>"ATELIER 6",:slug=>"atelier6",:descr=>"Le Parterre, bilan, enjeux et perspectives d’une prestation socio-thérapeutique (RSM)"},
-      {:name=>"ATELIER 7",:slug=>"atelier7",:descr=>"Groupe de soutien à la parentalité pour les personnes dépendantes (DP-CHUV)"}]
+      {:name=>"ATELIER 1",:slug=>"atelier1",:descr=>"Espace musical dans la chambre de soins intensifs (DP-CHUV & HESAV)",:amfull=>true},
+      {:name=>"ATELIER 2",:slug=>"atelier2",:descr=>"Comment je parle de ma maladie à mes enfants ? Pôle de Psychiatrie et Psychothérapie, Hôpital du Valais / CHVR",:amfull=>false},
+      {:name=>"ATELIER 3",:slug=>"atelier3",:descr=>"Traitement à domicile (Mendrisio, Tessin)",:amfull=>false},
+      {:name=>"ATELIER 4",:slug=>"atelier4",:descr=>"Polyphonie de la crise psychique : pratiques et regards entre police et psychiatrie (RFSM)",:amfull=>false},
+      {:name=>"ATELIER 5",:slug=>"atelier5",:descr=>"Tandem compétentiel infirmier au coeur d’un nouveau modèle d’intervention au SMUR (CPN)",:amfull=>false},
+      {:name=>"ATELIER 6",:slug=>"atelier6",:descr=>"Le Parterre, bilan, enjeux et perspectives d’une prestation socio-thérapeutique (RSM)",:amfull=>false},
+      {:name=>"ATELIER 7",:slug=>"atelier7",:descr=>"Groupe de soutien à la parentalité pour les personnes dépendantes (DP-CHUV)",:amfull=>false}]
   end
 end

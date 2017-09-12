@@ -90,8 +90,12 @@
                   | Je m’inscris à l’atelier du 
                   .checkbox-inline
                     label
-                      = ff.check_box "#{atelier[:slug]}am"
-                      | matin
+                      - if atelier[:amfull]
+                        = ff.check_box(atelier[:slug], disabled: true)
+                        | matin (complet)
+                      - else
+                        = ff.check_box "#{atelier[:slug]}am"
+                        | matin
                   .checkbox-inline
                     label
                       = ff.check_box "#{atelier[:slug]}pm"
