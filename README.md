@@ -22,4 +22,5 @@ The `config/database.yml` file uses environment variable for some config values.
 ## Database Connection
 
 To connect to the database, use [pgAdmin](https://www.pgadmin.org/) or an equivalent (like [Sequel Pro](https://www.sequelpro.com/) on Mac or [JetBrains DataGrip](https://www.jetbrains.com/datagrip/) on Windows).
+
 The credentials (like DB Host, DB Name, username and password) can be found on the `.env.production` file, which is located on the MEI's KeyPassX.
