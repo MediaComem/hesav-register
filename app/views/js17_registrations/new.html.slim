@@ -108,7 +108,7 @@
                       = atelier[:descr]
                     br
                     p.bg-danger La limite de participants à cet atelier a été atteinte
-                    - if atelier[:slug] == 'atelier6'
+                  - if atelier[:slug] == 'atelier6'
                     = f.radio_button(:type_choice, atelier[:slug], disabled: true)
                     = atelier[:name] 
                     |: 
@@ -117,7 +117,7 @@
                       = atelier[:descr]
                     br
                     p.bg-danger La limite de participants à cet atelier a été atteinte
-                  - unless (@atelier3_limit_reached && atelier[:slug] == 'atelier3') || (@atelier2_limit_reached && atelier[:slug] == 'atelier2' || atelier[:slug] == 'atelier5' || atelier[:slug] == 'atelier6')
+                  - unless (@atelier3_limit_reached && atelier[:slug] == 'atelier3') || (@atelier2_limit_reached && atelier[:slug] == 'atelier2' || atelier[:slug] == 'atelier5' || atelier[:slug] == 'atelier6' )
                     = f.radio_button(:type_choice, atelier[:slug])
                     = atelier[:name] 
                     |: 
