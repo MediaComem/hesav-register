@@ -1,4 +1,4 @@
-$source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 # Dotenv
 gem 'dotenv-rails'
