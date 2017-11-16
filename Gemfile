@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.3'
 # Dotenv
 gem 'dotenv-rails'
 
