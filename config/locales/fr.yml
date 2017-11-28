@@ -287,6 +287,17 @@ fr:
         email: "Email"
         type_choice_pm: "Atelier après-midi"
         type_choice_am: "Atelier matin"
+      jpsy18_registration:
+        title: "Titre"
+        last_name: "Nom"
+        first_name: "Prénom"
+        street: "Rue"
+        npa: "NPA"
+        city: "Ville"
+        country: "Pays"
+        employer: "Employeur"
+        job: "Profession"
+        email: "Email"
     errors:
       models:
         gouveole_registration:

@@ -5,6 +5,22 @@ Rails.application.routes.draw do
 
   resources :charges
 
+  # Jpsy18 (Février 2018)
+  get '/jpsy18' => 'jpsy18_registrations#new'
+  get '/jpsy18/admin(.:format)', to: 'jpsy18_registrations#admin', as: 'jpsy18_admin'
+
+  resources :jpsy18_registrations, path: 'jpsy18' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
+
   # 3ème journée latine du soin psychique de l’ARIP-HESAV
   get '/psy17' => 'psy17_registrations#new'
   get '/psy17/admin(.:format)', to: 'psy17_registrations#admin', as: 'psy17_admin'

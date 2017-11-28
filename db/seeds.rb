@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Event.delete_all
 Event.create!(short_name:"gouveole", 
     name:"Gouveole",
     description:"Gouveole",
@@ -46,4 +47,11 @@ Event.create!(short_name:"auto17",
     description:"Autonomie et responsabilité des sages-femmes en milieu hospitalier",
     open: DateTime.new(2017,01,01),
     close: DateTime.new(2017,11,19),
+    visible: true)
+
+Event.create!(short_name:"jpsy18",
+    name:"Journée de Psychiatrie 2018",
+    description:"Titre à définir",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2018,02,01),
     visible: true)

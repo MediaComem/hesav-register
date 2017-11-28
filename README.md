@@ -24,3 +24,8 @@ The `config/database.yml` file uses environment variable for some config values.
 To connect to the database, use [pgAdmin](https://www.pgadmin.org/) or an equivalent (like [Sequel Pro](https://www.sequelpro.com/) on Mac or [JetBrains DataGrip](https://www.jetbrains.com/datagrip/) on Windows).
 
 The credentials (like DB Host, DB Name, username and password) can be found on the `.env.production` file, which is located on the MEI's KeyPassX.
+
+
+## Heroku
+
+To configure `hstore` on the datable you have to connect to database with `heroku pg:psql` then run `CREATE EXTENSION hstore;`. Then you can run `heroku run rake db:create` etc...
