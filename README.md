@@ -5,12 +5,6 @@ To create new form [follow this link](new_form_process.md)
 ## Environment variables
 `.env` is required locally to run the project. For updating production `.env` file, create and edit `.env.production`.
 
-## Database Configuration
-
-The `config/database.yml` file uses environment variable for some config values. Each contributor must have a `.env` file in the app root with values for the following environment variable:
-
-* `REGISTER_DB_USER`
-
 ### Example
     
 `.env` content
@@ -19,13 +13,10 @@ The `config/database.yml` file uses environment variable for some config values.
 ### Production migration
 `RAILS_ENV=production rake db:migrate`
 
-## Database Connection
+## Heroku tips
 
-To connect to the database, use [pgAdmin](https://www.pgadmin.org/) or an equivalent (like [Sequel Pro](https://www.sequelpro.com/) on Mac or [JetBrains DataGrip](https://www.jetbrains.com/datagrip/) on Windows).
+To configure `hstore` on the database, you have to connect to database with `heroku pg:psql` then run `CREATE EXTENSION hstore;`. Finally you can run `heroku run rake db:create` etc...
 
-The credentials (like DB Host, DB Name, username and password) can be found on the `.env.production` file, which is located on the MEI's KeyPassX.
+## Mailgun
 
-
-## Heroku
-
-To configure `hstore` on the datable you have to connect to database with `heroku pg:psql` then run `CREATE EXTENSION hstore;`. Then you can run `heroku run rake db:create` etc...
+App is using Mailgun to send mail through action mailer. Mailgun is an add-on on Heroku. You can access Mailgun config from Heroku app dashboard. Mail config is defined in `/config/environments/production.rb`.
