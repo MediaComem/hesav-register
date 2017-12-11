@@ -19,7 +19,7 @@ $( document ).ready(function() {
 	  var fees = $('input[name=jpsy18_registration\\[type_price\\]]:checked').val()
 	  var amount = 0
 	  if(fees === "reduced"){
-	  	amount = 50000
+	  	amount = 5000
 	  }
 	  if(fees === "normal"){
 	  	amount = 10000
