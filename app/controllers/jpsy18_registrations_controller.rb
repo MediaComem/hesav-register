@@ -21,7 +21,7 @@ class Jpsy18RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2017, 12, 12, 00, 00)
+    date_start = DateTime.new(2017, 12, 13, 14, 00)
     registrations = Jpsy18Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
 
