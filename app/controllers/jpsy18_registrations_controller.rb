@@ -11,7 +11,7 @@ class Jpsy18RegistrationsController < ApplicationController
     #constants
     @event_name = 'jpsy18'
     @shop_id = 'jpsy18' # jpsy16dev / jpsy16
-    @environment = 'test' # test/prod
+    @environment = 'prod' # test/prod
     @language = 'fr_FR'
 
     # layout
@@ -21,7 +21,7 @@ class Jpsy18RegistrationsController < ApplicationController
 
   def admin
 
-    date_start = DateTime.new(2016, 06, 29, 00, 00)
+    date_start = DateTime.new(2017, 12, 12, 00, 00)
     registrations = Jpsy18Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").all
     @registrations = registrations
 
