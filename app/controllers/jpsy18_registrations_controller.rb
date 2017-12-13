@@ -125,7 +125,7 @@ class Jpsy18RegistrationsController < ApplicationController
   def registration_ok(msg, registration)
     logger.info msg
     flash.now[:notice_title] = "Nous vous remercions de votre inscription."
-    flash.now[:notice] = "Un courrier électronique vient de vous être envoyé."
+    flash.now[:notice] = "Une confirmation email vous parviendra dans quelques minutes."
     Jpsy18Mailer.success_email(registration).deliver
   end
 
