@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p Madame, Monsieur,
+    p Nous vous remercions de votre inscription au Symposium « Assistance à mourir : la Suisse, un modèle ? »
+
+    ul
+      li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
+      li Employeur : #{@registration.employer}
+      li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
+      - if @registration.type_price == "50.00"
+        li Votre paiement de CHF 50.- a bien été enregistré.
+      - elsif @registration.type_price == "100.00"
+        li Votre paiement de CHF 100.- a bien été enregistré.
+      - else
+        li Votre inscription gratuite a bien été enregistrée.
+    p Au plaisir de vous accueillir, nous vous transmettons nos meilleures salutations.
+    b
+      p
+        |---------------------------------------------------------------------------
+    span HESAV-Haute Ecole de Santé Vaud
+    br 
+    span Symposium « Assistance à mourir : la Suisse, un modèle ? »
+    br 
+    span Jeudi 12 avril 2018
+    br
+    span
+      a href="http://www.hesav.ch/recherche-et-developpement/evenements-activites/journ%C3%A9e-de-psychiatrie" Lien vers la conférence
+    p
+      | Information :
+      a href="mailto:recherche@hesav.ch" recherche@hesav.ch
+    
+    b
+      p
+        |---------------------------------------------------------------------------
