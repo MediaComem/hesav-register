@@ -55,3 +55,10 @@ Event.create!(short_name:"jpsy18",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2018,02,01),
     visible: true)
+
+Event.create!(short_name:"symposium18",
+    name:"Symposium sur l'assistance à mourir",
+    description:"Symposium sur l'assistance à mourir",
+    open: DateTime.new(2014,07,14),
+    close: DateTime.new(2018,04,01),
+    visible: true)

@@ -5,6 +5,21 @@ Rails.application.routes.draw do
 
   resources :charges
 
+  # Jpsy18 (Avril 2018)
+  get '/symposium18' => 'symposium18_registrations#new'
+  get '/symposium18/admin(.:format)', to: 'symposium18_registrations#admin', as: 'symposium18_admin'
+
+  resources :symposium18_registrations, path: 'symposium18' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
   # Jpsy18 (Février 2018)
   get '/jpsy18' => 'jpsy18_registrations#new'
   get '/jpsy18/admin(.:format)', to: 'jpsy18_registrations#admin', as: 'jpsy18_admin'

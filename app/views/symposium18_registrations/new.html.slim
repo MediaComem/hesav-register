@@ -2,7 +2,7 @@
   .blocktitle.col-md-12
     p
       |DÉLAI D’INSCRIPTION :
-      span.date  31 JANVIER 2018
+      span.date  31 MARS 2018
 .row
   .col-md-12
     = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
@@ -73,16 +73,7 @@
             .radio
               label
                 = f.radio_button(:type_price, "normal", :checked => true)
-                |Tarif normal // 100.-
-        .row
-          .col-md-5.col-md-offset-4
-            .radio
-              label
-                = f.radio_button(:type_price, "reduced")
-                |Tarif réduit // 50.-
-                br
-                span.small
-                  |(étudiants hors HESAV, membres Alumni HESAV, AVS, AI, apprentis, chômeurs sur présentation d’un justificatif à l’entrée)
+                |Tarif normal // 20.-
         .row
           .col-md-5.col-md-offset-4
             .radio
@@ -94,7 +85,7 @@
                   |(collaborateurs et étudiants de HESAV)
         .row
           .col-md-8.col-md-offset-4
-            = link_to 'Conditions Générales', asset_path("cgv/jpsy18.pdf"), target: "_blank"
+            = link_to 'Conditions Générales', asset_path("cgv/symposium18.pdf"), target: "_blank"
           .col-md-8.col-md-offset-4
             .checkbox
               label

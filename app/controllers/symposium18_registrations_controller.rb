@@ -1,7 +1,7 @@
 require 'httparty'
 require 'symposium18_csv_service'
 
-class Jpsy18RegistrationsController < ApplicationController
+class Symposium18RegistrationsController < ApplicationController
 
   before_filter :init_values
   before_filter :authenticate, only: [:admin]
@@ -15,7 +15,7 @@ class Jpsy18RegistrationsController < ApplicationController
     @language = 'fr_FR'
 
     # layout
-    self.class.layout('symposium')
+    self.class.layout('symposium18')
 
   end
 
@@ -44,7 +44,7 @@ class Jpsy18RegistrationsController < ApplicationController
 
     event = Event.find_by_short_name!(@event_name)
     if event.open < DateTime.now && event.close > DateTime.now
-      @registration = SymposiumRegistration.new
+      @registration = Symposium18Registration.new
     else
       if event.open > DateTime.now
         flash.now[:info] = "The registration is not yet available."
@@ -59,7 +59,7 @@ class Jpsy18RegistrationsController < ApplicationController
   def create
 
     event = Event.find_by_short_name!(@event_name)
-    @registration = SymposiumRegistration.new(post_params)
+    @registration = Symposium18Registration.new(post_params)
     @registration.shopID = @shop_id
     @registration.environment = @environment
     @registration.language = @language

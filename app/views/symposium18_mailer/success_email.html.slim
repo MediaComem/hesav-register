@@ -10,10 +10,8 @@ html
       li Nom/Prénom : #{@registration.last_name} #{@registration.first_name}
       li Employeur : #{@registration.employer}
       li Date d'inscription : #{I18n.l(@registration.created_at, :format => (I18n.t 'date.formats.custom'))}<br/>
-      - if @registration.type_price == "50.00"
-        li Votre paiement de CHF 50.- a bien été enregistré.
-      - elsif @registration.type_price == "100.00"
-        li Votre paiement de CHF 100.- a bien été enregistré.
+      - if @registration.type_price == "20.00"
+        li Votre paiement de CHF 20.- a bien été enregistré.
       - else
         li Votre inscription gratuite a bien été enregistrée.
     p Au plaisir de vous accueillir, nous vous transmettons nos meilleures salutations.
