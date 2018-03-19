@@ -43,13 +43,15 @@ class Symposium18RegistrationsController < ApplicationController
   def new
 
     event = Event.find_by_short_name!(@event_name)
-    if event.open < DateTime.now && event.close > DateTime.now
+    date_start = DateTime.new(2018, 03, 01, 14, 00)
+    subscription_count = Symposium18Registration.where("created_at > :date_start AND payed", {date_start: date_start}).order("created_at DESC").count
+    if event.open < DateTime.now && event.close > DateTime.now && subscription_count <= 200
       @registration = Symposium18Registration.new
     else
       if event.open > DateTime.now
         flash.now[:info] = "The registration is not yet available."
       else
-        flash.now[:info] = "The registration is not available anymore."
+        flash.now[:info] = 'Merci de votre intérêt pour la conférence "Assistances à mourir : la Suisse, un modèle ?". Malheureusement, l\'événement est complet et les inscriptions sont closes.'
       end
       render "close"
     end
