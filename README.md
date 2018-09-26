@@ -1,5 +1,7 @@
 # README
 
+⚠️Le code source de la page qui permet de s'inscrire aux séance d'information est "stocké" sur [Gitlab](https://gitlab.com/sysin/iRegisterRails-hesav-seances-info).
+
 To create new form [follow this link](new_form_process.md)
 
 ## Environment variables
