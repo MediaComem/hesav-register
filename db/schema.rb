@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312125530) do
+ActiveRecord::Schema.define(version: 20190304132738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,16 +136,35 @@ ActiveRecord::Schema.define(version: 20180312125530) do
   end
 
   create_table "jpsy18_registrations", force: :cascade do |t|
-    t.string   "last_name",         limit: 255
-    t.string   "first_name",        limit: 255
-    t.string   "street",            limit: 255
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "street"
     t.integer  "npa"
-    t.string   "city",              limit: 255
-    t.string   "email",             limit: 255
-    t.string   "employer",          limit: 255
-    t.string   "shopID",            limit: 255
-    t.string   "environment",       limit: 255
-    t.string   "language",          limit: 255
+    t.string   "city"
+    t.string   "email"
+    t.string   "employer"
+    t.string   "shopID"
+    t.string   "environment"
+    t.string   "language"
+    t.boolean  "payed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.hstore   "registration_type"
+  end
+
+  create_table "jpsy19_registrations", force: :cascade do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "street"
+    t.integer  "npa"
+    t.string   "city"
+    t.string   "job"
+    t.string   "employer"
+    t.string   "email"
+    t.string   "shopID"
+    t.string   "environment"
+    t.string   "language"
     t.boolean  "payed"
     t.datetime "created_at"
     t.datetime "updated_at"

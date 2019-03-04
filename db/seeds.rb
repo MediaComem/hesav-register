@@ -7,21 +7,21 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Event.delete_all
-Event.create!(short_name:"gouveole", 
+Event.create!(short_name:"gouveole",
     name:"Gouveole",
     description:"Gouveole",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2014,10,01),
     visible: true)
 
-Event.create!(short_name:"nursing15", 
+Event.create!(short_name:"nursing15",
     name:"Nursing2015",
     description:"Nursing 2015",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2016,10,01),
     visible: true)
 
-Event.create!(short_name:"psy16", 
+Event.create!(short_name:"psy16",
     name:"Le Soin intensif en psychiatrie",
     description:"Le Soin intensif en psychiatrie",
     open: DateTime.new(2014,07,14),
@@ -61,4 +61,11 @@ Event.create!(short_name:"symposium18",
     description:"Symposium sur l'assistance à mourir",
     open: DateTime.new(2014,07,14),
     close: DateTime.new(2018,04,01),
+    visible: true)
+
+Event.create!(short_name:"psy19",
+    name:"Journée de psychiatrie 2019",
+    description:"Quand vient la nuit",
+    open: DateTime.new(2018,01,01),
+    close: DateTime.new(2019,12,31),
     visible: true)
