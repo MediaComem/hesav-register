@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html
+  head
+    title HESAV - 10ème Journée de Psychiatrie 2019
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "jpsy18"
+    = javascript_include_tag "application"
+    = javascript_include_tag "jpsy19"
+    script src="https://checkout.stripe.com/checkout.js"
+    = csrf_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1"
+  body
+    .container
+      .row
+        .col-sm-12.banner
+          img.img-responsive src=image_path("banner_jpsy18.png")
+      .row
+        .col-md-12
+          == render 'shared/flash'
+      = yield
+      .row
+        .logodiv
+          img.logoimg src=image_path("logo_HESAV.png")

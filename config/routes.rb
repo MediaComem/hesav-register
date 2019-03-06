@@ -5,7 +5,22 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  # Jpsy18 (Avril 2018)
+  # Jpys19 (Mars 2019)
+  get '/psy' => 'jpsy19_registrations#new'
+  get '/psy/admin(.:format)', to: 'jpsy19_registrations#admin', as: 'jpsy19_admin'
+
+  resources :jpsy19_registrations, path: '/psy' do
+    collection do
+      get 'new'
+      get 'accepted'
+      get 'exception'
+      get 'decline'
+      get 'cancel'
+      get 'cgv'
+    end
+  end
+
+  # Symposium18 (Avril 2018)
   get '/symposium18' => 'symposium18_registrations#new'
   get '/symposium18/admin(.:format)', to: 'symposium18_registrations#admin', as: 'symposium18_admin'
 
@@ -96,8 +111,8 @@ Rails.application.routes.draw do
   end
 
   # 7ème Journée de psychiatrie (Avril 2015)
-  get '/psy' => 'psy14_registrations#new'
-  get '/psy/admin(.:format)', to: 'psy14_registrations#admin', as: 'psy14_admin'
+  get '/psy14' => 'psy14_registrations#new'
+  get '/psy14/admin(.:format)', to: 'psy14_registrations#admin', as: 'psy14_admin'
 
   resources :psy14_registrations, path: 'psy' do
     collection do
@@ -170,7 +185,7 @@ Rails.application.routes.draw do
   end
   # get '/scientifique14_registrations' => 'death14_registrations#new'
   # get '/scientifique14_registrations/admin(.:format)', to: 'death14_registrations#admin', as: 'death14_admin'
-  
+
   # resources :death14_registrations, path: 'scientifique14_registrations' do
   #   collection do
   #     get 'new'

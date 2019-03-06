@@ -63,7 +63,7 @@ Event.create!(short_name:"symposium18",
     close: DateTime.new(2018,04,01),
     visible: true)
 
-Event.create!(short_name:"psy19",
+Event.create!(short_name:"jpsy19",
     name:"Journée de psychiatrie 2019",
     description:"Quand vient la nuit",
     open: DateTime.new(2018,01,01),

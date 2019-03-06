@@ -2,7 +2,7 @@
   .blocktitle.col-md-12
     p
       |DÉLAI D’INSCRIPTION :
-      span.date  10 AVRIL 2018
+      span.date  10 MAI 2019
 .row
   .col-md-12
     = form_for @registration, url: {action: "create"}, html: {role: "form"} do |f|
@@ -10,6 +10,8 @@
         .row
           .col-md-6
             p.bg-danger.text-danger #{msg}
+      / Add an hidden filed containing the public key
+      = hidden_field_tag 'stripe_key', ENV['PUBLISHABLE_KEY']
       #perso-infos
         .row
           .col-md-12
@@ -21,7 +23,7 @@
               .col-md-4.col-sm-4.col-xs-4
                 label Nom*
               .col-md-4.col-sm-6.col-xs-8
-                = f.text_field(:last_name, class: "form-control")
+                = f.text_field(:last_name, class: "form-control", :required => true)
         .row
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
@@ -49,7 +51,14 @@
           .form-group.col-md-12.col-sm-12.col-xs-12
             .row
               .col-md-4.col-sm-4.col-xs-4
-                label Employeur / Institution*
+                label Profession*
+              .col-md-4.col-sm-6.col-xs-8
+                = f.text_field(:job, class: "form-control")
+        .row
+          .form-group.col-md-12.col-sm-12.col-xs-12
+            .row
+              .col-md-4.col-sm-4.col-xs-4
+                label Employeur*
               .col-md-4.col-sm-6.col-xs-8
                 = f.text_field(:employer, class: "form-control")
         .row
@@ -73,7 +82,16 @@
             .radio
               label
                 = f.radio_button(:type_price, "normal", :checked => true)
-                |Tarif normal // 20.-
+                |Tarif normal // 100.-
+        .row
+          .col-md-5.col-md-offset-4
+            .radio
+              label
+                = f.radio_button(:type_price, "reduced")
+                |Tarif réduit // 50.-
+                br
+                span.small
+                  |(étudiants hors HESAV, membres Alumni HESAV, AVS, AI, apprentis, chômeurs sur présentation d’un justificatif à l’entrée)
         .row
           .col-md-5.col-md-offset-4
             .radio
@@ -85,7 +103,8 @@
                   |(collaborateurs et étudiants de HESAV)
         .row
           .col-md-8.col-md-offset-4
-            = link_to 'Conditions Générales', asset_path("cgv/symposium18.pdf")
+            / = link_to 'Conditions Générales', asset_path("cgv/jpsy19.pdf"), target: "_blank"
+            = link_to 'Conditions Générales', cgv_jpsy19_registrations_url, target: "_blank"
           .col-md-8.col-md-offset-4
             .checkbox
               label
