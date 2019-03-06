@@ -14,8 +14,6 @@ $(document).ready(function() {
 		}
 	})
 
-	$(".stripe-button").attr('data-email', "test@google.com")
-
 	$(".btn-success").on('click', function(e) {
 		e.preventDefault()
 		// Open Checkout with further options:
