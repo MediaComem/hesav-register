@@ -9,24 +9,28 @@ $(document).ready(function() {
 		token: function(token) {
 			// You can access the token ID with `token.id`.
 			// Get the token ID to your server-side code for use.
-			form.append($('<input type="hidden" name="stripeToken" />').val(token.id))
-			form.get(0).submit()
+			form.append($('<input type="hidden" name="stripeToken" id="stripeToken" />').val(token.id))
+			form.submit()
 		}
 	})
 
-	$(".btn-success").on('click', function(e) {
-		e.preventDefault()
-		// Open Checkout with further options:
-		var emailadress = $('#jpsy19_registration_email').val()
-		var fees = $('input[name=jpsy19_registration\\[type_price\\]]:checked').val()
-		var amounts = {
-			'free': 0,
-			'reduced': 5000,
-			'normal': 10000
-		}
-		var amount = amounts[fees] || 0
-		if ($('#cgvaccept:checkbox:checked').length > 0) {
-			if (fees != "free") {
+	form.on('submit', function(e) {
+		if (!$('#cgvaccept').is(':checked')) {
+			e.preventDefault()
+			alert("Vous devez accepter les conditions générales pour valider votre inscription")
+		} else {
+			if (fees != "free" && document.getElementById('stripeToken') === null) {
+				// Do not submit the form when user have to pay something and did not already do it.
+				e.preventDefault()
+				var emailadress = $('#jpsy19_registration_email').val()
+				var fees = $('input[name=jpsy19_registration\\[type_price\\]]:checked').val()
+				var amounts = {
+					'free': 0,
+					'reduced': 5000,
+					'normal': 10000
+				}
+				// Set the amount to 0 if fees does not exist as a valid amount
+				var amount = amounts[ fees ] || 0
 				handler.open({
 					name: 'forms.hesav.ch',
 					description: '',
@@ -34,12 +38,8 @@ $(document).ready(function() {
 					amount: amount,
 					email: emailadress
 				});
-			} else {
-				form.get(0).submit()
 			}
-		} else {
-			alert("Vous devez accepter les conditions générales pour valider votre inscription")
 		}
-	})
+	});
 
 })
