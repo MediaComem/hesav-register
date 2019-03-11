@@ -35,6 +35,14 @@ namespace :vlad do
     run "touch #{current_path}/tmp/restart.txt"
   end
 
+  desc "Migrate Database"
+  remote_task :migrate_iregister_db do
+    run ["source ~/.rvm/scripts/rvm",
+          "cd #{current_path}",
+          "RAILS_ENV=production bundle exec rake db:migrate"
+        ].join(" && ")
+  end
+
   desc "Full deployment cycle"
   remote_task :deploy => %w(
     vlad:clean_scm_repo
@@ -42,6 +50,7 @@ namespace :vlad do
     vlad:bundle_update
     vlad:precompile_assets
     vlad:copy_env
+    vlad:migrate_iregister_db
     vlad:refresh_passenger
   )
 end
