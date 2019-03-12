@@ -19,11 +19,11 @@ $(document).ready(function() {
 			e.preventDefault()
 			alert("Vous devez accepter les conditions générales pour valider votre inscription")
 		} else {
+			var fees = $('input[name=jpsy19_registration\\[type_price\\]]:checked').val()
 			if (fees != "free" && document.getElementById('stripeToken') === null) {
 				// Do not submit the form when user have to pay something and did not already do it.
 				e.preventDefault()
 				var emailadress = $('#jpsy19_registration_email').val()
-				var fees = $('input[name=jpsy19_registration\\[type_price\\]]:checked').val()
 				var amounts = {
 					'free': 0,
 					'reduced': 5000,
