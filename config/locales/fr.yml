@@ -298,6 +298,15 @@ fr:
         employer: "Employeur"
         job: "Profession"
         email: "Email"
+      jpsy19_registration:
+        last_name: "Nom"
+        first_name: "Prénom"
+        street: "Rue"
+        npa: "NPA"
+        city: "Ville"
+        job: "Profession"
+        employer: "Employeur"
+        email: "Email"
     errors:
       models:
         gouveole_registration:
