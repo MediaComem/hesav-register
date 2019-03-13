@@ -8,12 +8,29 @@ To create new form [follow this link](new_form_process.md)
 `.env` is required locally to run the project. For updating production `.env` file, create and edit `.env.production`.
 
 ### Example
-    
+
 `.env` content
 `REGISTER_DB_USER=[your_db_username]`
 
-### Production migration
-`RAILS_ENV=production rake db:migrate`
+## Deploy to production
+
+The app is hosted on a paid Heroku dyno.
+
+To deploy on this dyno, simply add Heroku as a git remote with:
+```shell
+$> git remote add heroku https://git.heroku.com/hesav-forms.git
+```
+
+Then push the desired project state on Heroku, from any branch or commit with:
+```shell
+$> git push heroku master
+```
+
+## Production migration
+To execute the migration on Heroku, use the following command:
+```shell
+$> heroku run rails db:migrate
+```
 
 ## Heroku tips
 
