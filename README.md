@@ -31,6 +31,15 @@ To execute the migration on Heroku, use the following command:
 ```shell
 $> heroku run rails db:migrate
 ```
+## Connect to database
+
+The application being deployed to Heroku, a PostgreSQL add-in is activated there.
+
+Thus, to connect to the production database, type the following command in the app code source directory on your machine:
+
+```sh
+$> heroku pg:psql
+```
 
 ## Heroku tips
 
